@@ -18,51 +18,38 @@ The project idea is up to you as long as it applies all essential requirements.
 
 # Example: 
 
-# Project Name: Learning Management System
+# Project Name: Career Matching System.
 
 ## Idea:
-A system to manage students learning journey. The system enable student to explore new courses, take courses, solve quizzes, etc. Moreover, the teachers can create new quizzes, follow student progress, etc.
+A system that help students and job seekers to identify requaired skills for thier desired fields. The system enable student to explore field skills and related courses that will help them to strngthen thier skills. the admins can create new fields, new skills
 
 ## Inspiration:
-Facilitate the learning process and the management of students and courses. 
+Assisting in developing the professional skills that necessary for students and job seekers in the field of specialization. 
 
 
 ## List of Services / Features:
 
-- Manage the students.
-- Manage the teachers.
-- Manage online courses easily!
-- Manage online assessments.
+- Manage the Jobs.
+- Manage the Skills.
+- Manage the Related Courses.
+- Manage the Job seekers.
 
 
 ## User Stories
-- Type of users: Faculty, Teachers, and Students.
+- Type of users: Employment specialists, Job seekers.
 
-### Faculty
+### Employment Specialists.
 
-- Create, Read, Update, Delete teachers.
-- Create, Read, Update, Delete courses.
-- Create, Read, Update, Delete students.
+- Create, Read, Update, Delete Job seekers.
+- Create, Read, Update, Delete Courses.
+- Create, Read, Update, Delete Jobs.
+- Create, Read, Update, Delete Skills.
 
 ### Students
 
 - View courses.
-- Join courses.
-- Withdraw from courses.
 - Edit information.
-- Take assignments.
-- Send Inquiries to teachers and faculties.
-- View joined courses.
 - View course information.
-- View student progress on a specific course.
-- Search for courses.
 
-### Teachers
 
-- View the teacher courses.
-- View the course information.
-- List joined student in the current course.
-- Add assignments to a specific course.
-- Add students grade in a specific course.
-- Search for a students in a specific course.
-- Get student information.
+
