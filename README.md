@@ -50,6 +50,7 @@ It is a system to Managing restaurants and adding a menu to each restaurant, etc
 - Search for restaurant.
 
 ### Admins for meals
+<<<<<<< HEAD
 
 - View all meals.
 - Edit a meal.
@@ -61,3 +62,17 @@ It is a system to Managing restaurants and adding a menu to each restaurant, etc
 
 - View all meals and restaurant.
 - Search for meal and restaurant.
+=======
+
+- View all meals.
+- Edit a meal.
+- Delete a meal.
+- Add a meal.
+- Search for meal.
+
+### Customers
+
+- View all meals and restaurant.
+- Search for meal and restaurant.
+
+>>>>>>> 67715aa7e8a410bb9a5eb9ee1a62be0fd428399a
