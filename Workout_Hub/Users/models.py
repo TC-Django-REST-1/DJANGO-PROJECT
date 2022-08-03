@@ -1,17 +1,15 @@
 from django.db import models
-from Courses.models import Courses
 from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Trainer(models.Model):
+class Trainers(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    start_date = models.DateField()
-    end_date = models.DateField()
-    tr_phone = models.IntegerField()
+    start_date = models.DateField(blank=True)
+    end_date = models.DateField(blank=True)
+    tr_phone = models.IntegerField(blank=True)
 
 
-class Trainee(models.Model):
+class Trainees(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    course = models.ManyToManyField(Courses, on_delete=models.DO_NOTHING)
-    te_phone = models.IntegerField()
+    te_phone = models.IntegerField(blank=True)

@@ -2,31 +2,20 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
-from .serializers import TrainerSerializer, TraineeSerializer
+from .seriallizers import TrainerSerializer, TraineeSerializer, UserSerializer
 from rest_framework import status
-from .models import Trainee, Trainer
+from .models import Trainees, Trainers
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
+from rest_framework.decorators import authentication_classes
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated
+
 from rest_framework_simplejwt.tokens import AccessToken
 # Create your views here.
-
-@api_view(['POST'])
-def create_account(request : Request):
-
-    username = request.data.get("username")
-    email = request.data.get("email")
-    password = request.data.get("password")
-
-    try:
-        user = User.objects.create_user(username, email, password)
-        user.save()
-    except Exception as e:
-        return Response({"msg" : "Couldn't Create user", "error" : e})
-
-    return Response({"msg" : "User Created Successfuly"}, status=status.HTTP_201_CREATED)
-
 
 
 @api_view(['POST'])
@@ -45,21 +34,44 @@ def signin(request : Request):
     return Response({"msg" : "You are authenticated successfully!", "token" : str(token)})
 
 
-
-@api_view(["POST"])
-@authentication_classes([JWTAuthentication])
-@permission_classes([IsAuthenticated])
-def register_course(request : Request, course_id):
-    #authenticated user info is stored in request.user
-    user = request.user
-    
-    if not user.has_perm('Users.register_course'):
-        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
+@api_view(['POST'])
+def create_trainer(request : Request):
+    #username = request.data.get("username")
+    #email = request.data.get("email")
+    #password = request.data.get("password")
 
     try:
-        request.data["course"] = course_id
-
+        #new_user = User.objects.create_user(username, email, password)
+        new_user = UserSerializer()
+        new_user.save()
     except Exception as e:
-        return Response({"msg" : "Couldn't regiter the course", "error" : e})
+        return Response({"msg" : "Couldn't Create trainer", "error" : e})
 
-    return Response({"msg" : "Course regitered Successfully"}, status = stat.HTTP_201_CREATED)
+    start_date = request.data["start_date"]
+    end_date = request.data["end_date"]
+    phone = request.data["tr_phone"]
+
+    new_trainer = Trainers(user = new_user, start_date = start_date, end_date = end_date, tr_phone = phone)
+    new_trainer.save()
+
+    return Response({"msg" : "Trainer created Successfully"}, status = status.HTTP_201_CREATED)
+
+
+@api_view(['POST'])
+def create_trainee(request : Request):
+    username = request.data.get("username")
+    email = request.data.get("email")
+    password = request.data.get("password")
+
+    try:
+        new_user = User.objects.create_user(username, email, password)
+        new_user.save()
+    except Exception as e:
+        return Response({"msg" : "Couldn't Create trainee", "error" : e})
+
+    phone = request.data["te_phone"]
+
+    new_trainee = Trainees(user = new_user, te_phone = phone)
+    new_trainee.save()
+
+    return Response({"msg" : "Trainer created Successfully"}, status = status.HTTP_201_CREATED)
