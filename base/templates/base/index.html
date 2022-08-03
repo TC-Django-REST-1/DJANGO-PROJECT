@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/style.css' %}">
+    {% block css %}
+      
+    {% endblock css %}
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="/">MySite</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	<ul class="navbar-nav mr-auto">
+	  <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+	  </li>
+	</ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+
+        
+        <div class="starter-template">
+
+            {% block content %}
+            {% endblock content %}
+            
+        </div>
+        
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">
+          Django the easy way {% now 'Y' %} <a href="https://github.com/azwri/" target="_blank">AZWRI</a>
+        </span>
+      </div>
+    </footer>
+
+
+    <script src="{% static 'base/js/jquery-3.5.1.slim.min.js' %}"></script>
+    <script src="{% static 'base/js/bootstrap.bundle.min.js' %}"></script>
+    {% block js %}
+      
+    {% endblock js %}
+
+</body>
+</html>
