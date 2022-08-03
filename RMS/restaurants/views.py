@@ -19,7 +19,6 @@ def add_restaurant(request : Request):
     if not user.has_perm('restaurants.add_restaurants'):
         return Response({"msg" : "You don't have Restaurant control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     
-    
     restaurant_serializer = RestaurantsSerializer(data= request.data)
     if restaurant_serializer.is_valid():
         restaurant_serializer.save()
@@ -37,7 +36,7 @@ def list_restaurants(request : Request):
 
     if "search" in request.query_params:
         search_phrase = request.query_params["search"]
-        restaurants = Restaurants.objects.filter(title=search_phrase)[skip:get]
+        restaurants = Restaurants.objects.filter(restaurant_name__startswith=search_phrase)[skip:get]
     else:
         restaurants = Restaurants.objects.all()
         
@@ -51,9 +50,11 @@ def list_restaurants(request : Request):
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def update_restaurant(request : Request, restaurant_id):
+    
     user = request.user
     if not user.has_perm('restaurants.change_restaurants'):
         return Response({"msg" : "You don't have Restaurant control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
+    
     try:
         restaurant = Restaurants.objects.get(id = restaurant_id)
     except Exception as e:
@@ -111,13 +112,10 @@ def add_meal(request : Request):
 
 @api_view(['GET'])
 def list_meals(request : Request):
-    
-    skip = int(request.query_params.get("skip", 0))
-    get = int(request.query_params.get("get", 10))
 
     if "search" in request.query_params:
         search_phrase = request.query_params["search"]
-        meals = Meals.objects.filter(title=search_phrase)[skip:get]
+        meals = Meals.objects.filter(meal_name__startswith=search_phrase)
     else:
         meals = Meals.objects.all()
         
