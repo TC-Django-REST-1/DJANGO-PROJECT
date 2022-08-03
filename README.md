@@ -16,53 +16,49 @@ The project idea is up to you as long as it applies all essential requirements.
 - Export the project Postman Collections into a file and include it in the repository.
 
 
-# Example: 
 
-# Project Name: Learning Management System
+# Project Name: Restaurant Management System (RMS)
 
 ## Idea:
-A system to manage students learning journey. The system enable student to explore new courses, take courses, solve quizzes, etc. Moreover, the teachers can create new quizzes, follow student progress, etc.
+It is a system to Managing restaurants and adding a menu to each restaurant, etc.
 
 ## Inspiration:
-Facilitate the learning process and the management of students and courses. 
+- Facilitate the process of making a menu for each restaurant for the owners of restaurants. 
+- Facilitate the process of searching for a restaurant for the customer.
 
 
 ## List of Services / Features:
 
-- Manage the students.
-- Manage the teachers.
-- Manage online courses easily!
-- Manage online assessments.
+- Manage the restaurants.
+- Manage the meals.
 
 
 ## User Stories
-- Type of users: Faculty, Teachers, and Students.
+- Type of users: admins for restaurants, admins for menu or meals, and customers.
 
 ### Faculty
 
-- Create, Read, Update, Delete teachers.
-- Create, Read, Update, Delete courses.
-- Create, Read, Update, Delete students.
+- Create, Read, Update, Delete restaurants.
+- Create, Read, Update, Delete meals.
 
-### Students
+### Admins for restaurants
 
-- View courses.
-- Join courses.
-- Withdraw from courses.
-- Edit information.
-- Take assignments.
-- Send Inquiries to teachers and faculties.
-- View joined courses.
-- View course information.
-- View student progress on a specific course.
-- Search for courses.
+- View all restaurants.
+- Edit a restaurant.
+- Delete a restaurant.
+- Add a restaurant.
+- Search for restaurant.
 
-### Teachers
+### Admins for meals
 
-- View the teacher courses.
-- View the course information.
-- List joined student in the current course.
-- Add assignments to a specific course.
-- Add students grade in a specific course.
-- Search for a students in a specific course.
-- Get student information.
+- View all meals.
+- Edit a meal.
+- Delete a meal.
+- Add a meal.
+- Search for meal.
+
+### Customers
+
+- View all meals and restaurant.
+- Search for meal and restaurant.
+
