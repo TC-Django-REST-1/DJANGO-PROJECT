@@ -18,51 +18,52 @@ The project idea is up to you as long as it applies all essential requirements.
 
 # Example: 
 
-# Project Name: Learning Management System
+# Project Name: Commercial Companies Management System
 
 ## Idea:
-A system to manage students learning journey. The system enable student to explore new courses, take courses, solve quizzes, etc. Moreover, the teachers can create new quizzes, follow student progress, etc.
+A system to manage Commercial Companies. The system enable Companies to Issuing Commercial Certificate, Updating the corporate data, View commercial Certificate data, etc. Moreover, the employees can perform comanies requests, follow and update requests progress, etc.
 
 ## Inspiration:
-Facilitate the learning process and the management of students and courses. 
-
+Assisting companies in carrying out their business in an official manner, and protect the beneficiaries' interests, by developing and implementing effective and efficient policies and mechanisms.
 
 ## List of Services / Features:
 
-- Manage the students.
-- Manage the teachers.
-- Manage online courses easily!
-- Manage online assessments.
+- Manage the commercial companies.
+- Manage the employees.
+- Manage online servieces.
 
 
 ## User Stories
-- Type of users: Faculty, Teachers, and Students.
+- Type of users: Adminstration, Companies,Employees, and Consumer.
 
-### Faculty
+### Adminstration
 
-- Create, Read, Update, Delete teachers.
-- Create, Read, Update, Delete courses.
-- Create, Read, Update, Delete students.
+- Create, Read, Delete Companies.
+- Create, Read, Update, Delete services.
+- Create, Read, Delete employees.
 
-### Students
+### Companies
 
-- View courses.
-- Join courses.
-- Withdraw from courses.
-- Edit information.
-- Take assignments.
-- Send Inquiries to teachers and faculties.
-- View joined courses.
-- View course information.
-- View student progress on a specific course.
-- Search for courses.
+- Add commercial certificate
+- Add requiest.
+- Renewal commercial certificate
+- View commercial certificate data.
+- View Company information.
+- View Company's requiests.
+- View requiest progress.
+- Edit Company information.
+- Send Inquiries/complaint to Adminstration.
+- Cancel requiest.
+- Search for service.
 
-### Teachers
+### Employees
 
-- View the teacher courses.
-- View the course information.
-- List joined student in the current course.
-- Add assignments to a specific course.
-- Add students grade in a specific course.
-- Search for a students in a specific course.
-- Get student information.
+- View the companees requests.
+- View the request information.
+- Add task "add company request to my tasks list".
+- Update task "update requiest status".
+- List assigned request.
+- Update profile.
+- Withdraw task.
+- Search for a requiest in a specific company.
+- View company information.

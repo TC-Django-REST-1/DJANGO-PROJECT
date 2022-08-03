@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Adminstration,Employee,Service,Requset,Task
+from .models import Adminstration,Employee,Company,Service,Requset,Task
 
 
 class AdminstrationSerializer(serializers.ModelSerializer):
@@ -19,6 +19,12 @@ class ServiceSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Service
+        fields = '__all__'
+
+class CompanySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Company
         fields = '__all__'
 
 class RequsetSerializer(serializers.ModelSerializer):
