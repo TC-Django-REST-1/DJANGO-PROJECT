@@ -12,8 +12,6 @@ class BrandSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    # brand_name_set = BrandSerializer(many=True)
-
     class Meta:
 
         model = Product

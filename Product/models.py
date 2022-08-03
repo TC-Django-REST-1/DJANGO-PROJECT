@@ -1,7 +1,7 @@
-from email.policy import default
 from django.db import models
 from datetime import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.forms import ValidationError
 
 app_lable = "store_model"
 
@@ -20,19 +20,19 @@ class Brand(models.Model):
         help_text="Use the following format: <YYYY>")
 
     def __str__(self) -> str:
-        return self.brand_name
+        return ",".join([self.brand_name, str(self.established_at_Year)])
 
     def to_dict(self):
         return {"brand_name": self.brand_name, "established_at_Year": self.established_at_Year}
 
     class meta:
-        ordering = ['brand']
+        ordering = ['brand_name']
 
 
 class Product(models.Model):
 
-    brand: Brand = models.ForeignKey(
-        Brand, on_delete=models.CASCADE)
+    brand = models.ForeignKey(
+        Brand, on_delete=models.CASCADE, to_field='brand_name')
     product_name = models.CharField(max_length=50)
     type = models.CharField(max_length=50, choices=typeOfProdect)
     add_at = models.CharField(max_length=50, auto_created=True,
@@ -49,6 +49,23 @@ class Product(models.Model):
         print(brand)
         return f"ID : {self.id} Berand:{brand} Name: {self.product_name}"
 
+    def validate_unique(self, *args, **kwargs):
+        super().validate_unique(*args, **kwargs)
+        if self.__class__.objects.\
+                filter(brand=self.brand, product_name=self.product_name).\
+                exists():
+            raise ValidationError(
+                message='the prodect is already exists.',
+                code='unique_together',
+            )
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.full_clean()
+        super().delete(*args, **kwargs)
+
     class meta:
-        app_label = 'Product'
-        # ordering = ['product_name']
+        ordering = ['product_name']

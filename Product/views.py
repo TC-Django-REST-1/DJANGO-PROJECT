@@ -1,4 +1,7 @@
-from wsgiref import validate
+from itertools import product
+import json
+import traceback
+from django.db import IntegrityError
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.request import Request
@@ -21,21 +24,19 @@ def add_brand(request: Request):
     new_brand = BrandSerializer(data=request.data)
     if new_brand.is_valid():
         new_brand.save()
+        return Response({
+            "msg": f"create a new brand with brand_name {{ {new_brand.data.get('brand_name')} }} Successfully"
+        }, status=status.HTTP_200_OK)
     else:
         print(request.data["brand_name"])
         return Response({
             "msg": new_brand.errors, "details": (new_brand.data.values())
         }, status=status.HTTP_406_NOT_ACCEPTABLE)
 
-    return Response({
-        "msg": f"create a new brand with brand_name {{ {new_brand.data.get('brand_name')} }} Successfully"
-    }, status=status.HTTP_200_OK)
-
 
 @api_view(["GET"])
 def list_brand(request: Request):
 
-    # returns the total count of Brand in the database, for testing only
     skip = int(request.query_params.get("skip", 0))
     get = int(request.query_params.get("get", 10))
 
@@ -56,74 +57,89 @@ def list_brand(request: Request):
 
 
 @api_view(['PUT'])
-def update_brand(request: Request, brand_name: str):
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def update_brand(request: Request, brandy: str):
+    import json
     try:
-        data_obj = Brand.objects.get(brand_name=brand_name)
-        print(type(data_obj))
-    except Brand.DoesNotExist:
-        return Response({"msg": f"The brand {brand_name} does not exist"},
+        brand_name = request.data.get('brand_name')
+        established_at_Year = request.data.get('established_at_Year')
+        data_obj = Brand.objects.filter(
+            brand_name=brandy)
+        temp = list(data_obj.all().values())[0]
+        data_obj.update(brand_name=brand_name,
+                        established_at_Year=established_at_Year)
+
+        return Response({"msg": {"Your brand": temp, "is updated to": request.data}},
+                        status=status.HTTP_202_ACCEPTED)
+
+    except IntegrityError as e:
+        s = str(e).split(": ")[1].split(".")[1]
+        s = json.dumps(s)[1:-1]
+        return Response({"msg": f"You need to put {s}"},
+                        status=status.HTTP_400_BAD_REQUEST)
+    except IndexError as e:
+        return Response({"msg": f"the brand '{brandy}' not Found"},
                         status=status.HTTP_404_NOT_FOUND)
 
-    data = BrandSerializer(instance=data_obj, data=request.data)
-    if data.is_valid():
-        data.save()
-        return Response({"msg": {"Your brand": data_obj.to_dict(), "is updated to": data.data}}, status=status.HTTP_202_ACCEPTED)
-    else:
-        print(data.errors)
-        return Response({"msg": data.errors}, status=status.HTTP_304_NOT_MODIFIED)
 
-
-@api_view(["DELETE"])
-def delete_brand(request: Request, brand_name):
+@ api_view(["DELETE"])
+@ authentication_classes([JWTAuthentication])
+@ permission_classes([IsAuthenticated])
+def delete_brand(request: Request, brandy):
 
     try:
-        brand = Brand.objects.get(brand_name=brand_name)
+        brand = Brand.objects.get(brand_name=brandy)
         brand.delete()
     except Brand.DoesNotExist:
-        return Response({"msg": f"The brand {brand_name} is not Found!"}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"msg": f"The brand {brandy} is not Found!"}, status=status.HTTP_404_NOT_FOUND)
 
-    return Response({"msg": f"delete the following brand {brand_name}"}, status=status.HTTP_202_ACCEPTED)
+    return Response({"msg": f"delete the following brand {brandy}"}, status=status.HTTP_202_ACCEPTED)
 
 
-@api_view(['POST'])
+@ api_view(['POST'])
+@ authentication_classes([JWTAuthentication])
+@ permission_classes([IsAuthenticated])
 def add_Product(request: Request):
 
-    brand = request.data.get('brand_name')
-    product_name = request.data.get('product_name')
-    type = request.data.get('type')
-    price = request.data.get('price')
-    quantity = request.data.get('quantity')
-    is_active = request.data.get('is_active')
     try:
-        Prod = Product()
-        Prod.brand = Brand.objects.get(brand_name=brand)
-        Prod.product_name = product_name
-        Prod.price = price
-        Prod.type = type
-        Prod.quantity = quantity
-        Prod.is_active = is_active
-        Prod.save()
+        brand_name = request.data.get('brand_name')
+        product_name = request.data.get('product_name')
+        type = request.data.get('type')
+        price = request.data.get('price')
+        quantity = request.data.get('quantity')
+        is_active = request.data.get('is_active')
+
+    # use this mothed of creating the prodect to make sure the brand store correctly in the databse
+
+        brand = Brand.objects.filter(brand_name=brand_name)
+        if not list(brand.values_list()) == []:
+
+            Prod = Product()
+            Prod.brand: Brand = brand.get()
+            Prod.product_name = product_name
+            Prod.price = price
+            Prod.type = type
+            Prod.quantity = quantity
+            Prod.is_active = is_active
+            Prod.save()
+            return Response({
+                "msg": f"create a new product in brand {{{brand.values_list()[0][0]}}} with name {{{product_name}}}  Successfully"
+            }, status=status.HTTP_200_OK)
+
+        else:
+            return Response({
+                "msg": f"the brand {{{brand_name}}} is not exists in the database"
+            }, status=status.HTTP_200_OK)
+
     except Exception as e:
-        return Response({"msg": e}, status=status.HTTP_406_NOT_ACCEPTABLE)
-    # new_Product = ProductSerializer(
-    #     instance=Product, data=request.data, many=True,)
-    # if new_Product.is_valid():
-    #     new_Product.save()
-    # else:
-    #     print(new_Product.data)
-    #
-    # print(new_Product.data.get('name'))
-    # # {{ {new_Product.data.get('name')} }} {request.data.get['brand']}
-    return Response({
-        "msg": f"create a new product in brand {{{brand }}} with name {{{product_name}}}  Successfully"
-    }, status=status.HTTP_200_OK)
+        # the error return as nested list
+        error = list(e)[0][1][0]
+        return Response({"msg": error}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 
-@api_view(['GET'])
+@ api_view(['GET'])
 def list_Products(request: Request):
-
-    # returns the total count of Products in the database, for testing only
-    print(Product.objects.count())
 
     skip = int(request.query_params.get("skip", 0))
     get = int(request.query_params.get("get", 10))
@@ -148,29 +164,37 @@ def list_Products(request: Request):
     return Response(res_data, status=status.HTTP_200_OK)
 
 
-@api_view(['PUT'])
+@ api_view(['PUT'])
 def update_product(request: Request, product_id: str):
 
-    data_obj = Product.objects.get(id=product_id)
-    data = ProductSerializer(data_obj, request.data)
-    if data.is_valid():
-        print(data)
-        data.save()
-        return Response({"msg": "Your prodect is updated!", "Details": data.data})
+    data_obj = Product.objects.filter(id=product_id)
+    if not list(data_obj.values_list()) == []:
+        data = ProductSerializer(data_obj, request.data)
+        if data.is_valid():
+            print("dsvsodvmsidmvsmvd")
+            data.save()
+            return Response({"msg": "Your prodect is updated!", "Details": data.data})
+        else:
+            print(data.errors)
+            return Response({"msg": data.errors})
     else:
-        print(data.errors)
-        return Response({"msg": data.errors})
+        return Response({"msg": f" The ID [ {product_id} ] for the product is not Found "})
 
 
-@api_view(["DELETE"])
+@ api_view(["DELETE"])
 def delete_product(request: Request, product_id):
 
     try:
-        product: Product = Product.objects.get(id=product_id)
-        print(product.product_name+"  "+product.brand)
-        product.delete()
+        product = Product.objects.filter(id=product_id)
+        temp = list(product.values_list())
+        if not temp ==[]:
+            print(temp)
+            product.delete()
+            return Response({"msg": f"delete the following product {temp} Sucssesfuly"})
+        else:
+            return Response({"msg": f"The product is not Found!"})
     except Exception as e:
         print(e)
-        return Response({"msg": f"The product is not Found!"})
+        
 
-    return Response({"msg": f"delete the following product {product}"})
+   

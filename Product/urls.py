@@ -9,8 +9,8 @@ urlpatterns = [
 
     path(f'{brand}/create', views.add_brand),
     path(f'{brand}/read', views.list_brand),
-    path(f'{brand}/update/<str:brand_name>', views.update_brand),
-    path(f'{brand}/delete/<str:brand_name>', views.delete_brand),
+    path(f'{brand}/update/<str:brandy>', views.update_brand),
+    path(f'{brand}/delete/<str:brandy>', views.delete_brand),
 
     # prodect
 
