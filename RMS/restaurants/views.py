@@ -1,13 +1,13 @@
-import imp
 from django.shortcuts import render
 from django.urls import is_valid_path
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework import status
 from.models import Restaurants, Meals
 from .serializer import RestaurantsSerializer, MealsSerializer
-
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(['POST'])
@@ -76,7 +76,13 @@ def delete_restaurant(request : Request, restaurant_id):
 
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def add_meal(request : Request):
+    
+    user = request.user
+    if not user.has_perm('restaurants.add_restaurants'):
+        return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     
     meal_serializer = MealsSerializer(data= request.data)
     if meal_serializer.is_valid():
@@ -105,7 +111,12 @@ def list_meals(request : Request):
 
 
 @api_view(['PUT'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def update_meal(request : Request, meal_id):
+    user = request.user
+    if not user.has_perm('restaurants.change_restaurants'):
+        return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
 
     try:
         meal = Meals.objects.get(id = meal_id)
@@ -124,12 +135,16 @@ def update_meal(request : Request, meal_id):
 
 
 @api_view(["DELETE"])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def delete_meal(request : Request, meal_id):
-
+    user = request.user
+    if not user.has_perm('restaurants.delete_restaurants'):
+        return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     try:
         meal = Meals.objects.get(id = meal_id)
         meal.delete()
     except Exception as e:
-        return Response({"msg" : "The meal is not Found!"})
+        return Response({"msg" : "The meal is not Found!"}, status=status.HTTP_404_NOT_FOUND)
 
-    return Response({"msg" : f"delete the following meal {meal.name}"})
+    return Response({"msg" : f"delete the following meal {meal.meal_name}"})
