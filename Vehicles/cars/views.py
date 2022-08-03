@@ -85,7 +85,7 @@ def cars_list(request: Request):
     return Response(data, status=status.HTTP_200_OK)
 
 @api_view(['PUT'])
-def update_car(request: Request, product_id):
+def update_car(request: Request, car_id):
     car = Car.objects.get(id = car_id)
     data = CarSerilizer(instance=car, data=request.data)
     if data.is_valid():
@@ -96,7 +96,7 @@ def update_car(request: Request, product_id):
 
 
 @api_view(['DELETE'])
-def remove_car(request: Request, product_id):
+def remove_car(request: Request, car_id):
     try:
         car = Car.objects.get(id = car_id)
         car.delete()
