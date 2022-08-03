@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "a8d1bc6a-ab82-4721-a3c2-f79dca4e999d",
+		"name": "HajjEmploymentSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6729616"
+	},
+	"item": [
+		{
+			"name": "companies",
+			"item": [
+				{
+					"name": "jobs",
+					"item": [
+						{
+							"name": "add job",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTUzNzIzLCJpYXQiOjE2NTk1NjE3MjMsImp0aSI6IjQ0NzQwMTRhZDUxYTQ3ZmJhYWU2MzNjNDBkNGNmYzg1IiwidXNlcl9pZCI6Mn0.BEZlgV5OggA94X78KdZAPc2YiFry_ThJ8oCGpIsUmwk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"Cleaner\",\n    \"required_skills\":\"test test test test\",\n    \"salary\":1000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/companies/jobs/add/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"companies",
+										"jobs",
+										"add",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update job",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTUzNzIzLCJpYXQiOjE2NTk1NjE3MjMsImp0aSI6IjQ0NzQwMTRhZDUxYTQ3ZmJhYWU2MzNjNDBkNGNmYzg1IiwidXNlcl9pZCI6Mn0.BEZlgV5OggA94X78KdZAPc2YiFry_ThJ8oCGpIsUmwk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Caltural Department Manager\",\n    \"required_skills\": \"1. .... ,2.....,3......\",\n    \"salary\": \"4000.00\",\n    \"company\": 8,\n    \"employee\": null,\n    \"applicants\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/companies/jobs/update/3/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"companies",
+										"jobs",
+										"update",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete job",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTUzNzIzLCJpYXQiOjE2NTk1NjE3MjMsImp0aSI6IjQ0NzQwMTRhZDUxYTQ3ZmJhYWU2MzNjNDBkNGNmYzg1IiwidXNlcl9pZCI6Mn0.BEZlgV5OggA94X78KdZAPc2YiFry_ThJ8oCGpIsUmwk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/companies/jobs/delete/4/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"companies",
+										"jobs",
+										"delete",
+										"4",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "apply to job",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTQ2ODIzLCJpYXQiOjE2NTk1NTQ4MjMsImp0aSI6IjU4ZmViMjQ3YTY0YjQxNzViZjJjMWI4MDE5NzdhZTdkIiwidXNlcl9pZCI6M30.PwIbFtMzsxb-CriOGdQd98yZg84X55kZjasGrnhvNI0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/companies/jobs/apply/3/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"companies",
+										"jobs",
+										"apply",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "appointing employee",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTQ2ODIzLCJpYXQiOjE2NTk1NTQ4MjMsImp0aSI6IjU4ZmViMjQ3YTY0YjQxNzViZjJjMWI4MDE5NzdhZTdkIiwidXNlcl9pZCI6M30.PwIbFtMzsxb-CriOGdQd98yZg84X55kZjasGrnhvNI0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/companies/jobs/appointing_employee/3/3/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"companies",
+										"jobs",
+										"appointing_employee",
+										"3",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all jobs",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTE3NDYwLCJpYXQiOjE2NTk1MjU0NjAsImp0aSI6IjM0YWUwZDRmZTE2MTQzOGRhY2ExMzUwYjc5NzQyZDRmIiwidXNlcl9pZCI6Mn0.IhSuu1ZP7Ohi4OG08oanKsh4bXQ5-pNhIb5aTOXJDH8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/companies/jobs/all/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"companies",
+										"jobs",
+										"all",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "add company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTUzNzIzLCJpYXQiOjE2NTk1NjE3MjMsImp0aSI6IjQ0NzQwMTRhZDUxYTQ3ZmJhYWU2MzNjNDBkNGNmYzg1IiwidXNlcl9pZCI6Mn0.BEZlgV5OggA94X78KdZAPc2YiFry_ThJ8oCGpIsUmwk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"AlQurashi Hajj Company\",\n    \"permit_number\":4000,\n    \"category\":\"A\",\n    \"no_of_pilgrims\":3000,\n    \"location_url\": \"https://goo.gl/maps/qPY5BpN5F4kxmrti7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/companies/add/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"companies",
+								"add",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update company",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTUzNzIzLCJpYXQiOjE2NTk1NjE3MjMsImp0aSI6IjQ0NzQwMTRhZDUxYTQ3ZmJhYWU2MzNjNDBkNGNmYzg1IiwidXNlcl9pZCI6Mn0.BEZlgV5OggA94X78KdZAPc2YiFry_ThJ8oCGpIsUmwk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Al-Qurashi Hajj Company\",\n    \"permit_number\":4000,\n    \"category\":\"Abraj\",\n    \"no_of_pilgrims\":2500,\n    \"location_url\": \"https://goo.gl/maps/qPY5BpN5F4kxmrti7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/companies/update/8/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"companies",
+								"update",
+								"8",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete company",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTE3OTgzLCJpYXQiOjE2NTk1MjU5ODMsImp0aSI6ImU1YTFjZjAxNjRlZDQxYTFhYzM3ZmVhMWI1NGNjMTVhIiwidXNlcl9pZCI6MX0.J16f1jtCJDoh4EfeLiOEOHhxB9Al_q2nAK7O6FjAFbg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/companies/delete/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"companies",
+								"delete",
+								"7",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all companies",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTE3NDYwLCJpYXQiOjE2NTk1MjU0NjAsImp0aSI6IjM0YWUwZDRmZTE2MTQzOGRhY2ExMzUwYjc5NzQyZDRmIiwidXNlcl9pZCI6Mn0.IhSuu1ZP7Ohi4OG08oanKsh4bXQ5-pNhIb5aTOXJDH8",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/companies/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"companies",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Muhannad\",\n    \"password\": \"Muhannad123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Amal\",\n    \"password\": \"Amal123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
