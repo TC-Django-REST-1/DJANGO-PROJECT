@@ -16,53 +16,40 @@ The project idea is up to you as long as it applies all essential requirements.
 - Export the project Postman Collections into a file and include it in the repository.
 
 
-# Example: 
+<p align="center"><img src="./logo.png" alt="TuwaiqNotes" width="400" height="100"></p>
 
-# Project Name: Learning Management System
+
+# Project Name: Tuwaiq Notes
+[![Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/al_azwari)
+[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/azwri)
+
 
 ## Idea:
-A system to manage students learning journey. The system enable student to explore new courses, take courses, solve quizzes, etc. Moreover, the teachers can create new quizzes, follow student progress, etc.
+A notes system that enables users to create, edit, and delete notes.
+Also allows users to share notes with other users to comment on them.
+The system is designed to be easy to use and easy to maintain.
 
 ## Inspiration:
-Facilitate the learning process and the management of students and courses. 
+Facilitate the creation of notes by providing a simple interface for users to create notes. 
 
 
 ## List of Services / Features:
 
-- Manage the students.
-- Manage the teachers.
-- Manage online courses easily!
-- Manage online assessments.
+- Create a note
+- Edit a note
+- Delete a note
+- List all notes
+- Create a comment on a note
 
+## API Endpoints:
+- /notes/
+- /notes/add/
+- /notes/show/note/<int:pk>/
+- /notes/edit/note/<int:pk>/
+- /notes/delete/note/<int:pk>/
+- /notes/comment/<int:pk>/
+- /notes/add/comment/<int:pk>
 
-## User Stories
-- Type of users: Faculty, Teachers, and Students.
-
-### Faculty
-
-- Create, Read, Update, Delete teachers.
-- Create, Read, Update, Delete courses.
-- Create, Read, Update, Delete students.
-
-### Students
-
-- View courses.
-- Join courses.
-- Withdraw from courses.
-- Edit information.
-- Take assignments.
-- Send Inquiries to teachers and faculties.
-- View joined courses.
-- View course information.
-- View student progress on a specific course.
-- Search for courses.
-
-### Teachers
-
-- View the teacher courses.
-- View the course information.
-- List joined student in the current course.
-- Add assignments to a specific course.
-- Add students grade in a specific course.
-- Search for a students in a specific course.
-- Get student information.
+- /users/register/
+- /users/login/
+- /users/logout/

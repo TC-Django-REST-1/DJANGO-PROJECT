@@ -1,0 +1,346 @@
+{
+	"info": {
+		"_postman_id": "05baf242-5d6a-4808-bc22-97a10729e59e",
+		"name": "TuwaiqNote",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19277824"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"abc@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"abc@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"abc@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/logout/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_note",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NTU4NzU3LCJpYXQiOjE2NTk1MjI3NTcsImp0aSI6IjQ2MTQxYThiZWQ5NTQzZTJhMzM2M2Q1YmUzOWU5ZTFiIiwidXNlcl9pZCI6OH0.VvcGNvEfVN_7HjYgOES7vYYwOu-XDysOZoM3jJcIhAE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"note #3\",\r\n    \"description\": \"description description description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/notes/add/note/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"notes",
+						"add",
+						"note",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NTU4NzU3LCJpYXQiOjE2NTk1MjI3NTcsImp0aSI6IjQ2MTQxYThiZWQ5NTQzZTJhMzM2M2Q1YmUzOWU5ZTFiIiwidXNlcl9pZCI6OH0.VvcGNvEfVN_7HjYgOES7vYYwOu-XDysOZoM3jJcIhAE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"comments 5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/notes/add/comment/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"notes",
+						"add",
+						"comment",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit_note",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NTU4NzU3LCJpYXQiOjE2NTk1MjI3NTcsImp0aSI6IjQ2MTQxYThiZWQ5NTQzZTJhMzM2M2Q1YmUzOWU5ZTFiIiwidXNlcl9pZCI6OH0.VvcGNvEfVN_7HjYgOES7vYYwOu-XDysOZoM3jJcIhAE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"note #3\",\r\n    \"description\": \"description description description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/notes/edit/note/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"notes",
+						"edit",
+						"note",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_note",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NTU4NzU3LCJpYXQiOjE2NTk1MjI3NTcsImp0aSI6IjQ2MTQxYThiZWQ5NTQzZTJhMzM2M2Q1YmUzOWU5ZTFiIiwidXNlcl9pZCI6OH0.VvcGNvEfVN_7HjYgOES7vYYwOu-XDysOZoM3jJcIhAE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"note #3\",\r\n    \"description\": \"description description description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/notes/delete/note/4/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"notes",
+						"delete",
+						"note",
+						"4",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_notes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/notes/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"notes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show_note",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/notes/show/note/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"notes",
+						"show",
+						"note",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list_comments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/notes/comments/5/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"notes",
+						"comments",
+						"5",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

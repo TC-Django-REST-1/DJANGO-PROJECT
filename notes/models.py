@@ -14,7 +14,7 @@ class Note(models.Model):
 
 
 class Comment(models.Model):
-    note = models.ForeignKey(Note, on_delete=models.CASCADE)
+    note = models.ForeignKey(Note, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
     created = models.DateTimeField(auto_now_add=True)

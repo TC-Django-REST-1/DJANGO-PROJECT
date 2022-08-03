@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 # models
 from .models import Note, Comment
-from .serializers import NoteSerializer, Commenterializer
+from .serializers import NoteSerializer, CommentSerializer
 
 # require auth for add notes views
 @api_view(['POST'])
@@ -51,6 +51,14 @@ def add_note(request: Request):
 def list_notes(request: Request):
     notes = Note.objects.all()
     serializer = NoteSerializer(notes, many=True)
+    return Response(serializer.data)
+
+
+# show note and comments that belong to it
+@api_view(['GET'])
+def show_note(request: Request, pk: int):
+    note = get_object_or_404(Note, pk=pk)
+    serializer = NoteSerializer(note)
     return Response(serializer.data)
 
 # edit note
@@ -133,7 +141,7 @@ def add_comment(request: Request, pk: int):
 
     request.data['user'] = user.id
     request.data['note'] = note.id
-    comment = Commenterializer(data=request.data)
+    comment = CommentSerializer(data=request.data)
 
     if comment.is_valid():
         comment.save()
@@ -151,5 +159,5 @@ def add_comment(request: Request, pk: int):
 def list_comments(request: Request, pk: int):
     note = get_object_or_404(Note, pk=pk)
     comments = Comment.objects.filter(note=note)
-    serializer = Commenterializer(comments, many=True)
+    serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)
