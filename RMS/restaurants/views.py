@@ -11,7 +11,14 @@ from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def add_restaurant(request : Request):
+    
+    user = request.user
+    if not user.has_perm('restaurants.add_restaurants'):
+        return Response({"msg" : "You don't have Restaurant control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
+    
     
     restaurant_serializer = RestaurantsSerializer(data= request.data)
     if restaurant_serializer.is_valid():
@@ -41,8 +48,12 @@ def list_restaurants(request : Request):
 
 
 @api_view(['PUT'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def update_restaurant(request : Request, restaurant_id):
-
+    user = request.user
+    if not user.has_perm('restaurants.change_restaurants'):
+        return Response({"msg" : "You don't have Restaurant control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     try:
         restaurant = Restaurants.objects.get(id = restaurant_id)
     except Exception as e:
@@ -60,7 +71,12 @@ def update_restaurant(request : Request, restaurant_id):
 
 
 @api_view(["DELETE"])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def delete_restaurant(request : Request, restaurant_id):
+    user = request.user
+    if not user.has_perm('restaurants.delete_restaurants'):
+        return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
 
     try:
         restaurant = Restaurants.objects.get(id = restaurant_id)
@@ -81,7 +97,7 @@ def delete_restaurant(request : Request, restaurant_id):
 def add_meal(request : Request):
     
     user = request.user
-    if not user.has_perm('restaurants.add_restaurants'):
+    if not user.has_perm('restaurants.add_meals'):
         return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     
     meal_serializer = MealsSerializer(data= request.data)
@@ -115,7 +131,7 @@ def list_meals(request : Request):
 @permission_classes([IsAuthenticated])
 def update_meal(request : Request, meal_id):
     user = request.user
-    if not user.has_perm('restaurants.change_restaurants'):
+    if not user.has_perm('restaurants.change_meals'):
         return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
 
     try:
@@ -139,7 +155,7 @@ def update_meal(request : Request, meal_id):
 @permission_classes([IsAuthenticated])
 def delete_meal(request : Request, meal_id):
     user = request.user
-    if not user.has_perm('restaurants.delete_restaurants'):
+    if not user.has_perm('restaurants.delete_meals'):
         return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     try:
         meal = Meals.objects.get(id = meal_id)
