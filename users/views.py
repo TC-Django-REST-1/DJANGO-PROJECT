@@ -7,7 +7,7 @@ from rest_framework.status import HTTP_201_CREATED
 from rest_framework_simplejwt.tokens import AccessToken
 # user
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 # validate email
 from django.core.validators import validate_email
 
@@ -46,4 +46,12 @@ def login_user(request: Request):
     return Response({
         'msg': 'You are authenticated successfully',
         'token': str(token)
+    })
+
+# logout
+@api_view(['POST'])
+def logout_user(request: Request):
+    logout(request)
+    return Response({
+        'msg': 'You are logged out successfully'
     })
