@@ -20,8 +20,10 @@ def add_restaurant(request : Request):
         return Response({"msg" : "You don't have Restaurant control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     
     restaurant_serializer = RestaurantsSerializer(data= request.data)
+    
     if restaurant_serializer.is_valid():
         restaurant_serializer.save()
+        
     else:
         return Response({"msg" : "couldn't create a retaurants", "errors" : restaurant_serializer.errors}, status=status.HTTP_403_FORBIDDEN)
     
@@ -37,6 +39,7 @@ def list_restaurants(request : Request):
     if "search" in request.query_params:
         search_phrase = request.query_params["search"]
         restaurants = Restaurants.objects.filter(restaurant_name__startswith=search_phrase)[skip:get]
+        
     else:
         restaurants = Restaurants.objects.all()
         
@@ -64,6 +67,7 @@ def update_restaurant(request : Request, restaurant_id):
 
     if restaurant_serializer.is_valid():
         restaurant_serializer.save()
+        
     else:
         return Response({"msg" : "couldn't update this restaurant", "errors" : restaurant_serializer.errors})
 
@@ -75,6 +79,7 @@ def update_restaurant(request : Request, restaurant_id):
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def delete_restaurant(request : Request, restaurant_id):
+    
     user = request.user
     if not user.has_perm('restaurants.delete_restaurants'):
         return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
@@ -82,6 +87,7 @@ def delete_restaurant(request : Request, restaurant_id):
     try:
         restaurant = Restaurants.objects.get(id = restaurant_id)
         restaurant.delete()
+        
     except Exception as e:
         return Response({"msg" : "The restaurant is not Found!"})
 
@@ -102,8 +108,10 @@ def add_meal(request : Request):
         return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     
     meal_serializer = MealsSerializer(data= request.data)
+    
     if meal_serializer.is_valid():
         meal_serializer.save()
+        
     else:
         return Response({"msg" : "couldn't create a meal", "errors" : meal_serializer.errors}, status=status.HTTP_403_FORBIDDEN)
     
@@ -116,6 +124,7 @@ def list_meals(request : Request):
     if "search" in request.query_params:
         search_phrase = request.query_params["search"]
         meals = Meals.objects.filter(meal_name__startswith=search_phrase)
+        
     else:
         meals = Meals.objects.all()
         
@@ -128,12 +137,14 @@ def list_meals(request : Request):
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def update_meal(request : Request, meal_id):
+    
     user = request.user
     if not user.has_perm('restaurants.change_meals'):
         return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
 
     try:
         meal = Meals.objects.get(id = meal_id)
+        
     except Exception as e:
         return Response({"msg" : "This meal is not found"}, status=status.HTTP_404_NOT_FOUND)
     
@@ -141,6 +152,7 @@ def update_meal(request : Request, meal_id):
 
     if meal_serializer.is_valid():
         meal_serializer.save()
+        
     else:
         return Response({"msg" : "couldn't update this meal", "errors" : meal_serializer.errors})
 
@@ -152,12 +164,14 @@ def update_meal(request : Request, meal_id):
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def delete_meal(request : Request, meal_id):
+    
     user = request.user
     if not user.has_perm('restaurants.delete_meals'):
         return Response({"msg" : "You don't have Meals control permission! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     try:
         meal = Meals.objects.get(id = meal_id)
         meal.delete()
+        
     except Exception as e:
         return Response({"msg" : "The meal is not Found!"}, status=status.HTTP_404_NOT_FOUND)
 
