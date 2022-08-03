@@ -8,22 +8,24 @@ from rest_framework_simplejwt.tokens import AccessToken
 # user
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-
+# validate email
+from django.core.validators import validate_email
 
 # create user
 @api_view(['POST'])
 def register(request: Request):
     username = request.data.get('username')
-    email = request.data.get('email')
     password = request.data.get('password')
 
     try:
-        user = User.objects.create_user(username, email, password)
+        user = User.objects.create_user(username=username, password=password)
+        user.set_email = validate_email(username.lower())
+        user.set_password = password
         user.save()
     except Exception as e:
         return Response({
             'msg' : 'Cdold not create user',
-            'error': e
+            'error': e.args
         })
     return Response({
         'msg': f'User {username} Created successfully',
