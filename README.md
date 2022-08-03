@@ -22,7 +22,7 @@ The project idea is up to you as long as it applies all essential requirements.
 # Project Name: Tuwaiq Notes
 [![Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/al_azwari)
 [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/azwri)
-
+### Abdulrahma Alazwari
 
 ## Idea:
 A notes system that enables users to create, edit, and delete notes.
