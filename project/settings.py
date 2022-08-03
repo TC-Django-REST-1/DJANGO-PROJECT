@@ -39,6 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # base app
     'base.apps.BaseConfig',
+    # notes app
+    'notes.apps.NotesConfig',
+    # users app
+    'users.apps.UsersConfig',
+    # rest framework
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
