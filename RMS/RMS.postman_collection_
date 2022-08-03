@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "542691b7-2c02-417d-825b-f7915f3548f4",
+		"name": "RMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22345846"
+	},
+	"item": [
+		{
+			"name": "restaurants",
+			"item": [
+				{
+					"name": "Add_restaurants",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTI5NDgyLCJpYXQiOjE2NTk1Mzc0ODIsImp0aSI6ImQ5Yjg2ZGU0MTYxYjRjZDU5YWI5M2UyNTRhNDE3MmFmIiwidXNlcl9pZCI6M30.VJw_pv23y2xgSL8oE-nUhRWzAUrjEOu_QfZkcF1fLbE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurant_name\": \"shrimplus\",\r\n    \"city\": \"Riyadh\",\r\n    \"estplaished_date\": \"2020-11-11\",\r\n    \"type_of_food\": \"Seafood\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/restaurant/add/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"restaurant",
+								"add",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Display-restaurants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/restaurant/display/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"restaurant",
+								"display",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "skip",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "get",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-restaurants",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTI5NDgyLCJpYXQiOjE2NTk1Mzc0ODIsImp0aSI6ImQ5Yjg2ZGU0MTYxYjRjZDU5YWI5M2UyNTRhNDE3MmFmIiwidXNlcl9pZCI6M30.VJw_pv23y2xgSL8oE-nUhRWzAUrjEOu_QfZkcF1fLbE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurant_name\": \"zaikaki\",\r\n    \"city\": \"Makkah\",\r\n    \"estplaished_date\": \"2019-12-01\",\r\n    \"type_of_food\": \"Insian food\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/restaurant/update/6/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"restaurant",
+								"update",
+								"6",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-restaurants",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTI5NDgyLCJpYXQiOjE2NTk1Mzc0ODIsImp0aSI6ImQ5Yjg2ZGU0MTYxYjRjZDU5YWI5M2UyNTRhNDE3MmFmIiwidXNlcl9pZCI6M30.VJw_pv23y2xgSL8oE-nUhRWzAUrjEOu_QfZkcF1fLbE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/restaurant/delete/5/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"restaurant",
+								"delete",
+								"5",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add-meal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTE3NTYzLCJpYXQiOjE2NTk1MjU1NjMsImp0aSI6IjA3ZjRiYTJmODNkODQ2OTBiY2IxY2I0YmU4ZDY0NDk1IiwidXNlcl9pZCI6Mn0.07MsljkOdoj8Ea7QDbrgN7J6DZ0PHNeo6lyiLYbHqg4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurants\": 7 ,\r\n    \"meal_name\": \"Hamachi\"  ,\r\n    \"description\":\" salmon sushi with lemon\"  ,\r\n    \"price\": 65,\r\n    \"calories\": 52  ,\r\n    \"image_url\": \"https://cdn.tasteatlas.com/images/dishes/ef30d84ca9f04834917378c56630c6da.jpg?mw=1300\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/restaurant/add_meal/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"restaurant",
+								"add_meal",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Display_meals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/restaurant/display_meals/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"restaurant",
+								"display_meals",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "update",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update_meal",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTE3NTYzLCJpYXQiOjE2NTk1MjU1NjMsImp0aSI6IjA3ZjRiYTJmODNkODQ2OTBiY2IxY2I0YmU4ZDY0NDk1IiwidXNlcl9pZCI6Mn0.07MsljkOdoj8Ea7QDbrgN7J6DZ0PHNeo6lyiLYbHqg4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurants\": 3 ,\r\n    \"meal_name\": \"updated yumm\"  ,\r\n    \"description\":\"chees and cheken and lemon\"  ,\r\n    \"price\": 21  ,\r\n    \"calories\": 257  ,\r\n    \"image_url\": \"https://coderhub.sa/text-logo.fd6aef2.svg\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/restaurant/update_meal/14/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"restaurant",
+								"update_meal",
+								"14",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-meal",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMTE3NTYzLCJpYXQiOjE2NTk1MjU1NjMsImp0aSI6IjA3ZjRiYTJmODNkODQ2OTBiY2IxY2I0YmU4ZDY0NDk1IiwidXNlcl9pZCI6Mn0.07MsljkOdoj8Ea7QDbrgN7J6DZ0PHNeo6lyiLYbHqg4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/restaurant/delete_meal/13/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"restaurant",
+								"delete_meal",
+								"13",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Lama\",\r\n    \"email\": \"lama@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Lama\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
