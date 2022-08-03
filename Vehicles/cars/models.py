@@ -57,9 +57,8 @@ class BrandsClasses(models.Model):
         return self.class_name + " | " + self.class_brand.brand + " | " + self.general_class
     
 
-# This model is to save categories of all brands, Ex, sedan car, Family car, 4x4 car, industiral car ... etc.
+# This model is to save categories of all brands, Ex, sedan car, Family car, 4x4 car, Truks, industiral cars ... etc.
 class Categories(models.Model):
-    category_brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     category_name = models.CharField(max_length=255)
     targeted_customers = models.CharField(max_length=255)
     targeted_cost_range = models.CharField(max_length=255)
