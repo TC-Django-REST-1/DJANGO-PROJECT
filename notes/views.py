@@ -46,11 +46,11 @@ def add_note(request: Request):
     }, status=HTTP_201_CREATED)
 
 
-# list all notes
+# list all notes and its comments
 @api_view(['GET'])
 def list_notes(request: Request):
     notes = Note.objects.all()
-    serializer = NoteSerializer(notes, many=True)   
+    serializer = NoteSerializer(notes, many=True)
     return Response(serializer.data)
 
 # edit note
@@ -112,3 +112,44 @@ def delete_note(request: Request, pk: int):
     return Response({
         'msg': f'Note {note.name} deleted successfully'
     }, status=HTTP_201_CREATED)
+
+
+# add comment to note
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def add_comment(request: Request, pk: int):
+    user = request.user
+    if not user.is_authenticated:
+        return Response({
+            'msg': 'Please login!'
+        }, status=HTTP_401_UNAUTHORIZED)
+    if not user.has_perm('notes.add_comment'):
+        return Response({
+            'msg': 'You do not have permission to add comments'
+        }, status=HTTP_403_FORBIDDEN)
+
+    note = get_object_or_404(Note, pk=pk)
+
+    request.data['user'] = user.id
+    request.data['note'] = note.id
+    comment = Commenterializer(data=request.data)
+
+    if comment.is_valid():
+        comment.save()
+        return Response({
+            'msg': f'Comment {comment.data.get("comment")} added successfully'
+        }, status=HTTP_201_CREATED)
+    else:
+        return Response({
+            'msg': 'Comment not added',
+            'error': comment.errors
+        }, status=HTTP_201_CREATED)
+
+# list all comments
+@api_view(['GET'])
+def list_comments(request: Request, pk: int):
+    note = get_object_or_404(Note, pk=pk)
+    comments = Comment.objects.filter(note=note)
+    serializer = Commenterializer(comments, many=True)
+    return Response(serializer.data)
