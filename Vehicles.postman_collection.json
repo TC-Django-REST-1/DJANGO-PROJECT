@@ -1,0 +1,392 @@
+{
+	"info": {
+		"_postman_id": "829dc347-f1c9-4f62-a5a7-7110a76b671a",
+		"name": "Vehicles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22338001"
+	},
+	"item": [
+		{
+			"name": "Cars app",
+			"item": [
+				{
+					"name": "Brands CURD",
+					"item": [
+						{
+							"name": "Add a brand",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjI4OTUzLCJpYXQiOjE2NTk2MjU2NTMsImp0aSI6IjY1NzU2YmE2MDVlNTQwMDc4ZTVjNDlhN2QyMjkwMmFiIiwidXNlcl9pZCI6MX0.Q9HUZRsAHMe0cibCIzgOiA2kF8mdqDG5VodHxBuA3AY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"brand\": \"Mercedes Benz\",\r\n        \"description\": \"commonly referred to as Mercedes and sometimes as Benz, is a German luxury and commercial vehicle automotive brand. Mercedes-Benz AG produces consumer luxury vehicles and commercial vehicles badged as Mercedes-Benz.\",\r\n        \"established_in\": 1926,\r\n        \"origin\": \"Germany\",\r\n        \"founder\": \" Karl Benz, Bertha Benz\",\r\n        \"headquarters\": \"Stuttgart, Baden-Württemberg, Germany\",\r\n        \"last_revenue_billion\": 93.87,\r\n        \"year\": 2019,\r\n        \"remarks\":\"\"\r\n        \r\n        \r\n\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/add_new_brand/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"add_new_brand",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List of brands",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjQwMDk5LCJpYXQiOjE2NTk2MzY3OTksImp0aSI6ImYxNDBhZmQ0M2M5MTRiYmZiZWZkMWZlZWMzOTgwN2FmIiwidXNlcl9pZCI6MX0.J-4oUnmcURTrCXPowDXzmiaOBYGkOsLLmiS5V4AbRDs",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/brands_list/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"brands_list",
+										""
+									],
+									"query": [
+										{
+											"key": "skip",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "get",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "F",
+											"description": "__startswith: search by part/full brand name ",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update brand",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"brand\": \"Ford Motor Company\",\r\n        \"description\": \"Ford is an American multinational automobile manufacturer. The company sells automobiles and commercial vehicles under the Ford brand, and luxury cars under its Lincoln luxury brand.\",\r\n        \"established_in\": 1903,\r\n        \"origin\": \"United States\",\r\n        \"founder\": \"ahmed\",\r\n        \"headquarters\": \"Dearborn, Michigan, United States\",\r\n        \"last_revenue_billion\": 136.3,\r\n        \"year\": 2021,\r\n        \"remarks\":\"\"\r\n        \r\n        \r\n\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/update_brand/5",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"update_brand",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove a brand",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/remove_brand/8",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"remove_brand",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "History record of Brands",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjQwMDk5LCJpYXQiOjE2NTk2MzY3OTksImp0aSI6ImYxNDBhZmQ0M2M5MTRiYmZiZWZkMWZlZWMzOTgwN2FmIiwidXNlcl9pZCI6MX0.J-4oUnmcURTrCXPowDXzmiaOBYGkOsLLmiS5V4AbRDs",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/brand_history?search=f",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"brand_history"
+									],
+									"query": [
+										{
+											"key": "skip",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "get",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "f",
+											"description": "__startswith: search by part/full brand name"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "General Classes",
+					"item": []
+				},
+				{
+					"name": "Brand Classes",
+					"item": []
+				},
+				{
+					"name": "Categories",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "Users app",
+			"item": [
+				{
+					"name": "Register a new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\": \"amal@yahoo.com\",\r\n        \"password\": \"1234\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"username\": \"saud\",\r\n        \"password\": \"123\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/list/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"list",
+								""
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "get",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "s",
+									"description": "__startswith: search by part/full username ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/remove_user/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"remove_user",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user email",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"s.m.alghamdi@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/update_email/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"update_email",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
