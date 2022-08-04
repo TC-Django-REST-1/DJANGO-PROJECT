@@ -25,7 +25,7 @@ Given the dangers of obesity on health and to reinforce the importance of sports
 ### Trainers
 
 - Create, Read, Update, Delete Course.
-- - Search for courses.
+- Search for courses.
 - Create, Delete Account.
 
 ### Trainees
@@ -33,3 +33,4 @@ Given the dangers of obesity on health and to reinforce the importance of sports
 - View courses.
 - Join courses.
 - Search for courses.
+- Create, Delete Account.
