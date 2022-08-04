@@ -1,0 +1,915 @@
+{
+	"info": {
+		"_postman_id": "05083e2b-e32f-48da-9b4d-05a79f7b9972",
+		"name": "TodoProject",
+		"description": "Simple todo CRUD API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22339626"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Rigister user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Test1\",\n    \"password\": \"SomePassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/rigister/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"rigister",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Rigister user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"test1\",\n    \"password\": \"SomePassword123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/rigister/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"rigister",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"msg\": \"'Test1' created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"test1\",\n    \"password\": \"SomePassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"test1\",\n    \"password\": \"SomePassword123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/login/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1OTcyMTI3OSwiaWF0IjoxNjU5NjM0ODc5LCJqdGkiOiJjZjczMmQxZmM3MDQ0ZDFiYTI4OWI2MjVhZDJkMWQ0MSIsInVzZXJfaWQiOjN9.F1R-aJPUMWUDJU6gtbm5skDpn7g7rb-BC1uJY2w-SzE\",\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4NDc5LCJpYXQiOjE2NTk2MzQ4NzksImp0aSI6IjM5MDkzZDc4NGI5ODRkMGM5NzkzN2E4NTEzMmMxNTc3IiwidXNlcl9pZCI6M30.GYxK9NMBArfYWV1lLorCgZ_g10Jv0qK5J_Iu6_FwBH4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1OTcyMTI3OSwiaWF0IjoxNjU5NjM0ODc5LCJqdGkiOiJjZjczMmQxZmM3MDQ0ZDFiYTI4OWI2MjVhZDJkMWQ0MSIsInVzZXJfaWQiOjN9.F1R-aJPUMWUDJU6gtbm5skDpn7g7rb-BC1uJY2w-SzE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token/refresh/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Refresh token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1OTcyMTI3OSwiaWF0IjoxNjU5NjM0ODc5LCJqdGkiOiJjZjczMmQxZmM3MDQ0ZDFiYTI4OWI2MjVhZDJkMWQ0MSIsInVzZXJfaWQiOjN9.F1R-aJPUMWUDJU6gtbm5skDpn7g7rb-BC1uJY2w-SzE\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/rigister/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"rigister",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4NjczLCJpYXQiOjE2NTk2MzQ4NzksImp0aSI6ImJhNmIyMWQyYzNkNDQ1Nzk5Y2I1ZmJhYThhYjFhNzJmIiwidXNlcl9pZCI6M30.T_QotbsmXhDqbMmtdNdMqOTh-OQ0ifrpTZq6rqVbfR4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1OTcyMTI3OSwiaWF0IjoxNjU5NjM0ODc5LCJqdGkiOiJjZjczMmQxZmM3MDQ0ZDFiYTI4OWI2MjVhZDJkMWQ0MSIsInVzZXJfaWQiOjN9.F1R-aJPUMWUDJU6gtbm5skDpn7g7rb-BC1uJY2w-SzE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token/verify/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								"verify",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Verify token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1OTcyMTI3OSwiaWF0IjoxNjU5NjM0ODc5LCJqdGkiOiJjZjczMmQxZmM3MDQ0ZDFiYTI4OWI2MjVhZDJkMWQ0MSIsInVzZXJfaWQiOjN9.F1R-aJPUMWUDJU6gtbm5skDpn7g7rb-BC1uJY2w-SzE\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/rigister/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"rigister",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				}
+			],
+			"description": "The Auth"
+		},
+		{
+			"name": "Todos",
+			"item": [
+				{
+					"name": "List your todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/todos/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"todos",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List your todos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/todos/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"todos",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 6,\n        \"title\": \"My todo title\",\n        \"body\": \"Some larg body\",\n        \"done\": false,\n        \"created_at\": \"2022-08-04T17:06:59.913504Z\",\n        \"updated_at\": \"2022-08-04T17:06:59.913552Z\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"My todo title\",\n        \"body\": \"Some larg body\",\n        \"done\": false,\n        \"created_at\": \"2022-08-04T16:30:28.630360Z\",\n        \"updated_at\": \"2022-08-04T16:30:28.630408Z\"\n    },\n    {\n        \"id\": 4,\n        \"title\": \"test1234\",\n        \"body\": \"1234\",\n        \"done\": false,\n        \"created_at\": \"2022-08-04T16:27:13.943456Z\",\n        \"updated_at\": \"2022-08-04T16:27:13.943528Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add to your todos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Some title\",\n    \"body\": \"Some body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/todos/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"todos",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add to your todos",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/todos/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"todos",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"title\": \"Some title\",\n    \"body\": \"Some body\",\n    \"done\": false,\n    \"created_at\": \"2022-08-04T18:12:43.260786Z\",\n    \"updated_at\": \"2022-08-04T18:12:43.260844Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update full todo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Update title\",\n    \"body\": \"Update body\",\n    \"done\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/todos/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"todos",
+								"7",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update full todo",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Update title\",\n    \"body\": \"Update body\",\n    \"done\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/todos/7/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"todos",
+										"7",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"title\": \"Update title\",\n    \"body\": \"Update body\",\n    \"done\": true,\n    \"created_at\": \"2022-08-04T18:12:43.260786Z\",\n    \"updated_at\": \"2022-08-04T18:16:45.916307Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update todo title",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Update title 12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/todos/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"todos",
+								"7",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update todo title",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Update title 12\",\n    \"body\": \"Update body\",\n    \"done\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/todos/7/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"todos",
+										"7",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"title\": \"Update title 12\",\n    \"body\": \"Update body\",\n    \"done\": true,\n    \"created_at\": \"2022-08-04T18:12:43.260786Z\",\n    \"updated_at\": \"2022-08-04T18:18:11.803363Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update todo body",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"body\": \"Update body 12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/todos/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"todos",
+								"7",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update todo body",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"body\": \"Update body 12\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/todos/7/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"todos",
+										"7",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"title\": \"Update title 12\",\n    \"body\": \"Update body 12\",\n    \"done\": true,\n    \"created_at\": \"2022-08-04T18:12:43.260786Z\",\n    \"updated_at\": \"2022-08-04T18:19:35.433309Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update todo status",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"done\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/todos/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"todos",
+								"7",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update todo status",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"done\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/todos/7/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"todos",
+										"7",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"title\": \"Update title 12\",\n    \"body\": \"Update body 12\",\n    \"done\": false,\n    \"created_at\": \"2022-08-04T18:12:43.260786Z\",\n    \"updated_at\": \"2022-08-04T18:21:03.393218Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete todo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/todos/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"todos",
+								"7",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update full todo",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/todos/7/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"todos",
+										"7",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "List users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjM4MTAwLCJpYXQiOjE2NTk2MzQ1MDAsImp0aSI6IjQyOWYxMjU1Mjc1ODQ5YWZiYzE4NjRiZmQ0ZTJkNzA3IiwidXNlcl9pZCI6MX0.9DAywgbZ6xdJYFaKX1L8QJOpciZMfiNXdzpS3DoOXvg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"username\": \"admin\",\n        \"todos\": [\n            {\n                \"id\": 4,\n                \"title\": \"test1234\",\n                \"body\": \"1234\",\n                \"done\": false,\n                \"created_at\": \"2022-08-04T16:27:13.943456Z\",\n                \"updated_at\": \"2022-08-04T16:27:13.943528Z\"\n            },\n            {\n                \"id\": 5,\n                \"title\": \"My todo title\",\n                \"body\": \"Some larg body\",\n                \"done\": false,\n                \"created_at\": \"2022-08-04T16:30:28.630360Z\",\n                \"updated_at\": \"2022-08-04T16:30:28.630408Z\"\n            },\n            {\n                \"id\": 6,\n                \"title\": \"My todo title\",\n                \"body\": \"Some larg body\",\n                \"done\": false,\n                \"created_at\": \"2022-08-04T17:06:59.913504Z\",\n                \"updated_at\": \"2022-08-04T17:06:59.913552Z\"\n            }\n        ]\n    },\n    {\n        \"id\": 2,\n        \"username\": \"awiteb\",\n        \"todos\": [\n            {\n                \"id\": 2,\n                \"title\": \"sdfsdfsd\",\n                \"body\": \"sdfsdfsd\",\n                \"done\": true,\n                \"created_at\": \"2022-08-04T15:48:43.109847Z\",\n                \"updated_at\": \"2022-08-04T15:48:43.109895Z\"\n            },\n            {\n                \"id\": 3,\n                \"title\": \"sdfsdfds\",\n                \"body\": \"sdfsdfsd\",\n                \"done\": false,\n                \"created_at\": \"2022-08-04T15:48:49.824202Z\",\n                \"updated_at\": \"2022-08-04T15:48:49.824257Z\"\n            }\n        ]\n    },\n    {\n        \"id\": 3,\n        \"username\": \"test1\",\n        \"todos\": []\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	]
+}
