@@ -1,68 +1,45 @@
 # DJANGO-PROJECT
 
-## Project Idea:
-The project idea is up to you as long as it applies all essential requirements.
-
-## Requirements 
-- Use Django REST Framework.
-- Create at least two apps inside your Django project.
-- Create at least two Models with a relationship.
-- Provide API endpoints for each service in your project (at least CRUD operations on each model) .
-- Use Postman to add , arrange , and test your project endpoints.
-- Use Django Auth for creating & managing users.
-- Use Django REST Framework Simple JWT for Authentication.
-- Write suitable HTTP status for your endpoints.
-- Commit your changes often to the repository (at least once everyday).
-- Export the project Postman Collections into a file and include it in the repository.
-
-
-# Example: 
-
-# Project Name: Learning Management System
+# Project Name: Sport Gathering App
 
 ## Idea:
-A system to manage students learning journey. The system enable student to explore new courses, take courses, solve quizzes, etc. Moreover, the teachers can create new quizzes, follow student progress, etc.
+A system to manage Sport Gather like 3 paddle players looking for who can play with them and courts booking manage system.
 
 ## Inspiration:
-Facilitate the learning process and the management of students and courses. 
+E-sports Inspired me in how easy to gather a team and play, I wanted to create an easy way to manage sports gathering in the same way.
 
 
 ## List of Services / Features:
 
-- Manage the students.
-- Manage the teachers.
-- Manage online courses easily!
-- Manage online assessments.
+- CURD your Gathers.
+- Join a Gathers.
+- Browse Gathers whit sort.
+- Register a new account.
+- LogIn to your account.
+- Add your Court and start receiving Bookings.
+- CUD your Court.
+- Browse Courts.
 
 
 ## User Stories
-- Type of users: Faculty, Teachers, and Students.
+- Type of users: Players, Gather leader, and Court owner.
 
-### Faculty
+### Players
 
-- Create, Read, Update, Delete teachers.
-- Create, Read, Update, Delete courses.
-- Create, Read, Update, Delete students.
+- Browse Gathers whit sort.
+- Join Gathers.
+- Browse Courts.
 
-### Students
+### leaders
 
-- View courses.
-- Join courses.
-- Withdraw from courses.
-- Edit information.
-- Take assignments.
-- Send Inquiries to teachers and faculties.
-- View joined courses.
-- View course information.
-- View student progress on a specific course.
-- Search for courses.
+- Create, Read, Delete, Update his Gathers.
+- Join Gathers.
+- Browse Gathers whit sort.
+- Browse Courts.
 
-### Teachers
+### Court owners
 
-- View the teacher courses.
-- View the course information.
-- List joined student in the current course.
-- Add assignments to a specific course.
-- Add students grade in a specific course.
-- Search for a students in a specific course.
-- Get student information.
+- Browse Gathers whit sort.
+- Join Gathers.
+- Browse Courts.
+- Create, Read, Delete, Update his Court.
