@@ -24,18 +24,24 @@ Facilitate the cars renting process.
 
 ### Admin
 
+The admin is belong to Admin Group which have the following Permissions:
 - Create, Read, Update, Delete branches.
 - Create, Read, Update, Delete cars.
 - Create, Read, Update, Delete reserved cars.
 - Create, Read, Update, Delete users.
+![alt text](https://drive.google.com/uc?export=view&id=1CGLkPTEHoNTwS7oJgTjDDTXPdaEK9QJl)
 
 ### Staff
 
+The Staff is belong to Staff Group which have the following Permissions:
 - Create, Read, Update, Delete cars.
 - Create, Read, Update, Delete reserved cars.
 - View users.
+![alt text](https://drive.google.com/uc?export=view&id=1ZUsHPUagK_zOBsmRD8Pk6Z1a5C2HHoLk)
 
-### Teachers
+### Customer
 
+The customer is belong to default Group which have the following Permissions:
 - Register/Login in the system
 - Create, Read, Update, Delete reserved cars.
+![alt text](https://drive.google.com/uc?export=view&id=1yB1_Z9u9rLTfKAC0x2WxSSrEvmiVw1Op)
