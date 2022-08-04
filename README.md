@@ -1,68 +1,55 @@
 # DJANGO-PROJECT
+ 
+# Developed by Rawan Alasiri 
+# Date : 04-08-2022
 
-## Project Idea:
-The project idea is up to you as long as it applies all essential requirements.
-
-## Requirements 
-- Use Django REST Framework. #
-- Create at least two apps inside your Django project. 
-- Create at least two Models with a relationship. #
-- Provide API endpoints for each service in your project (at least CRUD operations on each model) . #
-- Use Postman to add , arrange , and test your project endpoints. # 
-- Use Django Auth for creating & managing users.  #
-- Use Django REST Framework Simple JWT for Authentication. #
-- Write suitable HTTP status for your endpoints.
-- Commit your changes often to the repository (at least once everyday).
-- Export the project Postman Collections into a file and include it in the repository.
-
-
-# Example: 
-
-# Project Name: Learning Management System
+# Project Name: Movies booking System
 
 ## Idea:
-A system to manage students learning journey. The system enable student to explore new courses, take courses, solve quizzes, etc. Moreover, the teachers can create new quizzes, follow student progress, etc.
+A system to manage movies booking on cinemas. The system enable customer to movies, check movies schedule, book movie tickets, update there book, cancel it ant etc., the cinema empolyee can add movies, update movies list, update movies schedule and etc.
 
 ## Inspiration:
-Facilitate the learning process and the management of students and courses. 
+ Management of movies and tickets. 
 
 
 ## List of Services / Features:
 
-- Manage the students.
-- Manage the teachers.
-- Manage online courses easily!
-- Manage online assessments.
+- Manage the movies.
+- Manage the customers tickets.
+- Manage movies schedule easily!
+
 
 
 ## User Stories
-- Type of users: Faculty, Teachers, and Students.
+- Type of users: Cinema, Customers and Cinema's empolyees
 
-### Faculty
+### Cinema
 
-- Create, Read, Update, Delete teachers.
-- Create, Read, Update, Delete courses.
-- Create, Read, Update, Delete students.
+- Create, Read, Update, Delete movie's schedule.
+- Create, Read, Update, Delete movie.
+- Create, Read, Update, Delete movie's tickets.
 
-### Students
+### Custmers
 
-- View courses.
-- Join courses.
-- Withdraw from courses.
-- Edit information.
-- Take assignments.
-- Send Inquiries to teachers and faculties.
-- View joined courses.
-- View course information.
-- View student progress on a specific course.
-- Search for courses.
+- View movies. 
+- View movies's schedules. 
+- Book tickets. 
+- Update their book. 
+- View their book. 
+- Delete their book. 
+- Write comment on movies. 
+- Rate movies. 
+- Search for movies by genres 
 
-### Teachers
+### Cinema's empolyees
 
-- View the teacher courses.
-- View the course information.
-- List joined student in the current course.
-- Add assignments to a specific course.
-- Add students grade in a specific course.
-- Search for a students in a specific course.
-- Get student information.
+- Update movie. 
+- Add new movie.
+- View movies list. 
+- Delete movies.
+- Update movie schedule. 
+- Add new movie schedule. 
+- View movies  schedule. 
+- Delete movies schedule. 
+- View custmer's tickets list. 
+- View customer's feedback and rating.

@@ -27,3 +27,9 @@ class user_ticket (models.Model):
     reservtion_code = models.CharField(max_length=10)
     ticket_class = models.CharField(max_length=50)
     seat = models.CharField(max_length=4)
+
+class movies_feedback (models.Model):
+    movie = models.ForeignKey(movies_info,on_delete=models.CASCADE)
+    rate = models.FloatField()
+    comment = models.TextField()
+    comment_date = models.DateField()

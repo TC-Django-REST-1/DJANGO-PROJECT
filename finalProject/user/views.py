@@ -21,8 +21,9 @@ def register_user(request : Request):
     try:
         user = User.objects.create_user(username, email, password)
         user.save()
+        
     except Exception as e:
-        return Response({"msg" : "Couldn't Create user", "error" : e})
+        return Response({"msg" : "Couldn't Create user", "error" : str(e)})
 
     return Response({"msg" : "User Created Successfuly"}, status=status.HTTP_201_CREATED)
 
