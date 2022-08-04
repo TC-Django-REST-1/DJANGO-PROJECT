@@ -1,4 +1,4 @@
-# DJANGO-PROJECT
+# DJANGO-PROJECT - Rasha Alharthi
 
 ## Project Idea:
 The project idea is up to you as long as it applies all essential requirements.
