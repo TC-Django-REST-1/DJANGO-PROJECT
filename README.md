@@ -16,12 +16,11 @@ The project idea is up to you as long as it applies all essential requirements.
 - Export the project Postman Collections into a file and include it in the repository.
 
 
-# Example: 
 
 # Project Name: Commercial Companies Management System
 
 ## Idea:
-A system to manage Commercial Companies. The system enable Companies to Issuing Commercial Certificate, Updating the corporate data, View commercial Certificate data, etc. Moreover, the employees can perform comanies requests, follow and update requests progress, etc.
+A system to manage Commercial Companies. The system enable Companies to make diffrents services online such as:Issuing Commercial Certificate, Updating the corporate data, View commercial Certificate data, etc. Moreover, the employees can perform companies requests, etc.
 
 ## Inspiration:
 Assisting companies in carrying out their business in an official manner, and protect the beneficiaries' interests, by developing and implementing effective and efficient policies and mechanisms.
