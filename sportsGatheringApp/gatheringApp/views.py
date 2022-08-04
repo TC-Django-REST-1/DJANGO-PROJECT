@@ -1,5 +1,4 @@
 from datetime import datetime
-from pickle import TRUE
 from rest_framework.response import Response
 from rest_framework.request import Request
 
@@ -20,7 +19,7 @@ def get_all_gathers(request : Request):
     get = int(request.query_params.get("get", 10))
     gathers = gather.objects.all()
 
-    gathers_data = gatherSerializer(instance=gathers, many=True).data
+    gathers_data = gatherSerializer(instance=gathers, many=True).data[skip:get]
 
     res = {
         'msg': 'all the gathers',
@@ -71,7 +70,7 @@ def update_gather(request : Request, gather_id):
 
 
     if updated_gather.leader.id != user.id:
-        return Response({"msg": "sorry you are not authorized to accuses the gather!"}, status=status.HTTP_403_FORBIDDEN)
+        return Response({"msg": "sorry you are not authorized to accuses the gather! just the creator can accuses"}, status=status.HTTP_403_FORBIDDEN)
 
     data["leader"] = user.id
 
@@ -105,7 +104,7 @@ def delete_gather(request : Request, gather_id):
         return Response({"msg" : "This gather is not found"}, status=status.HTTP_404_NOT_FOUND)
 
     if deleted_gather.leader.id != user.id:
-        return Response({"msg": "sorry you are not authorized to accuses the gather!"}, status=status.HTTP_403_FORBIDDEN)
+        return Response({"msg": "sorry you are not authorized to accuses the gather! just the creator can accuses"}, status=status.HTTP_403_FORBIDDEN)
     
     deleted_gather.delete()
 
@@ -168,7 +167,7 @@ def sort_by(request : Request):
     skip = int(request.query_params.get("skip", 0))
     get = int(request.query_params.get("get", 10))
 
-    gathers_data = gatherSerializer(instance=gathers, many=True).data
+    gathers_data = gatherSerializer(instance=gathers, many=True).data[skip:get]
 
     res = {
         'msg': 'all the gathers',
@@ -177,3 +176,6 @@ def sort_by(request : Request):
     }
 
     return Response(data=res, status=status.HTTP_200_OK)
+
+
+

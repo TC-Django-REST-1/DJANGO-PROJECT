@@ -26,11 +26,15 @@ def register_user(request : Request):
     except Exception as e:
         return Response({"msg": "Sorry couldn't register a User!", "error":e},status=status.HTTP_403_FORBIDDEN)
     
-    newUserInfo = userInfo(
+    try:
+        newUserInfo = userInfo(
         user=newUser ,name=data.get('name'),age=data.get('age'),isMale=data.get('isMale') ,phoneNumber=data.get('phoneNumber')
         )
+        newUserInfo.save()
+    except Exception as e:
+        return Response({"msg": "Sorry couldn't register a User!", "error":e},status=status.HTTP_403_FORBIDDEN)
+
     
-    newUserInfo.save()
 
     return Response({"msg": "The user registered Successfully!"},status=status.HTTP_201_CREATED)
 
