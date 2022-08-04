@@ -7,10 +7,23 @@ from rest_framework import status
 from .models import City, Place
 from .serializers import CitySerializer, PlaceSerializer
 
+from rest_framework.decorators import authentication_classes, permission_classes
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+
 # Create your views here.
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def add_city(request: Request):
+
+    user = request.user
+
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+
     city_serializer = CitySerializer(data=request.data)
 
     if city_serializer.is_valid():
@@ -68,7 +81,15 @@ def list_place(request: Request):
 
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def add_place(request: Request):
+
+    user = request.user
+
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+
     place_serializer = PlaceSerializer(data=request.data)
 
     if place_serializer.is_valid():
