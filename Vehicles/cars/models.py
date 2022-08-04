@@ -19,9 +19,11 @@ class Brand(models.Model):
         return self.brand
 
 
-# This model is to track all modifications that take a place in any brand record, answring these questions (when? who? did what?)
+# This model is to save all modifications that take place in any brand record,
+#  answring these questions (when? who? did what?)
 class BrandHistory(models.Model):
-    brand = models.CharField(max_length=255)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    brand_name = models.CharField(max_length=255)
     description = models.TextField()
     established_in = models.PositiveIntegerField()
     origin = models.CharField(max_length=255)

@@ -10,12 +10,15 @@ from rest_framework.permissions import IsAuthenticated,IsAdminUser
 
 from .models import Brand,BrandHistory
 # , Car
-from .serializers import BrandSerilizer
+from .serializers import BrandSerilizer,BrandHistorySerilizer
 # ,CarSerilizer
 
-def brandHistory(user, update):
-
-    u_brand = update.data["brand"]
+def brandHistory(user,update):
+    '''It's an event function that save a record for any update take place in the brand model, to reviwe later
+    to see what the deffirences between before and after update, who did that update, & when that update take place'''
+    
+    u_brand_id = update.data["id"]
+    u_brand_name = update.data["brand"]
     u_description = update.data["description"]
     u_established_in = update.data["established_in"]
     u_origin = update.data["origin"]
@@ -25,7 +28,7 @@ def brandHistory(user, update):
     u_year = update.data["year"]
     u_remarks = update.data["remarks"]
     
-    new_brand_update = BrandHistory(brand= u_brand, description= u_description, 
+    new_brand_update = BrandHistory(brand_id= u_brand_id, brand_name= u_brand_name, description= u_description, 
                                     established_in= u_established_in, origin= u_origin, 
                                     founder= u_founder, headquarters= u_headquarters, 
                                     last_revenue_billion= u_last_revenue, year= u_year, 
@@ -34,7 +37,7 @@ def brandHistory(user, update):
     new_brand_update.save()
 
     response_data = {
-            "msg" : f"A new record has been added for {u_brand}"
+            "msg" : f"A new record has been added for {u_brand_name}"
         }
     return Response(response_data)
 
@@ -49,7 +52,7 @@ def add_brand(request: Request):
         new_brand_serializer = BrandSerilizer(data=request.data)
         if new_brand_serializer.is_valid():
             new_brand_serializer.save()
-            add_record = brandHistory(user,new_brand_serializer)
+            add_record = brandHistory( user, new_brand_serializer)
             # print(add_record.data)
         else:
             return Response({"msg" : "couldn't add a new brand", "errors" : new_brand_serializer.errors}, status=status.HTTP_403_FORBIDDEN)
@@ -75,14 +78,35 @@ def brand_list(request: Request):
     return Response(data, status=status.HTTP_200_OK)
 
 
+@api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def brand_history_record(request: Request):
+        if "search" in request.query_params:
+            search_phrase = request.query_params["search"]
+            skip = int(request.query_params.get("skip", 0))
+            get = int(request.query_params.get("get", 10))
+            brands = BrandHistory.objects.filter(brand_name__startswith=search_phrase)[skip:get]
+        else:
+            skip = int(request.query_params.get("skip", 0))
+            get = int(request.query_params.get("get", 10))
+            brands = BrandHistory.objects.order_by("-id").all()[skip:get]
+
+        data = BrandHistorySerilizer(brands, many=True).data
+        return Response(data, status=status.HTTP_200_OK)
+    
+
+
 @api_view(['PUT'])
 def update_brand(request: Request, brand_id):
+    user = request.user
     try:
         brand = Brand.objects.get(id = brand_id)
         data = BrandSerilizer(instance=brand, data=request.data)
         if data.is_valid():
             data.save()
-            return Response({"msg" : "Brand updated successfully "}, status=status.HTTP_200_OK)
+            add_record = brandHistory( user, data)
+            return Response({"msg" : "Brand updated successfully", "msg2" : add_record.data}, status=status.HTTP_200_OK)
         else:
             return Response({"msg" : "couldn't update the brand", "errors" : data.errors}, status=status.HTTP_400_BAD_REQUEST)
     except Exception as e :

@@ -9,6 +9,11 @@ class BrandSerilizer(serializers.ModelSerializer):
         model = Brand
         fields = '__all__'
 
+class BrandHistorySerilizer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = '__all__'
+
 
 # class CarSerilizer(serializers.ModelSerializer):
 #     class Meta:
