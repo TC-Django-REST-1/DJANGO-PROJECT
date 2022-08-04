@@ -8,10 +8,8 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
 # from rest_framework_simplejwt.tokens import AccessToken
 
-from .models import Brand,BrandHistory
-# , Car
-from .serializers import BrandSerilizer,BrandHistorySerilizer
-# ,CarSerilizer
+from .models import Brand,BrandHistory,GeneralClasses,Car,BrandsClasses,Categories
+from .serializers import BrandSerilizer,BrandHistorySerilizer,GeneralClassesSerilizer,CarSerilizer,BrandsClassesSerilizer,CategoriesSerilizer
 
 def brandHistory(user,update):
     '''It's an event function that save a record for any update take place in the brand model, to reviwe later
@@ -41,8 +39,8 @@ def brandHistory(user,update):
         }
     return Response(response_data)
 
-
-# BrandSerilizer
+# --------------------------------------------------------------------------------------------------------
+# Brand
 @api_view(['POST'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAdminUser])
@@ -123,61 +121,200 @@ def remove_brand(request: Request, brand_id):
     return Response({"msg" : f"A brand with ID No:{brand_id} has been deleted successfully"}, status=status.HTTP_200_OK)
 
 
+# --------------------------------------------------------------------------------------------------------
+# General Classes
+@api_view(['POST'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def add_general_class(request: Request):
+    new_class_serilizer = GeneralClassesSerilizer(data=request.data)
+    if new_class_serilizer.is_valid():
+        new_class_serilizer.save()
+    else:
+        return Response({"msg" : "couldn't add a new general class", "errors" : new_class_serilizer.errors}, status=status.HTTP_403_FORBIDDEN)
+
+    return Response({"msg" : "A new car created successfully"}, status=status.HTTP_201_CREATED)
 
 
-# # CarSerilizer
-# @api_view(['POST'])
-# def add_car(request: Request):
-#     new_car_serilizer = CarSerilizer(data=request.data)
-#     if new_car_serilizer.is_valid():
-#         new_car_serilizer.save()
-#     else:
-#         return Response({"msg" : "couldn't add a new car", "errors" : new_car_serilizer.errors}, status=status.HTTP_403_FORBIDDEN)
+@api_view(['GET'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def general_class_list(request: Request):
 
-#     return Response({"msg" : "A new car created successfully"}, status=status.HTTP_201_CREATED)
+    if "search" in request.query_params:
+        search_phrase = request.query_params["search"]
+        skip = int(request.query_params.get("skip", 0))
+        get = int(request.query_params.get("get", 10))
+        g_class = GeneralClasses.objects.filter(brand__startswith=search_phrase)[skip:get]
+    else:
+        skip = int(request.query_params.get("skip", 0))
+        get = int(request.query_params.get("get", 10))
+        g_class = GeneralClasses.objects.order_by("-id").all()[skip:get]
 
+    data = GeneralClassesSerilizer(g_class, many=True).data
+    return Response(data, status=status.HTTP_200_OK)
 
-# @api_view(['GET'])
-# def cars_list(request: Request):
+@api_view(['PUT'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def update_general_class(request: Request):
+    pass
 
-#     skip = int(request.query_params.get("skip", 1))
-#     get = int(request.query_params.get("get", 4))
-
-
-#     cars = Car.objects.order_by("-id").all()[skip:get]
-#     data = CarSerilizer(cars, many=True).data
-#     return Response(data, status=status.HTTP_200_OK)
-
-# @api_view(['PUT'])
-# def update_car(request: Request, car_id):
-#     car = Car.objects.get(id = car_id)
-#     data = CarSerilizer(instance=car, data=request.data)
-#     if data.is_valid():
-#         data.save()
-#         return Response({"msg" : "Car updated successfully "}, status=status.HTTP_200_OK)
-#     else:
-#         return Response({"msg" : "couldn't update the car", "errors" : data.errors}, status=status.HTTP_400_BAD_REQUEST)
-
-
-# @api_view(['DELETE'])
-# def remove_car(request: Request, car_id):
-#     try:
-#         car = Car.objects.get(id = car_id)
-#         car.delete()
-#     except Exception as e:
-#         return Response({"msg" : f"The car with ID No:{car_id} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
-
-#     return Response({"msg" : f"A car with ID No:{car_id} has been deleted successfully"}, status=status.HTTP_200_OK)
-
+@api_view(['DELETE'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def remove_general_class(request: Request):
+    pass
 
 
 
-# @api_view(['GET'])
-# def brand_cars_list(request: Request, brand_name):
-#     try:
-#         brand = Brand.objects.get(name = brand_name) # get the whole info of brand by its brand_name so we can extract the id of that brand
-#         cars = Car.objects.filter(brand__exact=brand.id) # filter all products by the brand.id because the Product model has only the id of the brand not the name
-#         data = CarSerilizer(cars, many=True).data
-#         return Response(data, status=status.HTTP_200_OK)
-#     except Exception as e:
-#         return Response({"msg" : f"The brand with ID No:{brand_name} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
+# --------------------------------------------------------------------------------------------------------
+# Brands Classes
+@api_view(['POST'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def add_Brands_class(request: Request):
+    new_brand_serilizer = BrandsClassesSerilizer(data=request.data)
+    if new_brand_serilizer.is_valid():
+        new_brand_serilizer.save()
+    else:
+        return Response({"msg" : "couldn't add a new general class", "errors" : new_brand_serilizer.errors}, status=status.HTTP_403_FORBIDDEN)
+
+    return Response({"msg" : "A new car created successfully"}, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def Brands_class_list(request: Request):
+
+    if "search" in request.query_params:
+        search_phrase = request.query_params["search"]
+        skip = int(request.query_params.get("skip", 0))
+        get = int(request.query_params.get("get", 10))
+        b_class = BrandsClasses.objects.filter(brand__startswith=search_phrase)[skip:get]
+    else:
+        skip = int(request.query_params.get("skip", 0))
+        get = int(request.query_params.get("get", 10))
+        b_class = BrandsClasses.objects.order_by("-id").all()[skip:get]
+
+    data = BrandsClassesSerilizer(b_class, many=True).data
+    return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['PUT'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def update_Brands_class(request: Request):
+    pass
+
+@api_view(['DELETE'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def remove_Brands_class(request: Request):
+    pass
+
+
+# --------------------------------------------------------------------------------------------------------
+# Categories
+@api_view(['POST'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def add_new_Category(request: Request):
+    new_category_serilizer = CategoriesSerilizer(data=request.data)
+    if new_category_serilizer.is_valid():
+        new_category_serilizer.save()
+    else:
+        return Response({"msg" : "couldn't add a new general class", "errors" : new_category_serilizer.errors}, status=status.HTTP_403_FORBIDDEN)
+
+    return Response({"msg" : "A new car created successfully"}, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def Categories_list(request: Request):
+
+    if "search" in request.query_params:
+        search_phrase = request.query_params["search"]
+        skip = int(request.query_params.get("skip", 0))
+        get = int(request.query_params.get("get", 10))
+        categories = Categories.objects.filter(brand__startswith=search_phrase)[skip:get]
+    else:
+        skip = int(request.query_params.get("skip", 0))
+        get = int(request.query_params.get("get", 10))
+        categories = Categories.objects.order_by("-id").all()[skip:get]
+
+    data = CategoriesSerilizer(categories, many=True).data
+    return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['PUT'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def update_Category(request: Request):
+    pass
+
+@api_view(['DELETE'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def remove_Category(request: Request):
+    pass
+
+
+
+# --------------------------------------------------------------------------------------------------------
+# Cars
+@api_view(['POST'])
+def add_car(request: Request):
+    new_car_serilizer = CarSerilizer(data=request.data)
+    if new_car_serilizer.is_valid():
+        new_car_serilizer.save()
+    else:
+        return Response({"msg" : "couldn't add a new car", "errors" : new_car_serilizer.errors}, status=status.HTTP_403_FORBIDDEN)
+
+    return Response({"msg" : "A new car created successfully"}, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+def cars_list(request: Request):
+
+    skip = int(request.query_params.get("skip", 1))
+    get = int(request.query_params.get("get", 4))
+
+
+    cars = Car.objects.order_by("-id").all()[skip:get]
+    data = CarSerilizer(cars, many=True).data
+    return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['PUT'])
+def update_car(request: Request, car_id):
+    car = Car.objects.get(id = car_id)
+    data = CarSerilizer(instance=car, data=request.data)
+    if data.is_valid():
+        data.save()
+        return Response({"msg" : "Car updated successfully "}, status=status.HTTP_200_OK)
+    else:
+        return Response({"msg" : "couldn't update the car", "errors" : data.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+def remove_car(request: Request, car_id):
+    try:
+        car = Car.objects.get(id = car_id)
+        car.delete()
+    except Exception as e:
+        return Response({"msg" : f"The car with ID No:{car_id} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
+
+    return Response({"msg" : f"A car with ID No:{car_id} has been deleted successfully"}, status=status.HTTP_200_OK)
+
+
+
+
+@api_view(['GET'])
+def brand_cars_list(request: Request, brand_name):
+    try:
+        brand = Brand.objects.get(name = brand_name) # get the whole info of brand by its brand_name so we can extract the id of that brand
+        cars = Car.objects.filter(brand__exact=brand.id) # filter all products by the brand.id because the Product model has only the id of the brand not the name
+        data = CarSerilizer(cars, many=True).data
+        return Response(data, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({"msg" : f"The brand with ID No:{brand_name} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
