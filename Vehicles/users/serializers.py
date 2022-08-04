@@ -7,8 +7,8 @@ class UserSerilizer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
-class UserpasswordSerilizer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['password']
+# class UserpasswordSerilizer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ['password']
 

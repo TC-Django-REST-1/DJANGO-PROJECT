@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework import status
 
-from .serializers import UserSerilizer,UserpasswordSerilizer
+from .serializers import UserSerilizer#,UserpasswordSerilizer
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -14,14 +14,14 @@ import hashlib
 
 # User._meta.get_field('email')._unique = True
 
-def hasher(password):
-    """ This function is to calculate the hash based on sha256 algorithm by passing the 'password' from the user and save
-    it as hash """
+# def hasher(password):
+#     """ This function is to calculate the hash based on sha256 algorithm by passing the 'password' from the user and save
+#     it as hash """
 
-    hasher = hashlib.sha256()  # To initialize a variable that uses sha256 algorithm for hashing
-    hasher.update(password)  # Add the new part to the hasher for applying the sha256 on it
-    output = hasher.hexdigest()  # Is the method to give the hashing result in hexadecimal type
-    return output  # Return the result as hexadecimal code
+#     hasher = hashlib.sha256()  # To initialize a variable that uses sha256 algorithm for hashing
+#     hasher.update(password)  # Add the new part to the hasher for applying the sha256 on it
+#     output = hasher.hexdigest()  # Is the method to give the hashing result in hexadecimal type
+#     return output  # Return the result as hexadecimal code
 
 
 
@@ -101,38 +101,18 @@ def users_list(request: Request):
     return Response(data, status=status.HTTP_200_OK)
 
 
+# @api_view(['PUT'])
+# def update_password(request : Request, user_id):
+#     try:
+#         user = User.objects.get(id = user_id)
 
-@api_view(['PUT'])
-def users_list(request: Request, user_id):
-    try:
-        user = User.objects.get(id = user_id)
-        password = User.objects.get("password")
-        print(user)
-        print(password)
-        data = UserpasswordSerilizer(instance=user, data=request.data)
-        print(data)
-        if data.is_valid():
-            # data = hasher(data['password'])
-            data.save()
-            return Response({"msg" : "user password updated successfully "}, status=status.HTTP_200_OK)
-        else:
-            return Response({"msg" : "couldn't update the password", "errors" : data.errors}, status=status.HTTP_400_BAD_REQUEST)
-    except Exception as e :
-        return Response({"msg" : f"The user with ID No:{user_id} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
+#         password = request.data["password"]
 
+#         user = User.objects.get(id=user_id)
 
-@api_view(['PUT'])
-def update_password(request : Request, user_id):
-    try:
-        user = User.objects.get(id = user_id)
+#         user.password = hasher(password.encode('utf-8'))
+#         user.save()
 
-        password = request.data["password"]
-
-        user = User.objects.get(id=user_id)
-
-        user.password = hasher(password.encode('utf-8'))
-        user.save()
-
-        return Response({"msg" : "user password updated successfully, saved as a hash password !!!"}, status=status.HTTP_200_OK)
-    except Exception:
-        return Response({"msg" : f"The user with ID No:{user_id} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
+#         return Response({"msg" : "user password updated successfully, saved as a hash password !!!"}, status=status.HTTP_200_OK)
+#     except Exception:
+#         return Response({"msg" : f"The user with ID No:{user_id} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
