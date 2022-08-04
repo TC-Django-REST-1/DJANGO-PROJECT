@@ -38,32 +38,21 @@ Assisting companies in carrying out their business in an official manner, and pr
 
 ### Adminstration
 
-- Create, Read, Delete Companies.
+- Read, Delete Companies.
 - Create, Read, Update, Delete services.
 - Create, Read, Delete employees.
-
+- Create, Read, Delete Adminstration employee.
 ### Companies
-
-- Add commercial certificate
-- Add requiest.
-- Renewal commercial certificate
-- View commercial certificate data.
-- View Company information.
-- View Company's requiests.
-- View requiest progress.
+- Add Company "Assuming that the user, after creating his account, can create a company linked to his account"
+- View MyCompanies information.
 - Edit Company information.
-- Send Inquiries/complaint to Adminstration.
-- Cancel requiest.
 - Search for service.
+- Add requiest.
+- View Company's requiests.
+- Cancel requiest.
 
 ### Employees
-
-- View the companees requests.
-- View the request information.
-- Add task "add company request to my tasks list".
-- Update task "update requiest status".
-- List assigned request.
 - Update profile.
-- Withdraw task.
-- Search for a requiest in a specific company.
 - View company information.
+- Add task
+- Withdraw task.
