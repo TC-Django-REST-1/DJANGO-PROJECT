@@ -21,10 +21,8 @@ class Product(models.Model):
     brand = models.ForeignKey(Company, on_delete=models.CASCADE)
     description = models.TextField()
     category = models.ManyToManyField(Category, related_name='products')
-    price = models.FloatField()
-    quantity = models.IntegerField()
-
-    
+    price = models.FloatField(default=0)
+    quantity = models.IntegerField(default=0)
 
     def __str__(self) -> str:
         return self.name

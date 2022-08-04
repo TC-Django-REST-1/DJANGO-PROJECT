@@ -1,4 +1,4 @@
-from .models import Product , Comment , Company ,Category
+from .models import Product , Comment  , Category
 from rest_framework import serializers
 
 
