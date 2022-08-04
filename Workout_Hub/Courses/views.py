@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from .seriallizers import CoursesSerializer
 from rest_framework import status
 from .models import Course
+from Users.models import Trainers
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -26,7 +27,7 @@ def view_courses(request : Request):
         search_phrase = request.query_params["search"]
         all_courses = Course.objects.filter(title__contains=search_phrase)[skip:get]
     else:
-        all_courses = Course.objects.all().order_by('-price')[skip:get]
+        all_courses = Course.objects.all().order_by('-c_price')[skip:get]
 
     all_courses_list =  CoursesSerializer(all_courses, many=True).data
 
@@ -59,23 +60,21 @@ def register_trainee(request : Request, trainee_id):
 def add_course(request : Request):
     #authenticated user info is stored in request.user
     user = request.user
-    tid = request.user.id
+    tid = user.pk
     print("tid ",tid)
 
     if not user.has_perm('Courses.add_course'):
         return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
+    
+    request.data["c_trainer"] = tid
+    new_course = CoursesSerializer(data=request.data)
+    if new_course.is_valid():
+        new_course.save()
+    else:
+        return Response({"msg" : "couldn't add a course", "errors" : new_course.errors}, status=status.HTTP_403_FORBIDDEN)
 
-    #equest.data["name"] = tid
-    name = request.data["name"]
-    ctype = request.data["type"]
-    duration = request.data["duration"]
-    price = request.data["price"]
 
-
-    new_course = Course(c_trainer = tid, c_name = name, c_type = ctype, c_duration = duration, c_price = price)
-    new_course.save()
-
-    return Response({"msg" : "Course created Successfully"}, status = stat.HTTP_201_CREATED)
+    return Response({"msg" : "Course created Successfully"}, status = status.HTTP_201_CREATED)
 
 
 @api_view(["PUT"])

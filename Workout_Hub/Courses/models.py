@@ -1,5 +1,6 @@
 from django.db import models
 from Users.models import Trainers, Trainees
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Course(models.Model):

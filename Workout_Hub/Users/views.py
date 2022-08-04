@@ -2,9 +2,10 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
-from .seriallizers import TrainerSerializer, TraineeSerializer, UserSerializer
+from .seriallizers import TrainerSerializer, TraineeSerializer,UserSerializer
 from rest_framework import status
 from .models import Trainees, Trainers
+from django.contrib.auth.models import Group
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -35,43 +36,44 @@ def signin(request : Request):
 
 
 @api_view(['POST'])
-def create_trainer(request : Request):
-    #username = request.data.get("username")
-    #email = request.data.get("email")
-    #password = request.data.get("password")
+def create_trainee(request : Request):
 
+    
     try:
-        #new_user = User.objects.create_user(username, email, password)
-        new_user = UserSerializer()
-        new_user.save()
+        new_user = UserSerializer(data=request.data)
+        if new_user.is_valid():
+            new_user.save()
+        #request.data["id"] = request.user.id
+        new_trainee = TraineeSerializer(data=request.data)
+        if new_trainee.is_valid():
+            new_trainee.save()
+            #TraineeGroup = Group.objects.get(name='TraineeGroup')
+            #TraineeGroup.user_set.add(new_trainee)
+        else:
+            return Response({"msg" : "couldn't create a Trainee", "errors" : new_trainee.errors}, status=status.HTTP_403_FORBIDDEN)
     except Exception as e:
-        return Response({"msg" : "Couldn't Create trainer", "error" : e})
+        return Response({"msg" : "Couldn't Create trainee", "error" : str(e) },status=status.HTTP_404_NOT_FOUND)
 
-    start_date = request.data["start_date"]
-    end_date = request.data["end_date"]
-    phone = request.data["tr_phone"]
 
-    new_trainer = Trainers(user = new_user, start_date = start_date, end_date = end_date, tr_phone = phone)
-    new_trainer.save()
-
-    return Response({"msg" : "Trainer created Successfully"}, status = status.HTTP_201_CREATED)
+    return Response({"msg" : "Trainee created Successfully"}, status = status.HTTP_201_CREATED)
 
 
 @api_view(['POST'])
-def create_trainee(request : Request):
-    username = request.data.get("username")
-    email = request.data.get("email")
-    password = request.data.get("password")
+def create_trainer(request : Request):
 
     try:
-        new_user = User.objects.create_user(username, email, password)
-        new_user.save()
+        new_user = UserSerializer(data=request.data)
+        if new_user.is_valid():
+            new_user.save()
+        #request.data["id"] = request.user.id
+        new_trainer = TrainerSerializer(data=request.data)
+        if new_trainer.is_valid():
+            new_trainer.save()
+            #TrainerGroup = Group.objects.get(name='TrainerGroup')
+            #TrainerGroup.user_set.add(new_trainer)
+        else:
+            return Response({"msg" : "couldn't create a Trainer", "errors" : new_trainer.errors}, status=status.HTTP_403_FORBIDDEN)
     except Exception as e:
-        return Response({"msg" : "Couldn't Create trainee", "error" : e})
-
-    phone = request.data["te_phone"]
-
-    new_trainee = Trainees(user = new_user, te_phone = phone)
-    new_trainee.save()
+        return Response({"msg" : "Couldn't Create trainer", "error" : str(e) },status=status.HTTP_404_NOT_FOUND)
 
     return Response({"msg" : "Trainer created Successfully"}, status = status.HTTP_201_CREATED)
