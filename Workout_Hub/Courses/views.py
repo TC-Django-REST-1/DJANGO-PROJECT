@@ -39,16 +39,9 @@ def view_courses(request : Request):
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def register_trainee(request : Request, trainee_id):
-    #authenticated user info is stored in request.user
-    #user = request.user
-    
-    #if not user.has_perm('Courses.change_trainees'):
-        #return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
 
     try:
-        #request.data["c_trainee"] = Trainees.objects.get(pk=trainee_id)
-        #name = request.data["c_name"]
-        #trainee_id = request.data["c_trainee"]
+
         c_trainee = Trainees.objects.get(pk=trainee_id)
         name =request.data["c_name"]
         c = Course.objects.get(c_name=name)
