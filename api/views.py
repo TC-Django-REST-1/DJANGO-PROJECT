@@ -1,9 +1,13 @@
-from api.serializers import UserSerializer
+from api.serializers import UserSerializer, UserDataSerializer
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework import status
 from django.core.exceptions import ValidationError
+from rest_framework.generics import ListAPIView
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from django.contrib.auth.models import User
 
 
 @api_view(["POST"])
@@ -30,3 +34,10 @@ def register(request: Request) -> Response:
         {"msg": "Bad request", "errors": serializer.errors},
         status=status.HTTP_400_BAD_REQUEST,
     )
+
+
+class ListUsers(ListAPIView):
+    authentication_classes = [JWTAuthentication,]
+    permission_classes = [IsAuthenticated, IsAdminUser,]
+    serializer_class = UserDataSerializer
+    queryset = User.objects.all()
