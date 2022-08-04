@@ -1,28 +1,64 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,authentication_classes,permission_classes
 from rest_framework.request import Request
 from rest_framework.response import Response
-
+from datetime import datetime
 from rest_framework import status
 
-from .models import Brand
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated,IsAdminUser
+# from rest_framework_simplejwt.tokens import AccessToken
+
+from .models import Brand,BrandHistory
 # , Car
 from .serializers import BrandSerilizer
 # ,CarSerilizer
 
+def brandHistory(user, update):
+
+    u_brand = update.data["brand"]
+    u_description = update.data["description"]
+    u_established_in = update.data["established_in"]
+    u_origin = update.data["origin"]
+    u_founder = update.data["founder"]
+    u_headquarters = update.data["headquarters"]
+    u_last_revenue = update.data["last_revenue_billion"]
+    u_year = update.data["year"]
+    u_remarks = update.data["remarks"]
+    
+    new_brand_update = BrandHistory(brand= u_brand, description= u_description, 
+                                    established_in= u_established_in, origin= u_origin, 
+                                    founder= u_founder, headquarters= u_headquarters, 
+                                    last_revenue_billion= u_last_revenue, year= u_year, 
+                                    remarks= u_remarks, modified_by = user, 
+                                    modification_date = datetime.today())
+    new_brand_update.save()
+
+    response_data = {
+            "msg" : f"A new record has been added for {u_brand}"
+        }
+    return Response(response_data)
+
 
 # BrandSerilizer
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAdminUser])
 def add_brand(request: Request):
-    new_brand_serializer = BrandSerilizer(data=request.data)
-    if new_brand_serializer.is_valid():
-        new_brand_serializer.save()
-    else:
-        return Response({"msg" : "couldn't add a new brand", "errors" : new_brand_serializer.errors}, status=status.HTTP_403_FORBIDDEN)
-
-    return Response({"msg" : "A new brand added Successfully!"}, status=status.HTTP_201_CREATED)
+    user = request.user
+    if user.is_authenticated:
+        new_brand_serializer = BrandSerilizer(data=request.data)
+        if new_brand_serializer.is_valid():
+            new_brand_serializer.save()
+            add_record = brandHistory(user,new_brand_serializer)
+            # print(add_record.data)
+        else:
+            return Response({"msg" : "couldn't add a new brand", "errors" : new_brand_serializer.errors}, status=status.HTTP_403_FORBIDDEN)
+        return Response({"msg" : "A new brand added Successfully!", "msg2" : add_record.data}, status=status.HTTP_201_CREATED)
 
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def brand_list(request: Request):
 
     if "search" in request.query_params:

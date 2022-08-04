@@ -19,22 +19,22 @@ class Brand(models.Model):
         return self.brand
 
 
-# # This model is to track all modifications that take a place in any brand record, answring these questions (when? who? did what?)
-# class BrandHistory(models.Model):
-#     brand = models.CharField(max_length=255)
-#     description = models.TextField()
-#     established_in = models.PositiveIntegerField()
-#     origin = models.CharField(max_length=255)
-#     founder = models.CharField(max_length=255)
-#     headquarters = models.TextField()
-#     last_revenue = models.DecimalField(max_digits=12, decimal_places=2)
-#     year = models.PositiveIntegerField()
-#     remarks = models.TextField(blank=True)
-#     modified_by = models.CharField(max_length=255)
-#     modification_date = models.DateField()
+# This model is to track all modifications that take a place in any brand record, answring these questions (when? who? did what?)
+class BrandHistory(models.Model):
+    brand = models.CharField(max_length=255)
+    description = models.TextField()
+    established_in = models.PositiveIntegerField()
+    origin = models.CharField(max_length=255)
+    founder = models.CharField(max_length=255)
+    headquarters = models.TextField()
+    last_revenue_billion = models.DecimalField(max_digits=12, decimal_places=2)
+    year = models.PositiveIntegerField()
+    remarks = models.TextField(blank=True)
+    modified_by = models.CharField(max_length=255)
+    modification_date = models.DateField()
 
-#     def __str__(self):
-#         return self.brand
+    def __str__(self):
+        return self.brand
 
 # # This model is to list the general classes that can be used to categorize any brand class 
 # class GeneralClasses(models.Model):
