@@ -37,43 +37,42 @@ def signin(request : Request):
 
 @api_view(['POST'])
 def create_trainee(request : Request):
+    username = request.data.get("username")
+    email = request.data.get("email")
+    password = request.data.get("password")
 
-    
     try:
-        new_user = UserSerializer(data=request.data)
-        if new_user.is_valid():
-            new_user.save()
-        #request.data["id"] = request.user.id
-        new_trainee = TraineeSerializer(data=request.data)
-        if new_trainee.is_valid():
-            new_trainee.save()
-            #TraineeGroup = Group.objects.get(name='TraineeGroup')
-            #TraineeGroup.user_set.add(new_trainee)
-        else:
-            return Response({"msg" : "couldn't create a Trainee", "errors" : new_trainee.errors}, status=status.HTTP_403_FORBIDDEN)
+        new_user = User.objects.create_user(username, email, password)
+        new_user.save()
+        TrainerGroup = Group.objects.get(name='TrainerGroup')
+        TrainerGroup.user_set.add(new_user)
     except Exception as e:
-        return Response({"msg" : "Couldn't Create trainee", "error" : str(e) },status=status.HTTP_404_NOT_FOUND)
+        return Response({"msg" : "Couldn't Create trainee", "error" : str(e)})
 
+    phone = request.data["te_phone"]
 
-    return Response({"msg" : "Trainee created Successfully"}, status = status.HTTP_201_CREATED)
+    new_trainee = Trainees(user = new_user, te_phone = phone)
+    new_trainee.save()
 
+    return Response({"msg" : "Trainer created Successfully"}, status = status.HTTP_201_CREATED)
 
 @api_view(['POST'])
 def create_trainer(request : Request):
+    username = request.data.get("username")
+    email = request.data.get("email")
+    password = request.data.get("password")
 
     try:
-        new_user = UserSerializer(data=request.data)
-        if new_user.is_valid():
-            new_user.save()
-        #request.data["id"] = request.user.id
-        new_trainer = TrainerSerializer(data=request.data)
-        if new_trainer.is_valid():
-            new_trainer.save()
-            #TrainerGroup = Group.objects.get(name='TrainerGroup')
-            #TrainerGroup.user_set.add(new_trainer)
-        else:
-            return Response({"msg" : "couldn't create a Trainer", "errors" : new_trainer.errors}, status=status.HTTP_403_FORBIDDEN)
+        new_user = User.objects.create_user(username, email, password)
+        new_user.save()
+        TraineeGroup = Group.objects.get(name='TraineeGroup')
+        TraineeGroup.user_set.add(new_user)
     except Exception as e:
-        return Response({"msg" : "Couldn't Create trainer", "error" : str(e) },status=status.HTTP_404_NOT_FOUND)
+        return Response({"msg" : "Couldn't Create trainee", "error" : str(e)})
+
+    phone = request.data["tr_phone"]
+
+    new_trainer = Trainers(user = new_user, start_date = start_date, end_date = end_date, tr_phone = phone)
+    new_trainer.save()
 
     return Response({"msg" : "Trainer created Successfully"}, status = status.HTTP_201_CREATED)

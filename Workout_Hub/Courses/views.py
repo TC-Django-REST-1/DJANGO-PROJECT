@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from .seriallizers import CoursesSerializer
 from rest_framework import status
 from .models import Course
-from Users.models import Trainers
+from Users.models import Trainers,Trainees
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -35,38 +35,44 @@ def view_courses(request : Request):
 
 
 
-@api_view(["POST"])
+@api_view(["PATCH"])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def register_trainee(request : Request, trainee_id):
     #authenticated user info is stored in request.user
-    user = request.user
+    #user = request.user
     
-    if not user.has_perm('Courses.register_trainee'):
-        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
+    #if not user.has_perm('Courses.change_trainees'):
+        #return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
 
     try:
-        request.data["c_trainee"] = trainee_id
+        #request.data["c_trainee"] = Trainees.objects.get(pk=trainee_id)
+        #name = request.data["c_name"]
+        #trainee_id = request.data["c_trainee"]
+        c_trainee = Trainees.objects.get(pk=trainee_id)
+        name =request.data["c_name"]
+        c = Course.objects.get(c_name=name)
+        print(c_trainee)
+        c.c_trainee.add(c_trainee)
+        c.save()
 
     except Exception as e:
-        return Response({"msg" : "Couldn't regiter the trainee", "error" : e})
+        return Response({"msg" : "Couldn't regiter the trainee", "error" : str(e)})
 
-    return Response({"msg" : "trainee regitered Successfully"}, status = stat.HTTP_201_CREATED)
+    return Response({"msg" : "trainee regitered Successfully"}, status = status.HTTP_201_CREATED)
 
 
 @api_view(["POST"])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
-def add_course(request : Request):
+def add_course(request : Request, trainer_id):
     #authenticated user info is stored in request.user
     user = request.user
-    tid = user.pk
-    print("tid ",tid)
 
     if not user.has_perm('Courses.add_course'):
         return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     
-    request.data["c_trainer"] = tid
+    request.data["c_trainer"] = trainer_id
     new_course = CoursesSerializer(data=request.data)
     if new_course.is_valid():
         new_course.save()
@@ -80,21 +86,21 @@ def add_course(request : Request):
 @api_view(["PUT"])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
-def update_course(request: Request, course_id):
-    #authenticated user info is stored in request.user
-    user = request.user
-    
-    if not user.has_perm('Courses.update_course'):
-        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
+def course_update(request : Request, course_id):
+ 
+    try:
+        c = Course.objects.get(pk=course_id)
+        data = CoursesSerializer(instance=c, data=request.data,partial=True)
 
-    c = Course.objects.get(id=course_id)
-    data = CoursesSerializer(instance=c, data=request.data,partial=True)
+        if data.is_valid():
+            data.save()
+        else:
+            return Response({"msg" : "couldn't update", "errors" : data.errors})
 
-    if data.is_valid():
-        data.save()
-        return Response({"msg": "Course updated succefully!"}, status=status.HTTP_200_OK)
-    return Response({"msg" : "couldn't update", "errors" : data.errors})
+    except Exception as e:
+        return Response({"msg" : "couldn't find the course"}, status=status.HTTP_404_NOT_FOUND)
 
+    return Response({"msg": "Course updated succefully!"}, status=status.HTTP_200_OK)
 
 
 @api_view(["DELETE"])
