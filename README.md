@@ -1,68 +1,47 @@
-# DJANGO-PROJECT
-
-## Project Idea:
-The project idea is up to you as long as it applies all essential requirements.
-
-## Requirements 
-- Use Django REST Framework.
-- Create at least two apps inside your Django project.
-- Create at least two Models with a relationship.
-- Provide API endpoints for each service in your project (at least CRUD operations on each model) .
-- Use Postman to add , arrange , and test your project endpoints.
-- Use Django Auth for creating & managing users.
-- Use Django REST Framework Simple JWT for Authentication.
-- Write suitable HTTP status for your endpoints.
-- Commit your changes often to the repository (at least once everyday).
-- Export the project Postman Collections into a file and include it in the repository.
-
-
-# Example: 
-
-# Project Name: Learning Management System
+# Organizations tasks management
 
 ## Idea:
-A system to manage students learning journey. The system enable student to explore new courses, take courses, solve quizzes, etc. Moreover, the teachers can create new quizzes, follow student progress, etc.
+A system for managing the tasks of the organizations and its staff, while providing the most important features of the treatment
 
 ## Inspiration:
-Facilitate the learning process and the management of students and courses. 
+Facilitate the process of managing tasks and assigning them to the right people
 
 
 ## List of Services / Features:
 
-- Manage the students.
-- Manage the teachers.
-- Manage online courses easily!
-- Manage online assessments.
+- Possibility to divide employees into teams
+- Possibility to view all employees
+- Possibility to display employees of a particular team
+- The possibility of assigning a status to the task (completed, todo, in_progress)
+- View all tasks and filter by status
+- View the tasks of a specific team
+- Submit review requests to the team manager
+- Review the requests by team manager
 
 
-## User Stories
-- Type of users: Faculty, Teachers, and Students.
+## Users
+All types of users can have one or more of the same type in the same organization or team.<br>
+**That means**
+- It is **not possible** to create a team that does not have a manager
+- It is **not possible** to create a team that does not contain an employees
 
-### Faculty
+> Note
+- When you delete an organization, everything belonging to it will be erased
+- When an employee is deleted, he will not be deleted from the tasks he was in, but only his account status will be changed, but he will be erased from the teams in which he was
+- When a team is deleted, its members will not be erased, and the tasks it has accomplished will not be deleted, but only the team's status will be changed
+- When you delete a task, it will be erased only
 
-- Create, Read, Update, Delete teachers.
-- Create, Read, Update, Delete courses.
-- Create, Read, Update, Delete students.
+### Organization supervisor
+- Possibility to edit, delete the organization
+- Add, delete, edit employees
+- Add, delete, edit teams
+- Add, delete, edit tasks
 
-### Students
+### Team Manager
+- Add, delete members on the team
+- Assign, remove assignments task to specific people on the team
+- Change the status of the task
+- Review the tasks
 
-- View courses.
-- Join courses.
-- Withdraw from courses.
-- Edit information.
-- Take assignments.
-- Send Inquiries to teachers and faculties.
-- View joined courses.
-- View course information.
-- View student progress on a specific course.
-- Search for courses.
-
-### Teachers
-
-- View the teacher courses.
-- View the course information.
-- List joined student in the current course.
-- Add assignments to a specific course.
-- Add students grade in a specific course.
-- Search for a students in a specific course.
-- Get student information.
+### Team member
+- Request the manager to review a task
