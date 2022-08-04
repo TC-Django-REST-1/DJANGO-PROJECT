@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "1bce2df6-6360-49fb-b167-a773137b9ce3",
+		"name": "Workout_Hub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6745180"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "create_trainee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Khaled\", \"email\": \"Khaled@gmail.com\", \"password\": \"789\", \"te_phone\": \"0011121300\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/Users/trainee/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"Users",
+								"trainee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Khaled\", \"password\": \"#77pZx.8mAfF_sa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/Users/signin/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"Users",
+								"signin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_trainer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Rasha\", \"email\": \"Rasha@gmail.com\", \"password\": \"#77pZx.8mAfF_sa\", \"start_date\": \"2022-08-04\", \"end_date\": \"2022-09-04\", \"tr_phone\": \"0007891000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/Users/trainer/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"Users",
+								"trainer",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "view_courses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/Courses/courses/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"Courses",
+								"courses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register_trainee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjE2NjMxLCJpYXQiOjE2NTk2MjQ2MzEsImp0aSI6ImVlMTk1ZGQxZDAzYjQwOTI5ODllMzBlOWVkODY4ZmI0IiwidXNlcl9pZCI6Mjh9.BRksZVu4CacvzAeQH2p1JwLAEYS33UtjEwOtKqcdHDk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "trainee_id",
+								"value": "5",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"c_name\" : \"full course 2022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/Courses/register/5/?Authorization=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjE2NjMxLCJpYXQiOjE2NTk2MjQ2MzEsImp0aSI6ImVlMTk1ZGQxZDAzYjQwOTI5ODllMzBlOWVkODY4ZmI0IiwidXNlcl9pZCI6Mjh9.BRksZVu4CacvzAeQH2p1JwLAEYS33UtjEwOtKqcdHDk",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"Courses",
+								"register",
+								"5",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjE2NjMxLCJpYXQiOjE2NTk2MjQ2MzEsImp0aSI6ImVlMTk1ZGQxZDAzYjQwOTI5ODllMzBlOWVkODY4ZmI0IiwidXNlcl9pZCI6Mjh9.BRksZVu4CacvzAeQH2p1JwLAEYS33UtjEwOtKqcdHDk"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjAwMDU4LCJpYXQiOjE2NTk2MDgwNTgsImp0aSI6IjgxNzViYWJlZjYzZDQxNDA5NDEyMThlNWI0MWQzYTRmIiwidXNlcl9pZCI6Nn0.jYHMT6SSv7OgPMEy-na7bHjlk8vp9E9sKYJ6K08rfTE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"c_name\" : \"Upper exercises\", \"c_type\" : \"sports\", \"c_duration\" : \"432.00\", \"c_price\" : \"299.99\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/Courses/add/2/?Authorization=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjAwMDU4LCJpYXQiOjE2NTk2MDgwNTgsImp0aSI6IjgxNzViYWJlZjYzZDQxNDA5NDEyMThlNWI0MWQzYTRmIiwidXNlcl9pZCI6Nn0.jYHMT6SSv7OgPMEy-na7bHjlk8vp9E9sKYJ6K08rfTE",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"Courses",
+								"add",
+								"2",
+								""
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjAwMDU4LCJpYXQiOjE2NTk2MDgwNTgsImp0aSI6IjgxNzViYWJlZjYzZDQxNDA5NDEyMThlNWI0MWQzYTRmIiwidXNlcl9pZCI6Nn0.jYHMT6SSv7OgPMEy-na7bHjlk8vp9E9sKYJ6K08rfTE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "course_update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjI2NjEyLCJpYXQiOjE2NTk2MzQ2MTIsImp0aSI6IjU4YWYzNGQ2NDI2ZjRmZTdiZDBkMzY3M2M3OWYwMWM4IiwidXNlcl9pZCI6Nn0.pQBNIlfhMihxam3-k0s6EwCgxpD6D76P0tuIeiqFKoU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "course_id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"c_name\" : \"full course 2022 by Rasha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/Courses/update/1/?Authorization=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjI2NjEyLCJpYXQiOjE2NTk2MzQ2MTIsImp0aSI6IjU4YWYzNGQ2NDI2ZjRmZTdiZDBkMzY3M2M3OWYwMWM4IiwidXNlcl9pZCI6Nn0.pQBNIlfhMihxam3-k0s6EwCgxpD6D76P0tuIeiqFKoU",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"Courses",
+								"update",
+								"1",
+								""
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjI2NjEyLCJpYXQiOjE2NTk2MzQ2MTIsImp0aSI6IjU4YWYzNGQ2NDI2ZjRmZTdiZDBkMzY3M2M3OWYwMWM4IiwidXNlcl9pZCI6Nn0.pQBNIlfhMihxam3-k0s6EwCgxpD6D76P0tuIeiqFKoU"
+								},
+								{
+									"key": "course_id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjI2NjEyLCJpYXQiOjE2NTk2MzQ2MTIsImp0aSI6IjU4YWYzNGQ2NDI2ZjRmZTdiZDBkMzY3M2M3OWYwMWM4IiwidXNlcl9pZCI6Nn0.pQBNIlfhMihxam3-k0s6EwCgxpD6D76P0tuIeiqFKoU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/Courses/delete/3/?Authorization=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjI2NjEyLCJpYXQiOjE2NTk2MzQ2MTIsImp0aSI6IjU4YWYzNGQ2NDI2ZjRmZTdiZDBkMzY3M2M3OWYwMWM4IiwidXNlcl9pZCI6Nn0.pQBNIlfhMihxam3-k0s6EwCgxpD6D76P0tuIeiqFKoU",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"Courses",
+								"delete",
+								"3",
+								""
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjI2NjEyLCJpYXQiOjE2NTk2MzQ2MTIsImp0aSI6IjU4YWYzNGQ2NDI2ZjRmZTdiZDBkMzY3M2M3OWYwMWM4IiwidXNlcl9pZCI6Nn0.pQBNIlfhMihxam3-k0s6EwCgxpD6D76P0tuIeiqFKoU"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
