@@ -1,0 +1,485 @@
+{
+	"info": {
+		"_postman_id": "40241027-2b5e-4feb-909c-ce3068330a60",
+		"name": "tourism in Saudi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "citys",
+			"item": [
+				{
+					"name": "add city",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM1Njk0LCJpYXQiOjE2NTk2NDM2OTQsImp0aSI6IjE4N2NiNTY0NjdhYzQ4OGNiMGJjNGEzMTczODk3YjAyIiwidXNlcl9pZCI6MX0.eYosg9zQyKbpwNrBNcGqIWHP8zc1pvQCOtoDbWFQCRg",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Abha 3.0\",\n    \"region\": \"Asser\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/add/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"add",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all citys",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM1Njk0LCJpYXQiOjE2NTk2NDM2OTQsImp0aSI6IjE4N2NiNTY0NjdhYzQ4OGNiMGJjNGEzMTczODk3YjAyIiwidXNlcl9pZCI6MX0.eYosg9zQyKbpwNrBNcGqIWHP8zc1pvQCOtoDbWFQCRg",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update city",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM1Njk0LCJpYXQiOjE2NTk2NDM2OTQsImp0aSI6IjE4N2NiNTY0NjdhYzQ4OGNiMGJjNGEzMTczODk3YjAyIiwidXNlcl9pZCI6MX0.eYosg9zQyKbpwNrBNcGqIWHP8zc1pvQCOtoDbWFQCRg",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ula\",\n    \"region\": \"Medina\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/update/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"update",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete city",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM1Njk0LCJpYXQiOjE2NTk2NDM2OTQsImp0aSI6IjE4N2NiNTY0NjdhYzQ4OGNiMGJjNGEzMTczODk3YjAyIiwidXNlcl9pZCI6MX0.eYosg9zQyKbpwNrBNcGqIWHP8zc1pvQCOtoDbWFQCRg",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/delete/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"delete",
+								"7",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "places",
+			"item": [
+				{
+					"name": "add place",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM1Njk0LCJpYXQiOjE2NTk2NDM2OTQsImp0aSI6IjE4N2NiNTY0NjdhYzQ4OGNiMGJjNGEzMTczODk3YjAyIiwidXNlcl9pZCI6MX0.eYosg9zQyKbpwNrBNcGqIWHP8zc1pvQCOtoDbWFQCRg",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": 3,\n    \"name\": \"Mount Uhud\",\n    \"type\": 2,\n    \"image_url\": \"https://www.islamiclandmarks.com/wp-content/uploads/2020/04/Mount-Uhud-740x456.jpg\",\n    \"description\": \"non\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/places/add/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"places",
+								"add",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all places",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM1Njk0LCJpYXQiOjE2NTk2NDM2OTQsImp0aSI6IjE4N2NiNTY0NjdhYzQ4OGNiMGJjNGEzMTczODk3YjAyIiwidXNlcl9pZCI6MX0.eYosg9zQyKbpwNrBNcGqIWHP8zc1pvQCOtoDbWFQCRg",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/places/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"places",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update place",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM1Njk0LCJpYXQiOjE2NTk2NDM2OTQsImp0aSI6IjE4N2NiNTY0NjdhYzQ4OGNiMGJjNGEzMTczODk3YjAyIiwidXNlcl9pZCI6MX0.eYosg9zQyKbpwNrBNcGqIWHP8zc1pvQCOtoDbWFQCRg",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": 3,\n    \"name\": \"Mount Uhud 4.0\",\n    \"type\": 1,\n    \"image_url\": \"https://www.islamiclandmarks.com/wp-content/uploads/2020/04/Mount-Uhud-740x456.jpg\",\n    \"description\": \"non\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/places/update/9/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"places",
+								"update",
+								"9",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete place",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM1Njk0LCJpYXQiOjE2NTk2NDM2OTQsImp0aSI6IjE4N2NiNTY0NjdhYzQ4OGNiMGJjNGEzMTczODk3YjAyIiwidXNlcl9pZCI6MX0.eYosg9zQyKbpwNrBNcGqIWHP8zc1pvQCOtoDbWFQCRg",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/places/delete/11/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"places",
+								"delete",
+								"11",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Register new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ba22\",\n    \"email\": \"ba@gmail.com\",\n    \"password\": \"jfheiedw\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ba22\",\n    \"password\": \"jfheiedw\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "add comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM2ODE4LCJpYXQiOjE2NTk2NDQ4MTgsImp0aSI6IjdhMDdiZmZmZTRjYjQyOTY4NTk0NDQwODE3Nzk1ODU4IiwidXNlcl9pZCI6Mn0.9Rc0qN2bRosiCwkncuXJdqVTkuRxeTKhvk0-4S40b7E",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"place\": 1,\n    \"user\": 1,\n    \"content\": \"ancient place with great historical information!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/places/comments/add/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"places",
+								"comments",
+								"add",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all comments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM2NjM2LCJpYXQiOjE2NTk2NDQ2MzYsImp0aSI6ImIxOTcwZDg4NjdmMTQ0ZDk5NjNkOWY3NzM0OGI0NzM1IiwidXNlcl9pZCI6Mn0.g5YKpIgWtp8MBpfxnipZNMHpZjdU6ejPA4HCXbxKb9E",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/places/comments/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"places",
+								"comments",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMjM2NjM2LCJpYXQiOjE2NTk2NDQ2MzYsImp0aSI6ImIxOTcwZDg4NjdmMTQ0ZDk5NjNkOWY3NzM0OGI0NzM1IiwidXNlcl9pZCI6Mn0.g5YKpIgWtp8MBpfxnipZNMHpZjdU6ejPA4HCXbxKb9E",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/city/places/comments/delete/4/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"city",
+								"places",
+								"comments",
+								"delete",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
