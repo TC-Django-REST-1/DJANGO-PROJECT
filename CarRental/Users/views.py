@@ -6,7 +6,7 @@ from rest_framework.request import Request
 from rest_framework import status
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-
+from django.contrib.auth.models import Group
 from rest_framework_simplejwt.tokens import AccessToken
 
 
@@ -21,6 +21,8 @@ def register_user(request : Request):
     try:
         user = User.objects.create_user(username, email, password)
         user.save()
+        defualtGroup = Group.objects.get(name='defualtGroup')
+        defualtGroup.user_set.add(user)
     except Exception as e:
         return Response({"msg" : "Couldn't Create user", "error" : str(e)})
 

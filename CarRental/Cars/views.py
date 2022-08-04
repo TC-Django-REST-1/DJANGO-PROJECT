@@ -11,12 +11,23 @@ from .models import Branch
 from .models import Car
 from .models import reservedCar
 
+from rest_framework.decorators import authentication_classes, permission_classes
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
 
-# Branch Section 
+#region Branch  
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def create_Branch(request : Request):
+    user = request.user
 
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.add_Branch'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     Branch_serializer = BranchSerializer(data=request.data)
 
     if Branch_serializer.is_valid():
@@ -29,7 +40,15 @@ def create_Branch(request : Request):
 
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def list_Branchs(request : Request):
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.view_branch'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     try:
         if "branch_id" in request.query_params:
             branch=Branch.objects.get(id=request.query_params["branch_id"])
@@ -44,8 +63,15 @@ def list_Branchs(request : Request):
 
 
 @api_view(['PUT'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def update_Branch(request : Request, branch_id):
-
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.change_branch'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     try:
         branch = Branch.objects.get(id=branch_id)
     except Exception as e:
@@ -62,8 +88,15 @@ def update_Branch(request : Request, branch_id):
 
 
 @api_view(['DELETE'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def delete_Branch(request : Request, branch_id):
-
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.delete_branch'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     try:
         branch = Branch.objects.get(id=branch_id)
         branch.delete()
@@ -72,12 +105,20 @@ def delete_Branch(request : Request, branch_id):
 
     return Response({"msg" : "Branch Deleted successfully"})
 
+#endregion
 
-# Car Section 
+#region Car  
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def create_car(request : Request):
-
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.add_car'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     car_serializer = CarSerializer(data=request.data)
 
     if car_serializer.is_valid():
@@ -90,8 +131,15 @@ def create_car(request : Request):
 
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def list_car(request : Request):
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
     
+    if not user.has_perm('Cars.view_car'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     try:
         if "branch_id" in request.query_params:
             car=Car.objects.filter(branch_id=request.query_params["branch_id"])
@@ -110,8 +158,15 @@ def list_car(request : Request):
 
 
 @api_view(['PUT'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def update_car(request : Request, car_id):
-
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.change_car'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     try:
         car = Car.objects.get(id=car_id)
     except Exception as e:
@@ -128,8 +183,15 @@ def update_car(request : Request, car_id):
 
 
 @api_view(['DELETE'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def delete_car(request : Request, car_id):
-
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.delete_car'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
     try:
         car = Car.objects.get(id=car_id)
         car.delete()
@@ -138,21 +200,29 @@ def delete_car(request : Request, car_id):
 
     return Response({"msg" : "Car Deleted successfully"})
 
+#endregion
 
-# Car Reserved Section 
+#region Car Reserved  
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def create_reservedCar(request : Request):
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.add_reservedCar'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
 
     reservedCar_serializer = reservedCarSerializer(data=request.data)
-    car=Car.objects.get(request.data["car_id"])
-
+    car=Car.objects.get(id=request.data["car"])
     if reservedCar_serializer.is_valid():
-        if not car.is_available:
+        if  car.is_available:
             reservedCar_serializer.save()
             car.is_available=False
-            Car_serializer= CarSerializer(data=car)
-            Car_serializer.save()
+            car.save()
+            
         else:
             return Response({"msg" : "Car is not vailable, couldn't reserve the car", "errors" : reservedCar_serializer.errors}, status=status.HTTP_403_FORBIDDEN)
 
@@ -164,18 +234,35 @@ def create_reservedCar(request : Request):
 
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def list_reservedCar(request : Request):
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.view_reservedCar'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
+
     if "user_id" in request.query_params:
-        cars=reservedCar.objects.get(user=request.query_params["user_id"])
+        cars=reservedCar.objects.filter(user=request.query_params["user_id"])
     else:
         cars=reservedCar.objects.all()
 
-    reservedCar_data = reservedCarSerializer(instance=cars).data
+    reservedCar_data = reservedCarSerializer(instance=cars, many= True).data
     return Response({"msg" : "list of all reserved Cars", "Cars" : reservedCar_data})
 
 
 @api_view(['PUT'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def update_reservedCar(request : Request, car_id):
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.change_reservedCar'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
 
     try:
         car = reservedCar.objects.get(id=car_id)
@@ -193,17 +280,25 @@ def update_reservedCar(request : Request, car_id):
 
 
 @api_view(['DELETE'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def delete_reservedCar(request : Request, car_id):
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('Cars.delete_reservedCar'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
 
     try:
         Deletedcar = reservedCar.objects.get(id=car_id)
+        car=Car.objects.get(id=Deletedcar.car_id)
         Deletedcar.delete()
-        car=Car.objects.get(request.data["car_id"])
         car.is_available=True
-        Car_serializer= CarSerializer(data=car)
-        Car_serializer.save()
+        car.save()
     except Exception as e:
         return Response({"msg" : "This car is not found in the list of reserved Cars"}, status=status.HTTP_404_NOT_FOUND)
 
     return Response({"msg" : "Car Deleted successfully"})
     
+#endregion
