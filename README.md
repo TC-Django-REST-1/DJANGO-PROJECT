@@ -34,7 +34,7 @@ Assisting companies in carrying out their business in an official manner, and pr
 
 
 ## User Stories
-- Type of users: Adminstration, Companies,Employees, and Consumer.
+- Type of users: Adminstration, Companies and Employees.
 
 ### Adminstration
 
