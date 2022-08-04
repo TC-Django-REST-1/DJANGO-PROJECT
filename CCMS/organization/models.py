@@ -1,6 +1,7 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
+
 #Adminstration OR orgnization
 class Adminstration(models.Model):
     username = models.CharField(max_length=512)
@@ -30,19 +31,17 @@ class Service(models.Model):
     service_steps = models.TextField()
 
 class Company(models.Model):
-    admin = models.ForeignKey(Adminstration, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=512)
     email = models.EmailField()
-    password = models.CharField(max_length=512)
     commercial_Id = models.CharField(max_length=128)
     mobile_number = models.CharField(max_length=128)
     address = models.CharField(max_length=128)
 
 # class requset 
-# requiset must be from comapny 
-class Requset(models.Model):
+class ManageRequset(models.Model):
     service  = models.ForeignKey(Service, on_delete=models.CASCADE)
-    company =  models.ForeignKey(Company, on_delete=models.CASCADE)
+    user =  models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add = True)# defult value timezone
 
 
