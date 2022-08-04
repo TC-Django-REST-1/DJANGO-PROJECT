@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("users/", include("users.urls")),
     path("brand/", include('category.urls')),
-    # order
+    path("order/", include('order.urls')),
 ]

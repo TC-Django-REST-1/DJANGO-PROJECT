@@ -41,7 +41,7 @@ def add_brand(request : Request) -> Response :
 def show_brand(request : Request) -> Response :
 
     brand = Brand.objects.order_by('-id').all()
-      
+
     try:
 
         brands = SerializerBrand(brand, many=True).data
@@ -50,7 +50,7 @@ def show_brand(request : Request) -> Response :
 
     except Exception as e:
 
-      return Response({"msg" : "rejected request please check your entities"})
+        return Response({"msg" : "rejected request please check your entities"})
 
 
 @api_view(['PUT'])
@@ -117,9 +117,9 @@ def add_product(request : Request) -> Response :
 @api_view(['GET'])
 def show_products(request : Request) -> Response :
 
-    product = Product.objects.order_by('-id').all()
-      
+
     try:
+        product = Product.objects.order_by('-id').all()
 
         products = SerializerProduct(product, many=True).data
         
@@ -127,4 +127,4 @@ def show_products(request : Request) -> Response :
 
     except Exception as e:
 
-      return Response({"msg" : "rejected request please check your entities"})
+        return Response({"msg" : "rejected request please check your entities"})

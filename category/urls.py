@@ -10,6 +10,4 @@ urlpatterns = [
     path("delete/<int:brand_id>", views.delete_brand, name="delete_brand"),
     path("product/add/", views.add_product, name="add_product"),
     path("product/all/", views.show_products, name="show_products"),
-    
-
 ]
