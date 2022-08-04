@@ -1,6 +1,5 @@
-from itertools import product
+
 import json
-import traceback
 from django.db import IntegrityError
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -167,18 +166,31 @@ def list_Products(request: Request):
 @ api_view(['PUT'])
 def update_product(request: Request, product_id: str):
 
-    data_obj = Product.objects.filter(id=product_id)
-    if not list(data_obj.values_list()) == []:
-        data = ProductSerializer(data_obj, request.data)
-        if data.is_valid():
-            print("dsvsodvmsidmvsmvd")
-            data.save()
-            return Response({"msg": "Your prodect is updated!", "Details": data.data})
+    try:
+        brand = Brand.objects.get(brand_name=request.data.get('brand_name'))
+        product_name = request.data.get('product_name')
+        type = request.data.get('type') or "Food"
+        description = request.data.get('description') or ""
+        image_url = request.data.get('image_url') or ""
+        price = request.data.get('price') or 0.0
+        quantity = request.data.get('quantity') or 1
+        is_active = request.data.get('is_active') or True
+
+        data_obj = Product.objects.filter(id=product_id)
+        if not list(data_obj.values_list()) == []:
+            data_obj.update(brand=brand, product_name=product_name,
+                            type=type, description=description, image_url=image_url, price=price,
+                            quantity=quantity, is_active=is_active)
+            data = Product.objects.filter(id=product_id).values()
+
+            return Response({"msg": "Your prodect is updated!", "Details":
+                                 data.values()},status=status.HTTP_202_ACCEPTED)
+
         else:
-            print(data.errors)
-            return Response({"msg": data.errors})
-    else:
-        return Response({"msg": f" The ID [ {product_id} ] for the product is not Found "})
+            return Response({"msg": f" The ID [ {product_id} ] for the product is not Found "})
+    except Exception as e:
+
+        return Response({"msg": json.dumps(str(e))})
 
 
 @ api_view(["DELETE"])
@@ -187,7 +199,7 @@ def delete_product(request: Request, product_id):
     try:
         product = Product.objects.filter(id=product_id)
         temp = list(product.values_list())
-        if not temp ==[]:
+        if not temp == []:
             print(temp)
             product.delete()
             return Response({"msg": f"delete the following product {temp} Sucssesfuly"})
@@ -195,6 +207,3 @@ def delete_product(request: Request, product_id):
             return Response({"msg": f"The product is not Found!"})
     except Exception as e:
         print(e)
-        
-
-   

@@ -24,10 +24,16 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n            \r\n            \"brand_name\": \"taif mashed\",\r\n            \"established_at_Year\": 1995,\r\n            \r\n        }",
+							"raw": "{\r\n            \r\n            \"brand_name\": \"Al-baik\",\r\n            \"established_at_Year\": 1995\r\n            \r\n        }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -35,14 +41,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{base_url}}:8000/pruduct/brand/create",
+							"raw": "http://{{base_url}}:8000/store/brand/create",
 							"protocol": "http",
 							"host": [
 								"{{base_url}}"
 							],
 							"port": "8000",
 							"path": [
-								"pruduct",
+								"store",
 								"brand",
 								"create"
 							]
@@ -75,12 +81,12 @@
 								},
 								{
 									"key": "get",
-									"value": "",
+									"value": "3",
 									"disabled": true
 								},
 								{
 									"key": "search",
-									"value": "aa",
+									"value": "Taif",
 									"disabled": true
 								}
 							]
@@ -92,44 +98,34 @@
 					"name": "Update Brand",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "title",
-									"value": "ALBAIK",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Best FastFood",
-									"type": "text"
-								},
-								{
-									"key": "established_at",
-									"value": "2000-02-01",
-									"type": "text"
-								},
-								{
-									"key": "city",
-									"value": "Taif",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n            \r\n            \"brand_name\": \"d\",\r\n            \"established_at_Year\": 1925\r\n            \r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
-							"raw": "http://{{base_url}}:8000/eCommerce/Brand/update/ALBAIK",
+							"raw": "http://{{base_url}}:8000/store/brand/update/Al-baik",
 							"protocol": "http",
 							"host": [
 								"{{base_url}}"
 							],
 							"port": "8000",
 							"path": [
-								"eCommerce",
-								"Brand",
+								"store",
+								"brand",
 								"update",
-								"ALBAIK"
+								"Al-baik"
 							]
 						}
 					},
@@ -139,19 +135,25 @@
 					"name": "Delete Brand",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://{{base_url}}:8000/eCommerce/Brand/delete/aabb",
+							"raw": "http://{{base_url}}:8000/store/brand/delete/d",
 							"protocol": "http",
 							"host": [
 								"{{base_url}}"
 							],
 							"port": "8000",
 							"path": [
-								"eCommerce",
-								"Brand",
+								"store",
+								"brand",
 								"delete",
-								"aabb"
+								"d"
 							]
 						}
 					},
@@ -177,10 +179,16 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"brand_name\":\"Al-baik\",\r\n\"product_name\":\"milk Juice\",\r\n\"type\":\"Juice\",\r\n\"description\":\"Also available as a combo with fries and soft drink\",\r\n\"image_url\":\"https://www.albaik.com/media/thumbnail/content-image-220x165/a8212229aed4a0290459c1280041068d/20120723_Chicken-Fillet-Sandwich-Thumb-1.png\",\r\n\"price\":5.5,\r\n\"quantity\":200,\r\n\"is_active\": \"True\"\r\n\r\n}",
+							"raw": "{\r\n\"brand_name\":\"Al-baik\",\r\n\"product_name\":\"milk\",\r\n\"type\":\"Juice\",\r\n\"description\":\"Also available as a combo with fries and soft drink\",\r\n\"image_url\":\"https://www.albaik.com/media/thumbnail/content-image-220x165/a8212229aed4a0290459c1280041068d/20120723_Chicken-Fillet-Sandwich-Thumb-1.png\",\r\n\"price\":5.5,\r\n\"quantity\":200,\r\n\"is_active\": \"True\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -245,10 +253,16 @@
 					"name": "Update Product",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"brand_name\":\"Al-baik\",\r\n\"product_name\":\"milk Juice\",\r\n\"type\":\"Juice\",\r\n\"description\":\"Also available as a combo with fries and soft drink\",\r\n\"image_url\":\"https://www.albaik.com/media/thumbnail/content-image-220x165/a8212229aed4a0290459c1280041068d/20120723_Chicken-Fillet-Sandwich-Thumb-1.png\",\r\n\"price\":5.5,\r\n\"quantity\":200,\r\n\"is_active\": \"True\"\r\n\r\n}",
+							"raw": "{\r\n\"brand_name\":\"Al-baik\",\r\n\"product_name\":\"Chicken\",\r\n\"type\":\"Food\",\r\n\"description\":\"Great\",\r\n\"image_url\":\"https://www.albaik.com/media/thumbnail/content-image-220x165/a8212229aed4a0290459c1280041068d/20120723_Chicken-Fillet-Sandwich-Thumb-1.png\",\r\n\"price\":5.5,\r\n\"quantity\":2,\r\n\"is_active\": \"True\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -256,7 +270,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{base_url}}:8000/store/product/update/1",
+							"raw": "http://{{base_url}}:8000/store/product/update/3",
 							"protocol": "http",
 							"host": [
 								"{{base_url}}"
@@ -266,7 +280,7 @@
 								"store",
 								"product",
 								"update",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -276,9 +290,15 @@
 					"name": "Delete Product",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://{{base_url}}:8000/store/product/delete/8",
+							"raw": "http://{{base_url}}:8000/store/product/delete/1",
 							"protocol": "http",
 							"host": [
 								"{{base_url}}"
@@ -288,7 +308,7 @@
 								"store",
 								"product",
 								"delete",
-								"8"
+								"1"
 							]
 						}
 					},
@@ -343,7 +363,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{base_url}}:8000/user/iogin",
+							"raw": "http://{{base_url}}:8000/user/login",
 							"protocol": "http",
 							"host": [
 								"{{base_url}}"
@@ -351,7 +371,7 @@
 							"port": "8000",
 							"path": [
 								"user",
-								"iogin"
+								"login"
 							]
 						}
 					},
