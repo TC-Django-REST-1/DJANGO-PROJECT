@@ -3,66 +3,33 @@
 ## Project Idea:
 The project idea is up to you as long as it applies all essential requirements.
 
-## Requirements 
-- Use Django REST Framework.
-- Create at least two apps inside your Django project.
-- Create at least two Models with a relationship.
-- Provide API endpoints for each service in your project (at least CRUD operations on each model) .
-- Use Postman to add , arrange , and test your project endpoints.
-- Use Django Auth for creating & managing users.
-- Use Django REST Framework Simple JWT for Authentication.
-- Write suitable HTTP status for your endpoints.
-- Commit your changes often to the repository (at least once everyday).
-- Export the project Postman Collections into a file and include it in the repository.
-
-
-# Example: 
-
-# Project Name: Learning Management System
+# Project Name: Workout Management System
 
 ## Idea:
-A system to manage students learning journey. The system enable student to explore new courses, take courses, solve quizzes, etc. Moreover, the teachers can create new quizzes, follow student progress, etc.
+WorkoutHub is a gym site that contains trainers and courses (nutritional, sports,or sports and nutrition together). It enables trainees to participate in the courses they desire, which makes the task of committing to sports and healthy food easier for several reasons, including:(1) Closing gymfor any of the reasons, including COVID-19, will not be a stopping factor for the trainee, (2) No need to provide transportation, (3)The exercises are not time-limited and can be done whenever you want.
 
 ## Inspiration:
-Facilitate the learning process and the management of students and courses. 
+Given the dangers of obesity on health and to reinforce the importance of sports and healthy food to eliminate obesity, and to acquire healthy habits that change our lives for better,I will work on a WorkoutHub project. 
 
 
 ## List of Services / Features:
 
-- Manage the students.
-- Manage the teachers.
+- Manage the Trainers.
+- Manage the Trainees.
 - Manage online courses easily!
-- Manage online assessments.
 
 
 ## User Stories
-- Type of users: Faculty, Teachers, and Students.
+- Type of users: Trainers, Trainees
 
-### Faculty
+### Trainers
 
-- Create, Read, Update, Delete teachers.
-- Create, Read, Update, Delete courses.
-- Create, Read, Update, Delete students.
+- Create, Read, Update, Delete Course.
+- - Search for courses.
+- Create, Delete Account.
 
-### Students
+### Trainees
 
 - View courses.
 - Join courses.
-- Withdraw from courses.
-- Edit information.
-- Take assignments.
-- Send Inquiries to teachers and faculties.
-- View joined courses.
-- View course information.
-- View student progress on a specific course.
 - Search for courses.
-
-### Teachers
-
-- View the teacher courses.
-- View the course information.
-- List joined student in the current course.
-- Add assignments to a specific course.
-- Add students grade in a specific course.
-- Search for a students in a specific course.
-- Get student information.
