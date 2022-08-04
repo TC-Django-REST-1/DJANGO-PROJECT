@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "d7d070f6-7224-47ee-91ff-78340fed8e4c",
+		"name": "sport gathring app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22373156"
+	},
+	"item": [
+		{
+			"name": "gathring app",
+			"item": [
+				{
+					"name": "get all gathring",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Sort by",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/gather/sort/?skip=0&get=10&sport=paddel&just_females&city",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"gather",
+								"sort",
+								""
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "get",
+									"value": "10"
+								},
+								{
+									"key": "sport",
+									"value": "paddel"
+								},
+								{
+									"key": "just_females",
+									"value": null
+								},
+								{
+									"key": "city",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new gather",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjAwOTgyLCJpYXQiOjE2NTk2MDA2ODIsImp0aSI6IjJhYWExYzRjY2NmODQ5NGM5OWZjMWRmNTg4ODI3MmYzIiwidXNlcl9pZCI6Mn0.0enFOZ2qj9iuls_B0FQ4pCr-EttQRcc7ImJR942Bwxc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sport\": \"swimming\",\n    \"maxLimit\": 8,\n    \"currentPlayers\": 3,\n    \"justFemales\": false,\n    \"matchDateTime\": \"2022-8-3 20:50\",\n    \"cost\": 40.00,\n    \"city\": \"Riyadh\",\n    \"location\": \"https://goo.gl/maps/U9A4a9yG495AFucE7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/gather/add/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"gather",
+								"add",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update gather",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NTg4Mzk4LCJpYXQiOjE2NTk1ODgwOTgsImp0aSI6IjAyODQ3NGMxZmFhODQyZDE5NjQ5ODY4NzcwZjM1OWQ0IiwidXNlcl9pZCI6Mn0.40OaghSYkBdDPdYAP_M2Smh35H4RJaOrWhxJqz3Veag",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sport\": \"football\",\n    \"maxLimit\": 4,\n    \"currentPlayers\": 2,\n    \"justFemales\": false,\n    \"matchDateTime\": \"2022-10-25 20:30\",\n    \"cost\": 25.50,\n    \"city\": \"Riyadh\",\n    \"location\": \"https://goo.gl/maps/U9A4a9yG495AFucE7\",\n    \"leaderPhoneNumber\": \"966568712266\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/gather/update/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"gather",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete gather",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NTg4ODQzLCJpYXQiOjE2NTk1ODg1NDMsImp0aSI6ImQ5ZmNjMGM3N2M2NzRmZDg4NGUyNTYzMzU0NDI4YmU3IiwidXNlcl9pZCI6Mn0.j0bxjYK9M7SPUpAlcaaQGOHWasjdNJ_eJABk_LBEJqE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/gather/delete/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"gather",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Join gather",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NTkwMDkzLCJpYXQiOjE2NTk1ODk3OTMsImp0aSI6IjlkMzZlZmZjMGUzYzQxYzViZmQ3NzU3NDQ4YTcyZTQ3IiwidXNlcl9pZCI6Mn0.R_9f-UYsIWN7Y3K7NXbdVI0bsmy1C6mvwhIktm68RrM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/gather/join/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"gather",
+								"join",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"nawafSh\",\n    \"password\": \"0568712266\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Place",
+			"item": [
+				{
+					"name": "Add Place",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjExNjQ1LCJpYXQiOjE2NTk2MTEzNDUsImp0aSI6ImRmNGE0OWM1ZmM0NDRlYjM4NWRjZjNlMGU0YTIxMWIxIiwidXNlcl9pZCI6MX0.Ja0j7tcX24F6odvgCpMbZgT2q1LC8DcfsYgVuKCBYSI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"paddel court\",\n    \"contactInfo\": \"966568715566\",\n    \"bookedAt\": \"2022-8-3\" \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/booking/add/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"booking",
+								"add",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update place",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjEzNTYwLCJpYXQiOjE2NTk2MTMyNjAsImp0aSI6ImI1NDZlODJjMWQwNjQ3Nzg5YjIxNjY3YzcwZTYwMjU0IiwidXNlcl9pZCI6MX0.sqxH-nLJEOINhcC64DiXs84dDWHazr6btOtSlx2V3B8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"paddel court\",\n    \"contactInfo\": \"966568715566\",\n    \"bookedAt\": \"2022-8-3\" \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/booking/update/13",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"booking",
+								"update",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all plaices",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Delete place",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjEzOTU1LCJpYXQiOjE2NTk2MTM2NTUsImp0aSI6ImY4OTNkZjZiNTFjODQyOWU4MDZlZDM2NDI5MDBkNjM4IiwidXNlcl9pZCI6MX0.L-_XLe1_GKQziJH1Q6Oq1FSROAD6SJxXlE4FagpqmEY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/booking/delete/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"booking",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
