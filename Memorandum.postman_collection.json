@@ -1,0 +1,307 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Memorandum",
+		"_postman_id": "9f695137-c10d-7688-04b4-b56df12384cd",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "memos",
+			"description": "",
+			"item": [
+				{
+					"name": "Category",
+					"description": "",
+					"item": [
+						{
+							"name": "list-categories",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/ctgry/list/",
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "create category",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/ctgry/add/",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authentication",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYwMDY3MzUzLCJpYXQiOjE2NTk2MzUzNTMsImp0aSI6ImY5MDE5ZDc2OWY2NjQ2ZTE5NGRkMDFkNGM3MWYwNzNlIiwidXNlcl9pZCI6MX0.de8gBksSUuNJ9FfgnfIUfVtRsNby7OFA5bUWedq0HOQ",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"user\": 1,\n\t\"name\": \"Courses I already completed\",\n\t\"description\": \"Some courses I completed name to put them in resume\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "update category",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/ctgry/update/1/",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Restfull API\",\n\t\"description\": \"Use the Django REST Framework to facilitate API development in the Django project efficiently.\",\n\t\"user\": 1\n\t\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "delete category",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/ctgry/del/4/",
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Restfull API\",\n\t\"description\": \"Use the Django REST Framework to facilitate API development in the Django project efficiently.\"\n\t\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Task",
+					"description": "",
+					"item": [
+						{
+							"name": "list tasks",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/task/list/",
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"description": "",
+										"disabled": true
+									}
+								],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "add task",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/task/add/",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"cate_id\": 3,\n\t\"title\": \"Provide API endpoints\",\n\t\"description\": \"The requirement is: Provide API endpoints for each service in the project (at least CRUD operations on each model).\",\n\t\"deadline\": \"2022-08-08\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "update task",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/task/update/4/",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"cate_id\": 1,\n\t\"title\": \"Provide API endpoints\",\n\t\"description\": \"The requirement is: Provide API endpoints for each service in the project (at least CRUD operations on each model).\",\n\t\"deadline\": \"2022-08-07\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "delete task",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/task/del/5/",
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"cate_id\": 1,\n\t\"title\": \"Provide API endpoints\",\n\t\"description\": \"The requirement is: Provide API endpoints for each service in your project (at least CRUD operations on each model).\",\n\t\"deadline\": \"2022-08-07\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Comment",
+					"description": "",
+					"item": [
+						{
+							"name": "list comments",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/cmnt/list/",
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"description": "",
+										"disabled": true
+									}
+								],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "add comment",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/cmnt/add/",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"task_id\":2,\n\t\"content\": \"Write suitable HTTP status for each endpoints.\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "update comment",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/cmnt/update/2/",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"task_id\":2,\n\t\"content\": \"Created three Models with a relationship between them (category, task, comment).\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "delete comment",
+							"request": {
+								"url": "http://127.0.0.1:8000/memo/cmnt/del/3/",
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "users",
+			"description": "",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"url": "http://127.0.0.1:8000/user/register/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"Omar GH\",\n\t\"email\": \"Omar@email.com\",\n\t\"password\": \"Omar1234\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"url": "http://127.0.0.1:8000/user/login/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"MahaMG\",\n\t\"email\": \"Maha@email.com\",\n\t\"password\": \"Maha1234\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

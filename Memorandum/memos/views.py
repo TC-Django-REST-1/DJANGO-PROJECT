@@ -8,6 +8,7 @@ from .serializers import CategorySerializers, TaskSerializers, CommentSerializer
 from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -23,18 +24,16 @@ def list_category(request: Request):
 
 
 @api_view(["POST"])
-@authentication_classes([JWTAuthentication])
-@permission_classes([IsAuthenticated])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAuthenticated])
 def create_category(request: Request):
     
-    user = request.user
-
-    if not user.is_authenticated:
-        return Response({"msg" : "Please Log In"})
-    
-    if not user.has_perm('books.add_book'):
-        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
-
+    # user = request.user
+    # if not user.is_authenticated:
+    #     return Response({"msg" : "Please Log In"}, status=status.HTTP_401_UNAUTHORIZED)
+    # if not user.has_perm('memos.create_category'):
+    #     return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
+    # request.data['user'] = user
 
     cate_serializer = CategorySerializers(data=request.data)
 
@@ -48,6 +47,8 @@ def create_category(request: Request):
 
 
 @api_view(["PUT"])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAuthenticated])
 def update_category(request: Request, cate_id):
     try:
         category = Category.objects.get(id=cate_id)
@@ -65,10 +66,12 @@ def update_category(request: Request, cate_id):
 
 
 @api_view(["DELETE"])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAuthenticated])
 def del_category(request: Request, cate_id):
 
     try:
-        category = category.objects.get(id=cate_id)
+        category = Category.objects.get(id=cate_id)
         category.delete()
     except Exception as e:
         return Response({"msg": "This category does not exist!"}, status=status.HTTP_404_NOT_FOUND)
@@ -90,6 +93,8 @@ def list_task(request: Request):
 
 
 @api_view(["POST"])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAuthenticated])
 def add_task(request: Request):
 
     task_serializer = TaskSerializers(data=request.data)
@@ -104,6 +109,8 @@ def add_task(request: Request):
 
 
 @api_view(["PUT"])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAuthenticated])
 def update_task(request: Request, task_id):
 
     try:
@@ -122,6 +129,8 @@ def update_task(request: Request, task_id):
 
 
 @api_view(["DELETE"])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAuthenticated])
 def del_task(request: Request, task_id):
 
     try:
@@ -147,6 +156,8 @@ def list_comment(request: Request):
 
 
 @api_view(["POST"])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAuthenticated])
 def add_comment(request: Request):
 
     comment_serializer = CommentSerializer(data=request.data)
@@ -161,6 +172,8 @@ def add_comment(request: Request):
 
 
 @api_view(["PUT"])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAuthenticated])
 def update_comment(request: Request, cmnt_id):
 
     try:
@@ -179,6 +192,8 @@ def update_comment(request: Request, cmnt_id):
 
 
 @api_view(["DELETE"])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAuthenticated])
 def del_comment(request: Request, cmnt_id):
 
     try:

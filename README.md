@@ -30,3 +30,8 @@ Each user has all the permissions with his Memorandum.
 ## Future development plan:
 - User can upload attachments.
 - Share the category or task with others.
+- Work on authorizations and permission.
+
+##
+
+I had some difficulties with the requirement "Use Django REST Framework Simple JWT for Authentication." I need more time to understand it, solve it and work on developing it.
