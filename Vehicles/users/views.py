@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework import status
 
-from .serializers import UserSerilizer
+from .serializers import UserSerilizer,UserEmailSerilizer
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -79,3 +79,30 @@ def users_list(request: Request):
         user = User.objects.order_by("-id").all()[skip:get]
     data = UserSerilizer(user, many=True).data
     return Response(data, status=status.HTTP_200_OK)
+
+
+@api_view(['DELETE'])
+def remove_user(request: Request, user_id):
+    try:
+        brand = User.objects.get(id = user_id)
+        brand.delete()
+    except Exception as e:
+        return Response({"msg" : f"The user with ID No:{user_id} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
+
+    return Response({"msg" : f"The user with ID No:{user_id} has been deleted successfully"}, status=status.HTTP_200_OK)
+
+
+@api_view(['PUT'])
+def update_email(request: Request, user_id):
+    try:
+        user = User.objects.get(id = user_id)
+        print(user)
+        data = UserEmailSerilizer(instance=user, data=request.data)
+        print(data)
+        if data.is_valid():
+            data.save()
+            return Response({"msg" : "Email updated successfully "}, status=status.HTTP_200_OK)
+        else:
+            return Response({"msg" : "couldn't update the email", "errors" : data.errors}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e :
+        return Response({"msg" : f"The user with ID No:{user_id} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
