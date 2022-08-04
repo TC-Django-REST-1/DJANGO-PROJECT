@@ -3,26 +3,13 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework import status
 
-from .serializers import UserSerilizer#,UserpasswordSerilizer
+from .serializers import UserSerilizer
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import AccessToken
 
 import re
-import hashlib
-
-# User._meta.get_field('email')._unique = True
-
-# def hasher(password):
-#     """ This function is to calculate the hash based on sha256 algorithm by passing the 'password' from the user and save
-#     it as hash """
-
-#     hasher = hashlib.sha256()  # To initialize a variable that uses sha256 algorithm for hashing
-#     hasher.update(password)  # Add the new part to the hasher for applying the sha256 on it
-#     output = hasher.hexdigest()  # Is the method to give the hashing result in hexadecimal type
-#     return output  # Return the result as hexadecimal code
-
 
 
 email_pattern = re.compile(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')
@@ -35,7 +22,6 @@ def email_validation(email):
         return None
 
 
-
 @api_view(['POST'])
 def register_user(request : Request):
     '''This function is designed to take only email and password, if the e-mail is valid, the username will
@@ -45,12 +31,13 @@ def register_user(request : Request):
     email = request.data.get("email")
     password = request.data.get("password")
 
+
     email_result = email_validation(email)
-    print(email_result)
+    # print(email_result)
+
 
     if email_result == "Valid Email":
         username = email
-
     else:
         return Response({"msg" : "Couldn't Create a new user, e-mail is not valid "})
     
@@ -64,9 +51,6 @@ def register_user(request : Request):
     return Response({"msg" : "User Created Successfuly"}, status=status.HTTP_201_CREATED)
 
 
-
-
-
 @api_view(['POST'])
 def login_user(request : Request):
 
@@ -77,16 +61,13 @@ def login_user(request : Request):
 
     if user is None:
         return Response({"msg" : "user not found. Please check your credentials"}, status=status.HTTP_403_FORBIDDEN)
-    
     token = AccessToken.for_user(user)
-
     return Response({"msg" : "You are authenticated successfully!", "token" : str(token)})
 
 
 
 @api_view(['GET'])
 def users_list(request: Request):
-
     if "search" in request.query_params:
         search_phrase = request.query_params["search"]
         skip = int(request.query_params.get("skip", 0))
@@ -96,23 +77,5 @@ def users_list(request: Request):
         skip = int(request.query_params.get("skip", 0))
         get = int(request.query_params.get("get", 10))
         user = User.objects.order_by("-id").all()[skip:get]
-
     data = UserSerilizer(user, many=True).data
     return Response(data, status=status.HTTP_200_OK)
-
-
-# @api_view(['PUT'])
-# def update_password(request : Request, user_id):
-#     try:
-#         user = User.objects.get(id = user_id)
-
-#         password = request.data["password"]
-
-#         user = User.objects.get(id=user_id)
-
-#         user.password = hasher(password.encode('utf-8'))
-#         user.save()
-
-#         return Response({"msg" : "user password updated successfully, saved as a hash password !!!"}, status=status.HTTP_200_OK)
-#     except Exception:
-#         return Response({"msg" : f"The user with ID No:{user_id} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
