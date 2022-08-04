@@ -24,8 +24,10 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+
 class UserDataSerializer(serializers.ModelSerializer):
     todos = TodoSerializer(many=True)
+
     class Meta:
         model = User
-        fields = ("id", 'username',"todos")
+        fields = ("id", "username", "todos")

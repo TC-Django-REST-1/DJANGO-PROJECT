@@ -37,7 +37,12 @@ def register(request: Request) -> Response:
 
 
 class ListUsers(ListAPIView):
-    authentication_classes = [JWTAuthentication,]
-    permission_classes = [IsAuthenticated, IsAdminUser,]
+    authentication_classes = [
+        JWTAuthentication,
+    ]
+    permission_classes = [
+        IsAuthenticated,
+        IsAdminUser,
+    ]
     serializer_class = UserDataSerializer
     queryset = User.objects.all()

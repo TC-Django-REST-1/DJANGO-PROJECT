@@ -15,5 +15,5 @@ urlpatterns = [
     # Admin
     path("users/", views.ListUsers.as_view(), name="list_users"),
     # Todo
-    path("todos/", include("todo.urls"))
+    path("todos/", include("todo.urls")),
 ]
