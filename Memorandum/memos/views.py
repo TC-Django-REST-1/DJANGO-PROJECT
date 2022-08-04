@@ -4,6 +4,10 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework import status
 from .models import Category, Task, Comment
+from .serializers import CategorySerializers, TaskSerializers, CommentSerializer
+from rest_framework.decorators import authentication_classes, permission_classes
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
@@ -11,15 +15,26 @@ from .models import Category, Task, Comment
 @api_view(["GET"])
 def list_category(request: Request):
 
-    list_category = Category.objects.all()
-    cate_data = CategorySerializers(instance=Category, many=True).data
+    Categories = Category.objects.all()
+    ctgry_data = CategorySerializers(instance=Categories, many=True).data
 
-    return Response({"msg": "Categories displayed successfully"}, status=status.HTTP_200_OK)
+    return Response({"msg": "List of all categories", "Categories": ctgry_data}, status=status.HTTP_200_OK)
 
 
 
 @api_view(["POST"])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def create_category(request: Request):
+    
+    user = request.user
+
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"})
+    
+    if not user.has_perm('books.add_book'):
+        return Response({"msg" : "You don't have permission ! contact your admin"}, status=status.HTTP_401_UNAUTHORIZED)
+
 
     cate_serializer = CategorySerializers(data=request.data)
 
@@ -54,14 +69,9 @@ def del_category(request: Request, cate_id):
 
     try:
         category = category.objects.get(id=cate_id)
+        category.delete()
     except Exception as e:
         return Response({"msg": "This category does not exist!"}, status=status.HTTP_404_NOT_FOUND)
-
-    cate_serializer = CategorySerializers(instance=category, data=request.data)
-    if cate_serializer.is_valid():
-        cate_serializer.delete()
-    else:
-        return Response({"msg": "Category could not be deleted!"}, status=status.HTTP_400_BAD_REQUEST)
     
     return Response({"msg": "Category have been deleted successfully"}, status=status.HTTP_200_OK)
 
@@ -69,13 +79,13 @@ def del_category(request: Request, cate_id):
 
 
 # Task CRUD
-api_view(["GET"])
+@api_view(["GET"])
 def list_task(request: Request):
 
-    list_tasks = Task.objects.all()
-    tasks_data = TaskSerializers(instance=list_tasks, many=True).data
+    tasks = Task.objects.all()
+    tasks_data = TaskSerializers(instance=tasks, many=True).data
 
-    return Response({"msg": "Tasks displayed successfully"}, status=status.HTTP_200_OK)
+    return Response({"msg": "List of all tasks", "Tasks": tasks_data}, status=status.HTTP_200_OK)
 
 
 
@@ -98,11 +108,12 @@ def update_task(request: Request, task_id):
 
     try:
         task = Task.objects.get(id=task_id)
-    except:
+    except Exception as e:
         return Response({"msg": "This task does not exist!"}, status=status.HTTP_404_NOT_FOUND)
     
-    if task.is_valid():
-        task.save()
+    task_serializer =TaskSerializers(instance=task, data=request.data)
+    if task_serializer.is_valid():
+        task_serializer.save()
     else:
         return Response({"msg": "Task could not be modified!"}, status=status.HTTP_400_BAD_REQUEST)
         
@@ -115,15 +126,10 @@ def del_task(request: Request, task_id):
 
     try:
         task = Task.objects.get(id=task_id)
+        task.delete()
     except:
         return Response({"msg": "This is task does not exist!"}, status=status.HTTP_404_NOT_FOUND)
     
-    task_serializer = TaskSerializers(instance=task, data=request.data)
-    if task_serializer.is_valid():
-        task_serializer.delete()
-    else:
-        return Response({"msg": "Task could not be deleted"}, status=status.HTTP_400_BAD_REQUEST)
-
     return Response({"msg": "Task have been deleted successfully"}, status=status.HTTP_200_OK)
 
 
@@ -134,9 +140,9 @@ def del_task(request: Request, task_id):
 def list_comment(request: Request):
 
     list_comment = Comment.objects.all()
-    comment_data = CommentSerializer(instance= list_comment, many=True).data
+    comment_data = CommentSerializer(instance=list_comment, many=True).data
 
-    return Response({"msg": "Comment displayed successfully"}, status=status.HTTP_200_OK)
+    return Response({"msg": "List of all comments", "Comments": comment_data}, status=status.HTTP_200_OK)
 
 
 
@@ -162,8 +168,9 @@ def update_comment(request: Request, cmnt_id):
     except:
         return Response({"msg": "This comment does not exist!"}, status=status.HTTP_404_NOT_FOUND)
     
-    if comment.is_valid():
-        comment.save()
+    comment_serializer = CommentSerializer(instance=comment, data=request.data)
+    if comment_serializer.is_valid():
+        comment_serializer.save()
     else:
         return Response({"msg": "Comment could not be modified!"}, status=status.HTTP_400_BAD_REQUEST)
     
@@ -176,13 +183,8 @@ def del_comment(request: Request, cmnt_id):
 
     try:
         comment = Comment.objects.get(id=cmnt_id)
+        comment.delete()
     except:
         return Response({"msg": "This comment does not exist!"}, status=status.HTTP_404_NOT_FOUND)
 
-    comment_data = CommentSerializer(instance=comment, data=request.data)
-    if comment_serializer.is_valid():
-        comment_serializer.delete()
-    else:
-        return Response({"msg": "Comment could not be deleted"}, status=status.HTTP_400_BAD_REQUEST)
-    
     return Response({"msg": "Comment have been deleted successfully"}, status=status.HTTP_200_OK)

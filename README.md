@@ -18,11 +18,11 @@ Memorandum: enables the user to create categories to organize memos and write th
 - Write comments to motivate, keep working and write updates.
 
 
-## User Stories
+## User Stories:
 - Type of users: Everyone.
 
 
-### Faculty
+## Faculty:
 - Create, Read, Update, Delete users.
 Each user has all the permissions with his Memorandum.
 
