@@ -10,7 +10,7 @@
 			"name": "Cars app",
 			"item": [
 				{
-					"name": "Brands CURD",
+					"name": "Brands",
 					"item": [
 						{
 							"name": "Add a brand",
@@ -19,13 +19,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjI4OTUzLCJpYXQiOjE2NTk2MjU2NTMsImp0aSI6IjY1NzU2YmE2MDVlNTQwMDc4ZTVjNDlhN2QyMjkwMmFiIiwidXNlcl9pZCI6MX0.Q9HUZRsAHMe0cibCIzgOiA2kF8mdqDG5VodHxBuA3AY",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Njc5MzQ4LCJpYXQiOjE2NTk2NzYwNDgsImp0aSI6IjYzNWNjMDE4NWMxYzRmMTc4ZmU2ZGUxY2YxMDgwZDY2IiwidXNlcl9pZCI6MX0._SU5VviWYjlOykz_77LuAvYcLyeELaMlWn2g-X8ejSA",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n        \"brand\": \"Mercedes Benz\",\r\n        \"description\": \"commonly referred to as Mercedes and sometimes as Benz, is a German luxury and commercial vehicle automotive brand. Mercedes-Benz AG produces consumer luxury vehicles and commercial vehicles badged as Mercedes-Benz.\",\r\n        \"established_in\": 1926,\r\n        \"origin\": \"Germany\",\r\n        \"founder\": \" Karl Benz, Bertha Benz\",\r\n        \"headquarters\": \"Stuttgart, Baden-Württemberg, Germany\",\r\n        \"last_revenue_billion\": 93.87,\r\n        \"year\": 2019,\r\n        \"remarks\":\"\"\r\n        \r\n        \r\n\r\n    }",
+									"raw": "{\r\n        \"brand\": \"Ford Motor Company\",\r\n        \"description\": \"Ford is an American multinational automobile manufacturer. The company sells automobiles and commercial vehicles under the Ford brand, and luxury cars under its Lincoln luxury brand.\",\r\n        \"established_in\": 1903,\r\n        \"origin\": \"United States\",\r\n        \"founder\": \"Henry Ford\",\r\n        \"headquarters\": \"Dearborn, Michigan, United States\",\r\n        \"last_revenue_billion\": 136.3,\r\n        \"year\": 2021,\r\n        \"remarks\":\"\"\r\n        \r\n        \r\n\r\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -58,7 +58,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjQwMDk5LCJpYXQiOjE2NTk2MzY3OTksImp0aSI6ImYxNDBhZmQ0M2M5MTRiYmZiZWZkMWZlZWMzOTgwN2FmIiwidXNlcl9pZCI6MX0.J-4oUnmcURTrCXPowDXzmiaOBYGkOsLLmiS5V4AbRDs",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Njc5MzQ4LCJpYXQiOjE2NTk2NzYwNDgsImp0aSI6IjYzNWNjMDE4NWMxYzRmMTc4ZmU2ZGUxY2YxMDgwZDY2IiwidXNlcl9pZCI6MX0._SU5VviWYjlOykz_77LuAvYcLyeELaMlWn2g-X8ejSA",
 										"type": "text"
 									}
 								],
@@ -206,15 +206,647 @@
 				},
 				{
 					"name": "General Classes",
-					"item": []
+					"item": [
+						{
+							"name": "add a new general class",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Njc4NjQ2LCJpYXQiOjE2NTk2NzUzNDYsImp0aSI6IjMwODM1NmM0ZGM2MDQxZTBhMzExNzhmMmNkNTVlMjE2IiwidXNlcl9pZCI6MX0.XsfwH4WGEduBcAo1_DYFQUEGjGBZwf2oq3arBQHn8jI",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"general_class\": \"Luxury cars\",\r\n        \"remarks\":\"\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/add_general_class/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"add_general_class",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List of general classes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjQwMDk5LCJpYXQiOjE2NTk2MzY3OTksImp0aSI6ImYxNDBhZmQ0M2M5MTRiYmZiZWZkMWZlZWMzOTgwN2FmIiwidXNlcl9pZCI6MX0.J-4oUnmcURTrCXPowDXzmiaOBYGkOsLLmiS5V4AbRDs",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/general_class_list/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"general_class_list",
+										""
+									],
+									"query": [
+										{
+											"key": "skip",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "get",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "s",
+											"description": "__startswith: search by part/full class name ",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update a general class",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"general_class\": \"Exclusive/Limited car\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/update_general_class/4\n",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"update_general_class",
+										"4\n"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove a general class",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/remove_general_class/5",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"remove_general_class",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "Brand Classes",
-					"item": []
+					"item": [
+						{
+							"name": "add a new brand class",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"class_name\": \"Pickup Truck\",\r\n        \"class_brand\": \"2\",\r\n        \"general_class\": \"2\",\r\n        \"targeted_customers\": \"Entities / Individuals / Families \",\r\n        \"quality\": \"Low / medium\",\r\n        \"exclusive\": \"False\",\r\n        \"remarks\": \"\"\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/add_brands_class/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"add_brands_class",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List of general classes Copy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjQwMDk5LCJpYXQiOjE2NTk2MzY3OTksImp0aSI6ImYxNDBhZmQ0M2M5MTRiYmZiZWZkMWZlZWMzOTgwN2FmIiwidXNlcl9pZCI6MX0.J-4oUnmcURTrCXPowDXzmiaOBYGkOsLLmiS5V4AbRDs",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/brands_class_list/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"brands_class_list",
+										""
+									],
+									"query": [
+										{
+											"key": "skip",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "get",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "s",
+											"description": "__startswith: search by part/full class name ",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update a general class Copy",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"class_name\": \"xxxxxx\",\r\n        \"targeted_customers\": \"xxxxxxxx\",\r\n        \"quality\": \"xxxxxxx\",\r\n        \"exclusive\": false,\r\n        \"remarks\": \"xxxxxxxx\",\r\n        \"class_brand\": 2,\r\n        \"general_class\": 2\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/update_brands_class/10\n",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"update_brands_class",
+										"10\n"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove a general class Copy",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/remove_brands_class/10",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"remove_brands_class",
+										"10"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "Categories",
-					"item": []
+					"item": [
+						{
+							"name": "add a new category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjgzODYzLCJpYXQiOjE2NTk2ODA1NjMsImp0aSI6ImJiMWE4ZGUwMGE1ZjRkMjFhOTM5ZWY3NzI2YzAzNTU0IiwidXNlcl9pZCI6MX0.2IH5PnKSaqqGyb96pGPpN4en17QE7hFD8n346p-zxys",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"category_name\": \"SUV\",\r\n        \"targeted_customers\": \"Entities / Individuals / Families\", \r\n        \"targeted_cost_range\": \"Low / medium\",\r\n        \"Limited\": \"False\",\r\n        \"remarks\":\"\"\r\n\r\n    }\r\n\r\n\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/add_new_Category/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"add_new_Category",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List of categories",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjQwMDk5LCJpYXQiOjE2NTk2MzY3OTksImp0aSI6ImYxNDBhZmQ0M2M5MTRiYmZiZWZkMWZlZWMzOTgwN2FmIiwidXNlcl9pZCI6MX0.J-4oUnmcURTrCXPowDXzmiaOBYGkOsLLmiS5V4AbRDs",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/Categories_list/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"Categories_list",
+										""
+									],
+									"query": [
+										{
+											"key": "skip",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "get",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "s",
+											"description": "__startswith: search by part/full category_name",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update a category",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"category_name\": \"Industiral cars 1111\",\r\n        \"targeted_customers\": \" Entities\", \r\n        \"targeted_cost_range\": \"High\",\r\n        \"Limited\": \"False\",\r\n        \"remarks\":\"\"\r\n\r\n    }\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/update_category/1\n",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"update_category",
+										"1\n"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove a category",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Njc4NjQ2LCJpYXQiOjE2NTk2NzUzNDYsImp0aSI6IjMwODM1NmM0ZGM2MDQxZTBhMzExNzhmMmNkNTVlMjE2IiwidXNlcl9pZCI6MX0.XsfwH4WGEduBcAo1_DYFQUEGjGBZwf2oq3arBQHn8jI",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/remove_category/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"remove_category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cars",
+					"item": [
+						{
+							"name": "add a new car",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"car_brand\": 2,\r\n        \"name\": \"Ford Escape\",\r\n        \"car_class\": \"5\",\r\n        \"category\": \"8\",\r\n        \"image_url\": \"https://www.carmodelslist.com/ford-escape/\",\r\n        \"price\": 0.00,\r\n        \"ongoing_product\": \"True\",\r\n        \"remarks\": \"Power and lasting impression is best emphasized in the Ford Escape – a crossover compact SUV that provides the best of both style and performance for any sort of driver.\"\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/add_new_car/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"add_new_car",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List of cars",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NjQwMDk5LCJpYXQiOjE2NTk2MzY3OTksImp0aSI6ImYxNDBhZmQ0M2M5MTRiYmZiZWZkMWZlZWMzOTgwN2FmIiwidXNlcl9pZCI6MX0.J-4oUnmcURTrCXPowDXzmiaOBYGkOsLLmiS5V4AbRDs",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/cars_list/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"cars_list",
+										""
+									],
+									"query": [
+										{
+											"key": "skip",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "get",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "search",
+											"value": "x",
+											"description": "__startswith: search by part/full category_name",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update a car",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"car_brand\": 1,\r\n        \"name\": \"xxxxxx\",\r\n        \"car_class\": \"1\",\r\n        \"category\": \"2\",\r\n        \"image_url\": \"https://www.carmodelslist.com/ford/\",\r\n        \"price\": 0.00,\r\n        \"ongoing_product\": \"True\",\r\n        \"remarks\": \"xxxxxx\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/update_car/10\n",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"update_car",
+										"10\n"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove a car",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Njc4NjQ2LCJpYXQiOjE2NTk2NzUzNDYsImp0aSI6IjMwODM1NmM0ZGM2MDQxZTBhMzExNzhmMmNkNTVlMjE2IiwidXNlcl9pZCI6MX0.XsfwH4WGEduBcAo1_DYFQUEGjGBZwf2oq3arBQHn8jI",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cars/remove_car/10",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cars",
+										"remove_car",
+										"10"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},

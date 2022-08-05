@@ -73,15 +73,15 @@ class Categories(models.Model):
         return self.category_name
 
     
-# class Car(models.Model):
-#     car_brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=255)
-#     car_class = models.ForeignKey(BrandsClasses, on_delete=models.SET_DEFAULT, default='Need to be added manually')
-#     category = models.ForeignKey(Categories, on_delete=models.SET_DEFAULT, default='Need to be added manually')
-#     image_url = models.URLField(blank=True)
-#     price = models.DecimalField(max_digits=10, decimal_places=2)
-#     ongoing_product = models.BooleanField(default=False)
-#     remarks = models.TextField(blank=True)
+class Car(models.Model):
+    car_brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    car_class = models.ForeignKey(BrandsClasses, on_delete=models.SET_DEFAULT, default='Need to be added manually')
+    category = models.ForeignKey(Categories, on_delete=models.SET_DEFAULT, default='Need to be added manually')
+    image_url = models.URLField(blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    ongoing_product = models.BooleanField(default=False)
+    remarks = models.TextField(blank=True)
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.name
