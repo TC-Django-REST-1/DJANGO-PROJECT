@@ -24,10 +24,10 @@ urlpatterns = [
     # path('remove_Brands_class/<Brand_class_id>', views.remove_Brands_class, name='remove_Brands_class'),
 
     
-    # path('add_new_Category/', views.add_new_Category, name='add_new_Category'),
-    # path('Categories_list/', views.Categories_list, name='Categories_list'),
-    # path('update_Category/<Brand_class_id>', views.update_Category, name='update_Category'),
-    # path('remove_Category/<Brand_class_id>', views.remove_Category, name='remove_Category'),    
+    path('add_new_Category/', views.add_new_Category, name='add_new_Category'),
+    path('Categories_list/', views.Categories_list, name='Categories_list'),
+    path('update_category/<category_id>', views.update_category, name='update_category'),
+    path('remove_category/<category_id>', views.remove_category, name='remove_category'),    
         
     
     # path('add_new_car/', views.add_car, name='add_new_car'),

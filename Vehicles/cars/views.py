@@ -8,8 +8,8 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
 # from rest_framework_simplejwt.tokens import AccessToken
 
-from .models import Brand,BrandHistory,GeneralClasses#,BrandsClasses,Categories,Car
-from .serializers import BrandSerilizer,BrandHistorySerilizer,GeneralClassesSerilizer#,CarSerilizer,BrandsClassesSerilizer,CategoriesSerilizer
+from .models import Brand,BrandHistory,GeneralClasses,Categories#,BrandsClasses,,Car
+from .serializers import BrandSerilizer,BrandHistorySerilizer,GeneralClassesSerilizer,CategoriesSerilizer#,CarSerilizer,BrandsClassesSerilizer
 
 def brandHistory(user,update):
     '''It's an event function that save a record for any update take place in the brand model, to reviwe later
@@ -133,7 +133,7 @@ def add_general_class(request: Request):
     else:
         return Response({"msg" : "couldn't add a new general class", "errors" : new_class_serilizer.errors}, status=status.HTTP_403_FORBIDDEN)
 
-    return Response({"msg" : "A new car created successfully"}, status=status.HTTP_201_CREATED)
+    return Response({"msg" : "A new general class created successfully"}, status=status.HTTP_201_CREATED)
 
 
 @api_view(['GET'])
@@ -158,7 +158,7 @@ def general_class_list(request: Request):
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAdminUser])
 def update_general_class(request: Request, general_class_id):
-    user = request.user
+    # user = request.user
     try:
         g_class = GeneralClasses.objects.get(id = general_class_id)
         data = GeneralClassesSerilizer(instance=g_class, data=request.data)
@@ -232,50 +232,70 @@ def remove_general_class(request: Request, general_class_id):
 #     pass
 
 
-# # --------------------------------------------------------------------------------------------------------
-# # Categories
-# @api_view(['POST'])
-# # @authentication_classes([JWTAuthentication])
-# # @permission_classes([IsAdminUser])
-# def add_new_Category(request: Request):
-#     new_category_serilizer = CategoriesSerilizer(data=request.data)
-#     if new_category_serilizer.is_valid():
-#         new_category_serilizer.save()
-#     else:
-#         return Response({"msg" : "couldn't add a new general class", "errors" : new_category_serilizer.errors}, status=status.HTTP_403_FORBIDDEN)
+# --------------------------------------------------------------------------------------------------------
+# Categories
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAdminUser])
+def add_new_Category(request: Request):
+    new_category_serilizer = CategoriesSerilizer(data=request.data)
+    if new_category_serilizer.is_valid():
+        new_category_serilizer.save()
+    else:
+        return Response({"msg" : "couldn't add a new category", "errors" : new_category_serilizer.errors}, status=status.HTTP_403_FORBIDDEN)
 
-#     return Response({"msg" : "A new car created successfully"}, status=status.HTTP_201_CREATED)
+    return Response({"msg" : "A new category created successfully"}, status=status.HTTP_201_CREATED)
 
 
-# @api_view(['GET'])
-# # @authentication_classes([JWTAuthentication])
-# # @permission_classes([IsAdminUser])
-# def Categories_list(request: Request):
+@api_view(['GET'])
+# @authentication_classes([JWTAuthentication])
+# @permission_classes([IsAdminUser])
+def Categories_list(request: Request):
 
-#     if "search" in request.query_params:
-#         search_phrase = request.query_params["search"]
-#         skip = int(request.query_params.get("skip", 0))
-#         get = int(request.query_params.get("get", 10))
-#         categories = Categories.objects.filter(brand__startswith=search_phrase)[skip:get]
-#     else:
-#         skip = int(request.query_params.get("skip", 0))
-#         get = int(request.query_params.get("get", 10))
-#         categories = Categories.objects.order_by("-id").all()[skip:get]
+    if "search" in request.query_params:
+        search_phrase = request.query_params["search"]
+        skip = int(request.query_params.get("skip", 0))
+        get = int(request.query_params.get("get", 10))
+        categories = Categories.objects.filter(category_name__startswith=search_phrase)[skip:get]
+    else:
+        skip = int(request.query_params.get("skip", 0))
+        get = int(request.query_params.get("get", 10))
+        categories = Categories.objects.order_by("-id").all()[skip:get]
 
-#     data = CategoriesSerilizer(categories, many=True).data
-#     return Response(data, status=status.HTTP_200_OK)
+    data = CategoriesSerilizer(categories, many=True).data
+    return Response(data, status=status.HTTP_200_OK)
 
-# @api_view(['PUT'])
-# # @authentication_classes([JWTAuthentication])
-# # @permission_classes([IsAdminUser])
-# def update_Category(request: Request):
-#     pass
+@api_view(['PUT'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAdminUser])
+def update_category(request: Request, category_id):
+    # user = request.user
+    try:
+        category = Categories.objects.get(id = category_id)
+        data = CategoriesSerilizer(instance=category, data=request.data)
+        if data.is_valid():
+            data.save()
+            return Response({"msg" : "General class updated successfully"}, status=status.HTTP_200_OK)
+        else:
+            return Response({"msg" : "couldn't update the category", "errors" : data.errors}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e :
+        return Response({"msg" : f"The class with ID No:{category_id} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
 
-# @api_view(['DELETE'])
-# # @authentication_classes([JWTAuthentication])
-# # @permission_classes([IsAdminUser])
-# def remove_Category(request: Request):
-#     pass
+
+
+@api_view(['DELETE'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAdminUser])
+def remove_category(request: Request, category_id):
+    try:
+        category = GeneralClasses.objects.get(id = category_id)
+        category.delete()
+    except Exception as e:
+        return Response({"msg" : f"The brand with ID No:{category_id} is not Found!"}, status=status.HTTP_400_BAD_REQUEST)
+
+    return Response({"msg" : f"A brand with ID No:{category_id} has been deleted successfully"}, status=status.HTTP_200_OK)
+
+
 
 
 
