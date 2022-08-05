@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Brand,BrandHistory,GeneralClasses,Categories#,BrandsClasses,Car
+from .models import Brand,BrandHistory,GeneralClasses,Categories,BrandsClasses#,Car
 
 
 class BrandSerilizer(serializers.ModelSerializer):
@@ -19,10 +19,10 @@ class GeneralClassesSerilizer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# class BrandsClassesSerilizer(serializers.ModelSerializer):
-#     class Meta:
-#         model = BrandsClasses
-#         fields = '__all__'
+class BrandsClassesSerilizer(serializers.ModelSerializer):
+    class Meta:
+        model = BrandsClasses
+        fields = '__all__'
 
 
 class CategoriesSerilizer(serializers.ModelSerializer):

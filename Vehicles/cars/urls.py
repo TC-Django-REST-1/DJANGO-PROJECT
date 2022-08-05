@@ -18,10 +18,10 @@ urlpatterns = [
     path('remove_general_class/<general_class_id>', views.remove_general_class, name='remove_general_class'),
 
 
-    # path('add_Brands_class/', views.add_Brands_class, name='add_Brands_class'),
-    # path('Brands_class_list/', views.Brands_class_list, name='Brands_class_list'),
-    # path('update_Brands_class/<Brand_class_id>', views.update_Brands_class, name='update_Brands_class'),
-    # path('remove_Brands_class/<Brand_class_id>', views.remove_Brands_class, name='remove_Brands_class'),
+    path('add_brands_class/', views.add_brands_class, name='add_brands_class'),
+    path('brands_class_list/', views.brands_class_list, name='brands_class_list'),
+    path('update_brands_class/<brand_class_id>', views.update_brands_class, name='update_brands_class'),
+    path('remove_brands_class/<brand_class_id>', views.remove_brands_class, name='remove_brands_class'),
 
     
     path('add_new_Category/', views.add_new_Category, name='add_new_Category'),
