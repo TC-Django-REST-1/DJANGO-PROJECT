@@ -18,7 +18,7 @@ from rest_framework.permissions import IsAuthenticated
 def add_store(request : Request):
   try:
     user = request.user
-    if not user.has_perm('stores.add_stores'):
+    if not user.is_authenticated:
       return Response({"msg" : "Access denied! You don't have Products control permission."}, status=401)
     store_serializer = StoresSerializer(data= request.data)
     if not store_serializer.is_valid():
@@ -48,7 +48,7 @@ def list_stores(request : Request):
 def update_store(request : Request, store_id):
   try:
     user = request.user
-    if not user.has_perm('stores.change_stores'):
+    if not user.is_authenticated:
       return Response({"msg" : "Access denied! You don't have Products control permission."}, status=401)
     store = Stores.objects.get(id = store_id)
     store_serializer = StoresSerializer(instance=store, data=request.data)
@@ -66,7 +66,7 @@ def update_store(request : Request, store_id):
 def delete_store(request : Request, store_id):
   try:
     user = request.user
-    if not user.has_perm('stores.delete_stores'):
+    if not user.is_authenticated:
       return Response({"msg" : "Access denied! You don't have Products control permission."}, status=401)
     store = Stores.objects.get(id = store_id)
     store.delete()
@@ -81,7 +81,7 @@ def delete_store(request : Request, store_id):
 def add_product(request : Request):
   try:
     user = request.user
-    if not user.has_perm('stores.add_products'):
+    if not user.is_authenticated:
       return Response({"msg" : "Access denied! You don't have Products control permission."}, status=401)
     product_serializer = ProductsSerializer(data= request.data)
     if not product_serializer.is_valid():
@@ -112,7 +112,7 @@ def list_products(request : Request):
 def update_product(request : Request, product_id):
   try:
     user = request.user
-    if not user.has_perm('stores.change_products'):
+    if not user.is_authenticated:
       return Response({"msg" : "Access denied! You don't have Products control permission."}, status=401)
     product = Products.objects.get(id = product_id)
     product_serializer = ProductsSerializer(instance=product, data=request.data)
@@ -130,7 +130,7 @@ def update_product(request : Request, product_id):
 def delete_product(request : Request, product_id):
   try:
     user = request.user
-    if not user.has_perm('stores.delete_products'):
+    if not user.is_authenticated:
       return Response({"msg" : "Access denied! You don't have Products control permission."}, status=401)
     product = Products.objects.get(id = product_id)
     product.delete()

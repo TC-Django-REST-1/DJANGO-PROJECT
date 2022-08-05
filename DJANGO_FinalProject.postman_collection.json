@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "1c945235-de50-4590-8423-0f5de006e460",
+		"name": "DJANGO_FinalProject_Tuwaiq_Academy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22367658"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/users/register/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"nawaf\", \n    \"email\" : \"nawaf@email.com\", \n    \"password\" : \"123\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/users/login/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"nawaf\",\n    \"password\" : \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/stores/add_store/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Nzk4MTI5LCJpYXQiOjE2NTk3MTE3MjksImp0aSI6Ijk2YjBmYmEwMDJiMTQ0MWViODBkOGMzOTUxZDBmYTA3IiwidXNlcl9pZCI6MX0.GrzoOs6-KUJaIkvGT6L3Bp99Ak8kYrz8HWJgdA_xO4Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"store_name\" : \"apple\",\n    \"commercial_registration\" : 12345,\n    \"store_description\" : \"Apple Inc. is an American multinational technology company that specializes in consumer electronics, software and online services.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/stores/add_store/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"stores",
+						"add_store",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/stores/list_stores/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/stores/list_stores/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"stores",
+						"list_stores",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/stores/update_store/1/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Nzk4MTI5LCJpYXQiOjE2NTk3MTE3MjksImp0aSI6Ijk2YjBmYmEwMDJiMTQ0MWViODBkOGMzOTUxZDBmYTA3IiwidXNlcl9pZCI6MX0.GrzoOs6-KUJaIkvGT6L3Bp99Ak8kYrz8HWJgdA_xO4Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"store_name\" : \"Google\",\n    \"commercial_registration\" : 54321,\n    \"store_description\" : \"Google Inc. is an American multinational technology company that specializes in consumer electronics, software and online services.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/stores/update_store/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"stores",
+						"update_store",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/stores/delete_store/1/",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Nzk4MTI5LCJpYXQiOjE2NTk3MTE3MjksImp0aSI6Ijk2YjBmYmEwMDJiMTQ0MWViODBkOGMzOTUxZDBmYTA3IiwidXNlcl9pZCI6MX0.GrzoOs6-KUJaIkvGT6L3Bp99Ak8kYrz8HWJgdA_xO4Y",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/stores/delete_store/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"stores",
+						"delete_store",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/stores/add_product/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Nzk4MTI5LCJpYXQiOjE2NTk3MTE3MjksImp0aSI6Ijk2YjBmYmEwMDJiMTQ0MWViODBkOGMzOTUxZDBmYTA3IiwidXNlcl9pZCI6MX0.GrzoOs6-KUJaIkvGT6L3Bp99Ak8kYrz8HWJgdA_xO4Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"stores\" : 1,\n    \"product_name\" : \"youtube\",\n    \"description\" : \"YouTube is an American online video sharing and social media platform.\",\n    \"price\" : 35.99,\n    \"image_url\" : \"https://static.vecteezy.com/system/resources/previews/003/206/623/original/youtube-editorial-app-icon-free-vector.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/stores/add_product/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"stores",
+						"add_product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/stores/list_products/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/stores/list_products/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"stores",
+						"list_products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/stores/update_product/1/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Nzk4MTI5LCJpYXQiOjE2NTk3MTE3MjksImp0aSI6Ijk2YjBmYmEwMDJiMTQ0MWViODBkOGMzOTUxZDBmYTA3IiwidXNlcl9pZCI6MX0.GrzoOs6-KUJaIkvGT6L3Bp99Ak8kYrz8HWJgdA_xO4Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"stores\" : 1,\n    \"product_name\" : \"Google Drive\",\n    \"description\" : \"Google Drive is a file storage and synchronization service.\",\n    \"price\" : 11.99,\n    \"image_url\" : \"https://lh3.googleusercontent.com/6MmVl3TEiBeEJCFIIfzO5DIgengYGPCdhEe8M6lXA6_Eh_xsKHDL_K4CLC31dETfiCue1hFOEf30IkIqlbOStvTfYbY_G85oEtJHQqjgz6OSXco8Aw=w0-l80-sg-rj-c0xffffff\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/stores/update_product/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"stores",
+						"update_product",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/stores/delete_product/1/",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Nzk4MTI5LCJpYXQiOjE2NTk3MTE3MjksImp0aSI6Ijk2YjBmYmEwMDJiMTQ0MWViODBkOGMzOTUxZDBmYTA3IiwidXNlcl9pZCI6MX0.GrzoOs6-KUJaIkvGT6L3Bp99Ak8kYrz8HWJgdA_xO4Y",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/stores/delete_product/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"stores",
+						"delete_product",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
