@@ -58,7 +58,7 @@ class BrandsClasses(models.Model):
     remarks = models.TextField(blank=True)
 
     def __str__(self):
-        return self.class_name + " | " + self.class_brand.brand + " | " + self.general_class
+        return self.class_name #+ " | " + self.class_brand.brand + " | " + str(self.general_class)
     
 
 # This model is to save categories of all brands, Ex, sedan car, Family car, 4x4 car, Truks, industiral cars ... etc.
