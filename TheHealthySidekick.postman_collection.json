@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "b0fc057d-c467-451a-a345-a854d74bd420",
+		"name": "TheHealthySidekick",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21169919"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Rigister User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Bilal\",\r\n    \"email\":\"Bilal@Bilal.com\",\r\n    \"password\":\"Bilal123\",\r\n    \"user_type\":\"trainee\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Bilal\",\r\n    \"password\":\"Bilal123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exercises",
+			"item": [
+				{
+					"name": "Create exercise",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Nzc2MTIxLCJpYXQiOjE2NTk3NzI1MjEsImp0aSI6IjllNzNhNmY1MDcwYTRiOWFhMGE5NWNmYmUwOTBmYjI2IiwidXNlcl9pZCI6MTR9.cVj6kbB5dtn9tmPcYExFFB3WtHUN4sphlCLu7UoPqcI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"exercise_name\":\"Pushups\",\r\n    \"exercise_desc\":\"Pushups are one of the most basic yet effective bodyweight moves you can perform because of the number of muscles that are recruited to perform them.\",\r\n    \"exercise_reps\":15,\r\n    \"exercise_sets\":3,\r\n    \"exercise_vid\":\"https://thumbs.gfycat.com/FittingIdenticalAtlanticspadefish-mobile.mp4\",\r\n    \"exercise_intensity\":\"Intense\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/exercises/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"exercises",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List exercises",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NzcxNzY3LCJpYXQiOjE2NTk3NjgxNjcsImp0aSI6IjE5MTZjNDljYmE4ZDQzNWU4YmE4MDM1OTQ5ZjEzNDM4IiwidXNlcl9pZCI6MTB9.rmDUmtDkyf6GqXl_00AZNs3XiP4pewPQC4IVM6W02NI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/exercises/list/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"exercises",
+								"list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update exercise",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5NzcyMjE5LCJpYXQiOjE2NTk3Njg2MTksImp0aSI6ImY4NWI4YTk3M2FiZDQxMDQ5ZGVlYTNhM2U2Zjc2ZDdjIiwidXNlcl9pZCI6MTB9.BLNzXxoSHGtAGEUxeewKexBPAKBs6F0cuno8fQI5DVc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"exercise_name\":\"Lunges44444\",\r\n    \"exercise_desc\":\"Challenging your balance is an essential part of a well-rounded exercise routine. Lunges do just that, promoting functional movement while also increasing strength in your legs and glutes.\",\r\n    \"exercise_reps\":10,\r\n    \"exercise_sets\":3,\r\n    \"exercise_vid\":\"https://thumbs.gfycat.com/RequiredThinAbalone-mobile.mp4\",\r\n    \"exercise_intensity\":\"Moderate\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/exercises/update/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"exercises",
+								"update",
+								"7",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete exercise",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Diets",
+			"item": [
+				{
+					"name": "Create diet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Nzc2MTIxLCJpYXQiOjE2NTk3NzI1MjEsImp0aSI6IjllNzNhNmY1MDcwYTRiOWFhMGE5NWNmYmUwOTBmYjI2IiwidXNlcl9pZCI6MTR9.cVj6kbB5dtn9tmPcYExFFB3WtHUN4sphlCLu7UoPqcI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"diet_name\":\"Veganism\",\r\n    \"diet_desc\":\"A vegan diet is based on plants (such as vegetables, grains, nuts and fruits) and foods made from plants.\",\r\n    \"diet_details_url\":\"https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/the-vegan-diet/#:~:text=A%20vegan%20diet%20is%20based,including%20dairy%20products%20and%20eggs.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/dites/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"dites",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List diets",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Update diet",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Nzc1MjIxLCJpYXQiOjE2NTk3NzE2MjEsImp0aSI6ImE2YWJkZTA1YmY4YjQwYTU4NWQ0MTEwNGMzODkwNWE1IiwidXNlcl9pZCI6MTJ9.WYIJmCVUSG_FNFdXTCF1vZVNJ3mYdhwUa2wQB0Ngq-w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"diet_name\":\"Veganism\",\r\n    \"diet_desc\":\"A vegan diet is based on plants (such as vegetables, grains, nuts and fruits) and foods made from plants, Vegans do not eat foods that come from animals, including dairy products and eggs.\",\r\n    \"diet_details_url\":\"https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/the-vegan-diet/#:~:text=A%20vegan%20diet%20is%20based,including%20dairy%20products%20and%20eggs.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/dites/update/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"dites",
+								"update",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete diet",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5Nzc1MjIxLCJpYXQiOjE2NTk3NzE2MjEsImp0aSI6ImE2YWJkZTA1YmY4YjQwYTU4NWQ0MTEwNGMzODkwNWE1IiwidXNlcl9pZCI6MTJ9.WYIJmCVUSG_FNFdXTCF1vZVNJ3mYdhwUa2wQB0Ngq-w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/dites/delete/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"dites",
+								"delete",
+								"7",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
