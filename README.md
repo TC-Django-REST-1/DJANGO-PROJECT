@@ -1,68 +1,40 @@
 # DJANGO-PROJECT
-
-## Project Idea:
-The project idea is up to you as long as it applies all essential requirements.
-
-## Requirements 
-- Use Django REST Framework.
-- Create at least two apps inside your Django project.
-- Create at least two Models with a relationship.
-- Provide API endpoints for each service in your project (at least CRUD operations on each model) .
-- Use Postman to add , arrange , and test your project endpoints.
-- Use Django Auth for creating & managing users.
-- Use Django REST Framework Simple JWT for Authentication.
-- Write suitable HTTP status for your endpoints.
-- Commit your changes often to the repository (at least once everyday).
-- Export the project Postman Collections into a file and include it in the repository.
-
-
-# Example: 
-
-# Project Name: Learning Management System
+# Project Name: cafes Management System
 
 ## Idea:
-A system to manage students learning journey. The system enable student to explore new courses, take courses, solve quizzes, etc. Moreover, the teachers can create new quizzes, follow student progress, etc.
-
-## Inspiration:
-Facilitate the learning process and the management of students and courses. 
+A system to manage different cafes and their products. The system enables cafe managers to do different processes on cafes also product managers on the product, the customer can explore the cafes, and their products
 
 
 ## List of Services / Features:
 
-- Manage the students.
-- Manage the teachers.
-- Manage online courses easily!
-- Manage online assessments.
+- Manage the cafes.
+- Manage the products.
 
 
 ## User Stories
-- Type of users: Faculty, Teachers, and Students.
+- Type of users: customer, cafe_admin, and product_admin.
 
 ### Faculty
 
-- Create, Read, Update, Delete teachers.
-- Create, Read, Update, Delete courses.
-- Create, Read, Update, Delete students.
+- Create, Read, Update, Delete cafes.
+- Create, Read, Update, Delete product.
 
-### Students
+### customer
 
-- View courses.
-- Join courses.
-- Withdraw from courses.
-- Edit information.
-- Take assignments.
-- Send Inquiries to teachers and faculties.
-- View joined courses.
-- View course information.
-- View student progress on a specific course.
-- Search for courses.
+- View cafes and  products .
 
-### Teachers
 
-- View the teacher courses.
-- View the course information.
-- List joined student in the current course.
-- Add assignments to a specific course.
-- Add students grade in a specific course.
-- Search for a students in a specific course.
-- Get student information.
+### cafe_admin
+
+- View the cafes.
+- View the products.
+- Add cafe.
+-Update cafe.
+-delete cafe.
+
+### product_admin
+- View the products.
+- View the cafes.
+- Add product.
+-Update product.
+-delete product.

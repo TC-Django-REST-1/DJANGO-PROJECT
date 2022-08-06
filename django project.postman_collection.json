@@ -13,31 +13,139 @@
 					"name": "list cafe",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzA5Mjg1LCJpYXQiOjE2NTk3MTcyODUsImp0aSI6ImQ0ZWE0NGMxMDBlMzQ0MDU4ZjVlYWI3OTM5Y2JjOGMzIiwidXNlcl9pZCI6Mn0.yBwNJddApWWKUPBDAMPoqKvV7PTJ0YjhMxUwzoW0puU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/cafe/list/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cafe",
+								"list",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "add cafe",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzA5Mjg1LCJpYXQiOjE2NTk3MTcyODUsImp0aSI6ImQ0ZWE0NGMxMDBlMzQ0MDU4ZjVlYWI3OTM5Y2JjOGMzIiwidXNlcl9pZCI6Mn0.yBwNJddApWWKUPBDAMPoqKvV7PTJ0YjhMxUwzoW0puU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"cofee day\",\r\n    \"city\": \"riyadh\",\r\n    \"open_time\": \"12:00:00\",\r\n    \"close_time\": \"12:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/cafe/add/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cafe",
+								"add",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "update cafe",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzA5Mjg1LCJpYXQiOjE2NTk3MTcyODUsImp0aSI6ImQ0ZWE0NGMxMDBlMzQ0MDU4ZjVlYWI3OTM5Y2JjOGMzIiwidXNlcl9pZCI6Mn0.yBwNJddApWWKUPBDAMPoqKvV7PTJ0YjhMxUwzoW0puU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"dr.cafe\",\r\n    \"city\": \"Riyadh\",\r\n    \"open_time\": \"12:00:00\",\r\n    \"close_time\": \"12:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/cafe/update/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cafe",
+								"update",
+								"3",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "delet cafe",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzA5Mjg1LCJpYXQiOjE2NTk3MTcyODUsImp0aSI6ImQ0ZWE0NGMxMDBlMzQ0MDU4ZjVlYWI3OTM5Y2JjOGMzIiwidXNlcl9pZCI6Mn0.yBwNJddApWWKUPBDAMPoqKvV7PTJ0YjhMxUwzoW0puU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/cafe/delete/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cafe",
+								"delete",
+								"2",
+								""
+							]
+						}
 					},
 					"response": []
 				}
@@ -47,36 +155,508 @@
 			"name": "product",
 			"item": [
 				{
-					"name": "add",
+					"name": "list",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzM1MjgyLCJpYXQiOjE2NTk3NDMyODIsImp0aSI6IjdiN2Y1NmRmMjJhNjQxODVhMWY1NTM5Y2NlM2IxMWQ3IiwidXNlcl9pZCI6M30.XU8_K1omztzIMRCZ7VlaH2V9kb9xan1uksP6z87PQls",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/cafe/product/list/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cafe",
+								"product",
+								"list",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzA5Mjg1LCJpYXQiOjE2NTk3MTcyODUsImp0aSI6ImQ0ZWE0NGMxMDBlMzQ0MDU4ZjVlYWI3OTM5Y2JjOGMzIiwidXNlcl9pZCI6Mn0.yBwNJddApWWKUPBDAMPoqKvV7PTJ0YjhMxUwzoW0puU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cafe/product/list/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cafe",
+										"product",
+										"list",
+										""
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 16:57:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "184"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"List All products \",\n    \"product\": [\n        {\n            \"id\": 1,\n            \"name\": \"coffe\",\n            \"description\": \"coffe\",\n            \"price\": 30,\n            \"cafe\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"hot choco\",\n            \"description\": \"hot choco\",\n            \"price\": 22,\n            \"cafe\": 3\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
-					"name": "delete",
+					"name": "add",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzM1MjgyLCJpYXQiOjE2NTk3NDMyODIsImp0aSI6IjdiN2Y1NmRmMjJhNjQxODVhMWY1NTM5Y2NlM2IxMWQ3IiwidXNlcl9pZCI6M30.XU8_K1omztzIMRCZ7VlaH2V9kb9xan1uksP6z87PQls",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cafe\":3,\r\n    \"name\" :\"ice coffe\",\r\n    \"description\":\"moka\",\r\n    \"price\" :15\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/cafe/product/add/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cafe",
+								"product",
+								"add",
+								""
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "add",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzA5Mjg1LCJpYXQiOjE2NTk3MTcyODUsImp0aSI6ImQ0ZWE0NGMxMDBlMzQ0MDU4ZjVlYWI3OTM5Y2JjOGMzIiwidXNlcl9pZCI6Mn0.yBwNJddApWWKUPBDAMPoqKvV7PTJ0YjhMxUwzoW0puU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cafe\":2,\r\n    \"name\" :\"ice tea\",\r\n    \"description\":\"ice tea\",\r\n    \"price\" :22\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cafe/product/add/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cafe",
+										"product",
+										"add",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 16:56:51 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Product Added Successfully!\"\n}"
+						}
+					]
 				},
 				{
 					"name": "update",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzM1MjgyLCJpYXQiOjE2NTk3NDMyODIsImp0aSI6IjdiN2Y1NmRmMjJhNjQxODVhMWY1NTM5Y2NlM2IxMWQ3IiwidXNlcl9pZCI6M30.XU8_K1omztzIMRCZ7VlaH2V9kb9xan1uksP6z87PQls",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cafe\":3,\r\n    \"name\" :\"vanilla\",\r\n    \"description\":\"vanilla\",\r\n    \"price\" :33\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/cafe/product/update/4/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cafe",
+								"product",
+								"update",
+								"4",
+								""
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzA5Mjg1LCJpYXQiOjE2NTk3MTcyODUsImp0aSI6ImQ0ZWE0NGMxMDBlMzQ0MDU4ZjVlYWI3OTM5Y2JjOGMzIiwidXNlcl9pZCI6Mn0.yBwNJddApWWKUPBDAMPoqKvV7PTJ0YjhMxUwzoW0puU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cafe\":3,\r\n    \"name\" :\"hot choco\",\r\n    \"description\":\"hot choco\",\r\n    \"price\" :22\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/cafe/product/update/2/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cafe",
+										"product",
+										"update",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 16:56:32 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "PUT, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "38"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Product updated successfully\"\n}"
+						}
+					]
 				},
 				{
-					"name": "list",
+					"name": "delete",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzM1MjgyLCJpYXQiOjE2NTk3NDMyODIsImp0aSI6IjdiN2Y1NmRmMjJhNjQxODVhMWY1NTM5Y2NlM2IxMWQ3IiwidXNlcl9pZCI6M30.XU8_K1omztzIMRCZ7VlaH2V9kb9xan1uksP6z87PQls",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/cafe/product/delete/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cafe",
+								"product",
+								"delete",
+								"2",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzA5Mjg1LCJpYXQiOjE2NTk3MTcyODUsImp0aSI6ImQ0ZWE0NGMxMDBlMzQ0MDU4ZjVlYWI3OTM5Y2JjOGMzIiwidXNlcl9pZCI6Mn0.yBwNJddApWWKUPBDAMPoqKvV7PTJ0YjhMxUwzoW0puU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/cafe/product/delete/3/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"cafe",
+										"product",
+										"delete",
+										"3",
+										""
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 16:57:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "OPTIONS, DELETE"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Product Deleted successfully!\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -86,18 +666,228 @@
 				{
 					"name": "log in",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"customer\",\r\n    \"password\":\"123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "log in",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"e\",\r\n    \"password\":\"123\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/users/login/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"users",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 16:34:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "284"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"You are authenticated successfully!\",\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYyMzA5Mjg1LCJpYXQiOjE2NTk3MTcyODUsImp0aSI6ImQ0ZWE0NGMxMDBlMzQ0MDU4ZjVlYWI3OTM5Y2JjOGMzIiwidXNlcl9pZCI6Mn0.yBwNJddApWWKUPBDAMPoqKvV7PTJ0YjhMxUwzoW0puU\"\n}"
+						}
+					]
 				},
 				{
 					"name": "register",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n     \"username\":\"customer\",\r\n     \"email\":\"customer@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/reqister/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"reqister",
+								""
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n     \"username\":\"e\",\r\n     \"email\":\"e1@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/users/reqister/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"users",
+										"reqister",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 05 Aug 2022 16:21:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"User Created Successfuly\"\n}"
+						}
+					]
 				}
 			]
 		}

@@ -16,7 +16,8 @@ def add_cafe(request : Request):
     user = request.user
     if not user.is_authenticated:
         return Response({"msg" : "Please Log In"},status=status.HTTP_403_FORBIDDEN)
-   
+    if not user.has_perm('cafes.add_cafe'):
+        return Response({"msg" : "you dont have permission!"},status=status.HTTP_401_UNAUTHORIZED)
     cafeSerializer = CafeSerializer(data=request.data)
     if cafeSerializer.is_valid():
         cafeSerializer.save()
@@ -32,6 +33,8 @@ def add_product(request : Request):
     user = request.user
     if not user.is_authenticated:
         return Response({"msg" : "Please Log In"},status=status.HTTP_403_FORBIDDEN)
+    if not user.has_perm('cafes.add_product'):
+        return Response({"msg" : "you dont have permission!"},status=status.HTTP_401_UNAUTHORIZED)
 
     product_serializer = ProductSerializer(data=request.data)
     if product_serializer.is_valid():
@@ -43,7 +46,15 @@ def add_product(request : Request):
 
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+
 def list_cafe(request:Request):
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"},status=status.HTTP_403_FORBIDDEN)
+    if not user.has_perm('cafes.view_cafe'):
+        return Response({"msg" : "you dont have permission!"},status=status.HTTP_401_UNAUTHORIZED)
     skip = int(request.query_params.get("skip", 0))
     get = int(request.query_params.get("get", 5))
     
@@ -57,7 +68,14 @@ def list_cafe(request:Request):
     return Response({"msg" : "List All cafes ","Cafe" : cafe}, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def list_product(request:Request):
+    user = request.user
+    if not user.is_authenticated:
+        return Response({"msg" : "Please Log In"},status=status.HTTP_403_FORBIDDEN)
+    if not user.has_perm('cafes.view_product'):
+        return Response({"msg" : "you dont have permission!"},status=status.HTTP_401_UNAUTHORIZED)
     skip = int(request.query_params.get("skip", 0))
     get = int(request.query_params.get("get", 5))
 
@@ -75,6 +93,8 @@ def update_cafe(request:Request, cafe_id):
     user = request.user
     if not user.is_authenticated:
         return Response({"msg" : "Please Log In"},status=status.HTTP_403_FORBIDDEN)
+    if not user.has_perm('cafes.change_cafe'):
+        return Response({"msg" : "you dont have permission!"},status=status.HTTP_401_UNAUTHORIZED)
     try:
         cafe = Cafe.objects.get(id = cafe_id)
     except Exception :
@@ -96,6 +116,8 @@ def update_product(request:Request,product_id):
     user = request.user
     if not user.is_authenticated:
         return Response({"msg" : "Please Log In"},status=status.HTTP_403_FORBIDDEN)
+    if not user.has_perm('cafes.change_product'):
+        return Response({"msg" : "you dont have permission!"},status=status.HTTP_401_UNAUTHORIZED)
     try:
         product = Product.objects.get(id = product_id)
     except Exception :
@@ -118,6 +140,8 @@ def delete_cafe(request:Request, cafe_id):
     user = request.user
     if not user.is_authenticated:
         return Response({"msg" : "Please Log In"},status=status.HTTP_403_FORBIDDEN)
+    if not user.has_perm('cafes.delete_cafe'):
+        return Response({"msg" : "you dont have permission!"},status=status.HTTP_401_UNAUTHORIZED)
     cafe = Cafe.objects.get(id = cafe_id)
     cafe.delete()
     return Response({"msg" : "cafe Deleted successfully!"}, status=status.HTTP_200_OK)
@@ -129,8 +153,8 @@ def delete_product(request:Request, product_id):
     user = request.user
     if not user.is_authenticated:
         return Response({"msg" : "Please Log In"},status=status.HTTP_403_FORBIDDEN)
+    if not user.has_perm('cafes.delete_product'):
+        return Response({"msg" : "you dont have permission!"},status=status.HTTP_401_UNAUTHORIZED)
     product = Product.objects.get(id =product_id)
     product.delete()
     return Response({"msg" : "Product Deleted successfully!"}, status=status.HTTP_200_OK)
-
- 
